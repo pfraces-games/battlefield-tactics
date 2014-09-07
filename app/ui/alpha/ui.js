@@ -5,11 +5,12 @@ define('app.ui', function (require) {
       domoOn          = require('domo.on'),
       domoAddClass    = require('domo.addClass'),
       domoRemoveClass = require('domo.removeClass'),
+      straightLine    = require('straightLine'),
+      log             = require('log'),
       model           = require('app.model'),
       render          = require('app.ui.render'),
       uiCell          = require('app.ui.cell'),
-      straightLine    = require('straightLine'),
-      log             = require('log');
+      direction       = require('app.path.direction');
 
   var dom = domo.use({
     on: domoOn,
@@ -50,25 +51,6 @@ define('app.ui', function (require) {
     };
   })();
 
-  var rotate = function (cell, path) {
-    var start = path[0],
-        next = path[1];
-
-    var north = start.y > next.y,
-        south = start.y < next.y,
-        east = start.x < next.x,
-        west = start.x > next.x;
-
-    var dir = '';
-
-    if (north) { dir += 'N'; }
-    if (south) { dir += 'S'; }
-    if (east) { dir += 'E'; }
-    if (west) { dir += 'W'; }
-
-    cell.character.direction = dir;
-  };
-
   var setListeners = function () {
     dom('#canvas').on('contextmenu', function (event) {
       event.preventDefault();
@@ -100,7 +82,7 @@ define('app.ui', function (require) {
       }
 
       if (isRightBtn) {
-        rotate(current.cell, path);
+        current.cell.character.direction = direction(path);
         render.characters();
       }
     });
