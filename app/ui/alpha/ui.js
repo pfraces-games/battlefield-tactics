@@ -53,11 +53,13 @@ define('app.ui', function (require) {
   })();
 
   var setListeners = function () {
-    dom('#canvas').on('contextmenu', function (event) {
-      event.preventDefault();
-    });
+    dom('#canvas')
 
-    dom('.cell').on('mouseup', function (event) {
+    .on('contextmenu', function (event) {
+      event.preventDefault();
+    })
+
+    .on('mouseup', function (event) {
       var btn = event.button,
           isLeftBtn = btn === LEFT_BUTTON,
           isMiddleBtn = btn === MIDDLE_BUTTON,
