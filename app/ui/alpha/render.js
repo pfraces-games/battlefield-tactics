@@ -68,7 +68,8 @@ define('app.ui.render', function (require) {
 
     model.each(function (cell, x, y) {
       if (cell.character) {
-        var terrain = dom('#' + uiCell.id(x, y) + ' > .terrain'),
+        var cellId = uiCell.id({ x: x, y: y }),
+            terrain = dom('#' + cellId + ' > .terrain'),
             team = cell.character.team,
             direction = DIRECTION[cell.character.direction];
 

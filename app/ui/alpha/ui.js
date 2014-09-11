@@ -1,7 +1,8 @@
 define('app.ui', function (require) {
   'use strict';
 
-  var domo            = require('domo'),
+  var filter          = require('mu.list.filter'),
+      domo            = require('domo'),
       domoOn          = require('domo.on'),
       domoAddClass    = require('domo.addClass'),
       domoRemoveClass = require('domo.removeClass'),
@@ -10,7 +11,8 @@ define('app.ui', function (require) {
       model           = require('app.model'),
       render          = require('app.ui.render'),
       uiCell          = require('app.ui.cell'),
-      direction       = require('app.path.direction');
+      direction       = require('app.path.direction'),
+      pathCollision   = require('app.path.collision');
 
   var dom = domo.use({
     on: domoOn,
@@ -25,19 +27,18 @@ define('app.ui', function (require) {
   var currentCharacter = (function () {
     var current;
 
-    var setCurrent = function (node, pos, cell) {
+    var setCurrent = function (pos, cell) {
       if (!cell.character) { return current; }
+      if (current && cell === current.cell) { return current; }
 
       current = {
-        node: node,
         pos: pos,
         cell: cell
       };
 
       dom('.selected').removeClass('selected');
-      dom('.selector', node).addClass('selected');
+      dom('#' + uiCell.id(pos) + ' > .selector').addClass('selected');
 
-      log(cell.character);
       return current;
     };
 
@@ -65,25 +66,57 @@ define('app.ui', function (require) {
       var selectorNode = event.target,
           cellNode = selectorNode.parentNode,
           pos = uiCell.pos(cellNode.id),
-          cell = model.at(pos.x, pos.y);
+          cell = model.at(pos.x, pos.y),
+          current = currentCharacter.get();
 
-      var current = currentCharacter.get();
-      if (isLeftBtn) { current = currentCharacter.set(cellNode, pos, cell); }
-      if (!current || current.pos === pos) { return; }
+      if (isLeftBtn) {
+        // character selection
 
-      var path = straightLine(current.pos, pos);
+        var newCharacter = currentCharacter.set(pos, cell);
+        
+        if (newCharacter !== current) {
+          current = newCharacter;
+          log(current.cell.character);
+          return;
+        }
+      }
+      
+      if (!current) { return; }
 
-      if (isLeftBtn && cell.terrain === 'G') {
-        cell.character = current.cell.character;
+      var path = straightLine(current.pos, pos),
+          collision = pathCollision(path);
+
+      if (collision) {
+        path = filter(path, function (item, index) {
+          return index < collision.index;
+        });
+      }
+
+      if (isLeftBtn) { 
+        // character movement
+
+        if (path.length < 2) { return; }
+
+        var last = path[path.length - 1],
+            lastButOne = path[path.length - 2],
+            activeCharacter = current.cell.character;
+
         delete current.cell.character;
+        cell = model.at(last.x, last.y)
+        cell.character = activeCharacter;
+        cell.character.direction = direction(lastButOne, last);
+
         render.characters();
-        currentCharacter.set(cellNode, pos, cell);
+        currentCharacter.set(last, cell);
         return;
       }
 
       if (isRightBtn) {
-        current.cell.character.direction = direction(path);
+        // character rotation
+
+        current.cell.character.direction = direction(path[0], path[1]);
         render.characters();
+        return;
       }
     });
   };

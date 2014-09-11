@@ -22,8 +22,8 @@ define('app.ui.cell', function (require) {
     };
   };
 
-  var id = function (x, y) {
-    var id = (y * CANVAS_WIDTH) + x,
+  var id = function (pos) {
+    var id = (pos.y * CANVAS_WIDTH) + pos.x,
         nodeId = CELL_PREFIX + id;
 
     return nodeId;
