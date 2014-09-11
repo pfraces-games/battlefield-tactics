@@ -83,17 +83,26 @@ define('app.ui', function (require) {
       
       if (!current) { return; }
 
-      var path = straightLine(current.pos, pos),
-          collision = pathCollision(path);
+      var path = straightLine(current.pos, pos);
 
-      if (collision) {
-        path = filter(path, function (item, index) {
-          return index < collision.index;
-        });
+      if (isRightBtn) {
+        // character rotation
+
+        current.cell.character.direction = direction(path[0], path[1]);
+        render.characters();
+        return;
       }
 
       if (isLeftBtn) { 
         // character movement
+
+        var collision = pathCollision(path);
+
+        if (collision) {
+          path = filter(path, function (item, index) {
+            return index < collision.index;
+          });
+        }
 
         if (path.length < 2) { return; }
 
@@ -108,14 +117,6 @@ define('app.ui', function (require) {
 
         render.characters();
         currentCharacter.set(last, cell);
-        return;
-      }
-
-      if (isRightBtn) {
-        // character rotation
-
-        current.cell.character.direction = direction(path[0], path[1]);
-        render.characters();
         return;
       }
     });
