@@ -1,10 +1,80 @@
 body {
   background-color: black;
+  margin: 0;
 }
 
-#canvas {
+#title {
+  width: 100%;
+  color: yellow;
+  margin-bottom: 4px;
+  border-bottom: 1px solid yellow;
+}
+
+#title > h1 {
+  display: inline;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+
+#title > h2 {
+  display: inline;
+  font-size: medium;
+  font-style: italic;
+}
+
+#game {
+  width: 100%;
+  min-width: 800px;
+  position: relative;
+}
+
+#left-panel {
+  float: left;
+}
+
+#right-panel {
+  float: right;
+}
+
+#center-panel {
+  position: relative;
   width: 800px;
   height: 600px;
   margin: auto;
   background-color: white;
+}
+
+#canvas {
+  position: absolute;
+}
+
+.side-panel {
+  position: relative;
+  width: 218px;
+  height: 600px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.panel-widget {
+  margin: 10px;
+  border: 1px solid yellow;
+  border-radius: 5px;
+}
+
+.panel-widget + .panel-widget {
+  margin-left: 0;
+}
+
+#left-panel > .panel-widget > .panel-widget {
+  float: left;
+}
+
+#right-panel > .panel-widget > .panel-widget {
+  float: right;
+}
+
+#turn {
+  width: 50px;
+  height: 50px;
 }

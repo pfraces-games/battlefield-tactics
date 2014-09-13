@@ -6,23 +6,54 @@ define('app.ui', function (require) {
       domoOn          = require('domo.on'),
       domoAddClass    = require('domo.addClass'),
       domoRemoveClass = require('domo.removeClass'),
+      domoEmpty       = require('domo.empty'),
+      domoAppend      = require('domo.append'),
       straightLine    = require('straightLine'),
       log             = require('log'),
       model           = require('app.model'),
       render          = require('app.ui.render'),
       uiCell          = require('app.ui.cell'),
+      tplCharacter    = require('app.ui.template.character'),
       direction       = require('app.path.direction'),
       pathCollision   = require('app.path.collision');
 
   var dom = domo.use({
     on: domoOn,
     addClass: domoAddClass,
-    removeClass: domoRemoveClass
+    removeClass: domoRemoveClass,
+    empty: domoEmpty,
+    append: domoAppend
   });
 
   var LEFT_BUTTON = 0,
       MIDDLE_BUTTON = 1,
       RIGHT_BUTTON = 2;
+
+  var currentTurn = (function () {
+    var current;
+
+    var setCurrent = function (team) {
+      current = team;
+      dom('#turn')
+      .empty()
+      .append(tplCharacter(team, 'south'));
+    };
+
+    var getCurrent = function () {
+      return current;
+    };
+
+    var toggleCurrent = function () {
+      if (current === 'red') { setCurrent('blue'); }
+      else { setCurrent('red'); }
+    };
+
+    return {
+      set: setCurrent,
+      get: getCurrent,
+      toggle: toggleCurrent
+    };
+  })();
 
   var currentCharacter = (function () {
     var current;
@@ -53,12 +84,15 @@ define('app.ui', function (require) {
   })();
 
   var setListeners = function () {
-    dom('#canvas')
+    dom('#turn').on('click', function () {
+      if (!currentTurn.get()) { return; }
+      currentTurn.toggle();
+    });
 
+    dom('#canvas')
     .on('contextmenu', function (event) {
       event.preventDefault();
     })
-
     .on('mouseup', function (event) {
       var btn = event.button,
           isLeftBtn = btn === LEFT_BUTTON,
@@ -77,6 +111,10 @@ define('app.ui', function (require) {
         var newCharacter = currentCharacter.set(pos, cell);
         
         if (newCharacter !== current) {
+          if (!currentTurn.get()) {
+            currentTurn.set(newCharacter.cell.character.team);
+          }
+
           current = newCharacter;
           log(current.cell.character);
           return;

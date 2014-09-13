@@ -1,15 +1,17 @@
 define('app.ui.render', function (require) {
   'use strict';
 
-  var domo       = require('domo'),
-      domoNative = require('domo.native'),
-      domoAppend = require('domo.append'),
-      domoCss    = require('domo.css'),
-      model      = require('app.model'),
-      uiCell     = require('app.ui.cell');
+  var domo         = require('domo'),
+      domoEmpty    = require('domo.empty'),
+      domoAppend   = require('domo.append'),
+      domoCss      = require('domo.css'),
+      model        = require('app.model'),
+      uiCell       = require('app.ui.cell'),
+      tplCell      = require('app.ui.template.cell'),
+      tplCharacter = require('app.ui.template.character');
 
   var dom = domo.use({
-    native: domoNative,
+    empty: domoEmpty,
     append: domoAppend,
     css: domoCss
   });
@@ -31,40 +33,17 @@ define('app.ui.render', function (require) {
     'NW': 'northwest'
   };
 
-  var cellHtml = function (cellId, terrain) {
-    return '' + 
-      '<div id="' + cellId + '" class="cell">' +
-        '<div class="terrain ' + terrain + '"></div>' +
-        '<div class="selector"></div>' +
-      '</div>';
-  };
- 
-  var characterHtml = function (team, direction) {
-    return '' +
-      '<div class="character ' + team + ' ' + direction + '">' +
-        '<div class="circle"></div>' +
-        '<div class="line"></div>' +
-        '<div class="arrow"></div>' +
-      '</div>';
-  };
-
   var renderMap = function () {
     var canvas = dom('#canvas');
 
-    canvas.native(function (node) {
-      node.innerHTML = '';
-    });
-
     model.each(function (cell) {
       var terrain = TERRAIN[cell.terrain];
-      canvas.append(cellHtml(uiCell.newId(), terrain));
+      canvas.append(tplCell(uiCell.newId(), terrain));
     });
   };
 
   var renderCharacters = function () {
-    dom('.terrain').native(function (node) {
-      node.innerHTML = '';
-    });
+    dom('.terrain').empty();
 
     model.each(function (cell, x, y) {
       if (cell.character) {
@@ -73,7 +52,7 @@ define('app.ui.render', function (require) {
             team = cell.character.team,
             direction = DIRECTION[cell.character.direction];
 
-        terrain.append(characterHtml(team, direction));
+        terrain.append(tplCharacter(team, direction));
       }
     });
   };
