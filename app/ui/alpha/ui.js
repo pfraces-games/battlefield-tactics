@@ -29,11 +29,12 @@ define('app.ui', function (require) {
       MIDDLE_BUTTON = 1,
       RIGHT_BUTTON = 2;
 
-  var currentTurn = (function () {
+  var currentTeam = (function () {
     var current;
 
     var setCurrent = function (team) {
       current = team;
+
       dom('#turn')
       .empty()
       .append(tplCharacter(team, 'south'));
@@ -58,6 +59,11 @@ define('app.ui', function (require) {
   var currentCharacter = (function () {
     var current;
 
+    var resetCurrent = function () {
+      current = null;
+      dom('.selected').removeClass('selected');
+    };
+
     var setCurrent = function (pos, cell) {
       if (!cell.character) { return current; }
       if (current && cell === current.cell) { return current; }
@@ -78,6 +84,7 @@ define('app.ui', function (require) {
     };
 
     return {
+      reset: resetCurrent,
       set: setCurrent,
       get: getCurrent
     };
@@ -85,8 +92,10 @@ define('app.ui', function (require) {
 
   var setListeners = function () {
     dom('#turn').on('click', function () {
-      if (!currentTurn.get()) { return; }
-      currentTurn.toggle();
+      if (!currentTeam.get()) { return; }
+
+      currentTeam.toggle();
+      currentCharacter.reset();
     });
 
     dom('#canvas')
@@ -103,16 +112,23 @@ define('app.ui', function (require) {
           cellNode = selectorNode.parentNode,
           pos = uiCell.pos(cellNode.id),
           cell = model.at(pos.x, pos.y),
-          current = currentCharacter.get();
+          current = currentCharacter.get(),
+          activeTeam = currentTeam.get();
+
+      if (!current && !cell.character) { return; }
 
       if (isLeftBtn) {
         // character selection
 
+        if (!current && activeTeam && cell.character.team !== activeTeam) {
+          return;
+        }
+
         var newCharacter = currentCharacter.set(pos, cell);
         
         if (newCharacter !== current) {
-          if (!currentTurn.get()) {
-            currentTurn.set(newCharacter.cell.character.team);
+          if (!activeTeam) {
+            currentTeam.set(newCharacter.cell.character.team);
           }
 
           current = newCharacter;
@@ -120,8 +136,6 @@ define('app.ui', function (require) {
           return;
         }
       }
-      
-      if (!current) { return; }
 
       var path = straightLine(current.pos, pos);
 

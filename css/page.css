@@ -1,6 +1,7 @@
 body {
   background-color: black;
   margin: 0;
+  font-family: sans-serif;
 }
 
 #title {
@@ -54,6 +55,7 @@ body {
   height: 600px;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
+  pointer-events: none;
 }
 
 .panel-widget {
@@ -64,6 +66,10 @@ body {
 
 .panel-widget + .panel-widget {
   margin-left: 0;
+}
+
+.panel-widget > .panel-widget {
+  pointer-events: auto;
 }
 
 #left-panel > .panel-widget > .panel-widget {
