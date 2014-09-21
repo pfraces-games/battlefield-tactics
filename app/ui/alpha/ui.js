@@ -66,7 +66,6 @@ define('app.ui', function (require) {
 
     var setCurrent = function (pos, cell) {
       if (!cell.character) { return current; }
-      if (current && cell === current.cell) { return current; }
 
       current = {
         pos: pos,
@@ -116,6 +115,7 @@ define('app.ui', function (require) {
           activeTeam = currentTeam.get();
 
       if (!current && !cell.character) { return; }
+      if (current && cell === current.cell) { return; }
 
       if (isLeftBtn) {
         // character selection
