@@ -2,12 +2,6 @@ define('app.ui', function (require) {
   'use strict';
 
   var filter          = require('mu.list.filter'),
-      domo            = require('domo'),
-      domoOn          = require('domo.on'),
-      domoAddClass    = require('domo.addClass'),
-      domoRemoveClass = require('domo.removeClass'),
-      domoEmpty       = require('domo.empty'),
-      domoAppend      = require('domo.append'),
       straightLine    = require('straightLine'),
       log             = require('log'),
       model           = require('app.model'),
@@ -17,12 +11,12 @@ define('app.ui', function (require) {
       direction       = require('app.path.direction'),
       pathCollision   = require('app.path.collision');
 
-  var dom = domo.use({
-    on: domoOn,
-    addClass: domoAddClass,
-    removeClass: domoRemoveClass,
-    empty: domoEmpty,
-    append: domoAppend
+  var dom = require('domo').use({
+    on:          require('domo.on'),
+    addClass:    require('domo.addClass'),
+    removeClass: require('domo.removeClass'),
+    empty:       require('domo.empty'),
+    append:      require('domo.append'),
   });
 
   var LEFT_BUTTON = 0,
@@ -89,6 +83,17 @@ define('app.ui', function (require) {
     };
   })();
 
+  var shoot = function (current, target) {
+    var WEAPON_DAMAGE = 4;
+    
+    var health = target.character.health -= WEAPON_DAMAGE;
+
+    if (health <= 0) {
+      delete target.character;
+      render.characters();
+    }
+  };
+
   var setListeners = function () {
     dom('#turn').on('click', function () {
       if (!currentTeam.get()) { return; }
@@ -118,11 +123,15 @@ define('app.ui', function (require) {
       if (current && cell === current.cell) { return; }
 
       if (isLeftBtn) {
-        // character selection
+        // character shoot
 
-        if (!current && activeTeam && cell.character.team !== activeTeam) {
-          return;
+        if (activeTeam && cell.character &&
+            cell.character.team !== activeTeam) {
+          if (!current) { return; }
+          return shoot(current.cell, cell);
         }
+
+        // character selection
 
         var newCharacter = currentCharacter.set(pos, cell);
         

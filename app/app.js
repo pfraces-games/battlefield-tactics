@@ -9,25 +9,29 @@ define.root(function (require) {
   model.at(3, 3).character = {
     team: 'red',
     id: 0,
-    direction: 'SE'
+    direction: 'SE',
+    health: 10
   };
 
   model.at(7, 5).character = {
     team: 'red',
     id: 1,
-    direction: 'E'
+    direction: 'E',
+    health: 10
   };
 
   model.at(12, 7).character = {
     team: 'blue',
     id: 0,
-    direction: 'NW'
+    direction: 'NW',
+    health: 10
   };
 
   model.at(10, 10).character = {
     team: 'blue',
     id: 1,
-    direction: 'N'
+    direction: 'N',
+    health: 10
   };
 
   ui.init();

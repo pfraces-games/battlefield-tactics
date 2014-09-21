@@ -68,10 +68,6 @@ body {
   margin-left: 0;
 }
 
-.panel-widget > .panel-widget {
-  pointer-events: auto;
-}
-
 #left-panel > .panel-widget > .panel-widget {
   float: left;
 }
@@ -80,7 +76,11 @@ body {
   float: right;
 }
 
-#turn {
+.panel-widget > .panel-widget {
   width: 50px;
   height: 50px;
+}
+
+.panel-widget.input {
+  pointer-events: auto;
 }
