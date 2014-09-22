@@ -47,6 +47,7 @@ body {
 
 #canvas {
   position: absolute;
+  overflow: hidden;
 }
 
 .side-panel {

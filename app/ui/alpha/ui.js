@@ -9,7 +9,7 @@ define('app.ui', function (require) {
       uiCell          = require('app.ui.cell'),
       tplCharacter    = require('app.ui.template.character'),
       direction       = require('app.path.direction'),
-      pathCollision   = require('app.path.collision');
+      pathCollisions  = require('app.path.collisions');
 
   var dom = require('domo').use({
     on:          require('domo.on'),
@@ -27,11 +27,11 @@ define('app.ui', function (require) {
     var current;
 
     var setCurrent = function (team) {
-      current = team;
-
       dom('#turn')
       .empty()
       .append(tplCharacter(team, 'south'));
+
+      return current = team;
     };
 
     var getCurrent = function () {
@@ -39,8 +39,8 @@ define('app.ui', function (require) {
     };
 
     var toggleCurrent = function () {
-      if (current === 'red') { setCurrent('blue'); }
-      else { setCurrent('red'); }
+      if (current === 'red') { return setCurrent('blue'); }
+      return setCurrent('red');
     };
 
     return {
@@ -54,21 +54,17 @@ define('app.ui', function (require) {
     var current;
 
     var resetCurrent = function () {
-      current = null;
       dom('.selected').removeClass('selected');
+      return current = null;
     };
 
     var setCurrent = function (pos, cell) {
-      if (!cell.character) { return current; }
-
-      current = {
-        pos: pos,
-        cell: cell
-      };
-
       dom('.selected').removeClass('selected');
       dom('#' + uiCell.id(pos) + ' > .selector').addClass('selected');
 
+      current = cell.character;
+      current.pos = pos;
+      current.cell = cell;
       return current;
     };
 
@@ -83,15 +79,11 @@ define('app.ui', function (require) {
     };
   })();
 
-  var shoot = function (current, target) {
+  var hit = function (activeCharacter, targetCharacter) {
     var WEAPON_DAMAGE = 4;
     
-    var health = target.character.health -= WEAPON_DAMAGE;
-
-    if (health <= 0) {
-      delete target.character;
-      render.characters();
-    }
+    var health = targetCharacter.health -= WEAPON_DAMAGE;
+    if (health <= 0) { delete targetCharacter.cell.character; }
   };
 
   var setListeners = function () {
@@ -112,76 +104,114 @@ define('app.ui', function (require) {
           isMiddleBtn = btn === MIDDLE_BUTTON,
           isRightBtn = btn === RIGHT_BUTTON;
 
+      // Determine wether is middle button (scroll)
+
+      if (isMiddleBtn) { return; } // TODO: return scroll( ... );
+
+      // Get cell data
+
       var selectorNode = event.target,
           cellNode = selectorNode.parentNode,
           pos = uiCell.pos(cellNode.id),
-          cell = model.at(pos.x, pos.y),
-          current = currentCharacter.get(),
-          activeTeam = currentTeam.get();
+          cell = model.at(pos.x, pos.y);
 
-      if (!current && !cell.character) { return; }
-      if (current && cell === current.cell) { return; }
+      var activeCharacter = currentCharacter.get(),
+          activeTeam = currentTeam.get(),
+          targetCharacter = cell.character;
 
-      if (isLeftBtn) {
-        // character shoot
-
-        if (activeTeam && cell.character &&
-            cell.character.team !== activeTeam) {
-          if (!current) { return; }
-          return shoot(current.cell, cell);
-        }
-
-        // character selection
-
-        var newCharacter = currentCharacter.set(pos, cell);
-        
-        if (newCharacter !== current) {
-          if (!activeTeam) {
-            currentTeam.set(newCharacter.cell.character.team);
-          }
-
-          current = newCharacter;
-          log(current.cell.character);
-          return;
-        }
+      if (targetCharacter) {
+        targetCharacter.cell = cell;
+        targetCharacter.pos = pos;
       }
 
-      var path = straightLine(current.pos, pos);
+      if (!activeCharacter && !targetCharacter) { return; }
+
+      // if no active character there is a target character:
+      // ally selection with left or right button
+      //
+      // if no target character there is an active character and an
+      // active team: movement or rotation
+      //
+      // if active character and target character there is an active team:
+      // selection or shoot
+      //
+      // discard selection: requires target character and active team
+
+      if (targetCharacter) {
+        activeTeam = activeTeam || currentTeam.set(targetCharacter.team);
+
+        if (isLeftBtn && activeTeam === targetCharacter.team) { 
+          return currentCharacter.set(pos, targetCharacter.cell);
+        }
+
+        // there is a target character and is an enemy
+        // rotate or shoot: require active character
+        if (!activeCharacter) { return; }
+      }
+
+      // at this point there is an active team and active character
+      // if target character it is enemy: rotate or shoot
+      // if no target character: rotate or move
+      // rotate, move or shoot: require path
+
+      var path = straightLine(activeCharacter.pos, pos);
+
+      // discard rotation
 
       if (isRightBtn) {
-        // character rotation
-
-        current.cell.character.direction = direction(path[0], path[1]);
-        render.characters();
-        return;
+        activeCharacter.direction = direction(path[0], path[1]);
+        return render.characters();
       }
 
-      if (isLeftBtn) { 
-        // character movement
+      // shoot or move: require collision detection
 
-        var collision = pathCollision(path);
+      var collisions = pathCollisions(path);
 
-        if (collision) {
-          path = filter(path, function (item, index) {
-            return index < collision.index;
-          });
+      // discard shoot
+
+      if (targetCharacter) {
+        activeCharacter.direction = direction(path[0], path[1]);
+
+        var bulletCollisions = filter(collisions, function (item) {
+          return item.wall || item.character;
+        });
+
+        var collision = bulletCollisions[0];
+
+        if (collision && collision.character) {
+
+          // TODO hit to collision.character
+          hit(activeCharacter, targetCharacter);
         }
 
-        if (path.length < 2) { return; }
-
-        var last = path[path.length - 1],
-            lastButOne = path[path.length - 2],
-            activeCharacter = current.cell.character;
-
-        delete current.cell.character;
-        cell = model.at(last.x, last.y)
-        cell.character = activeCharacter;
-        cell.character.direction = direction(lastButOne, last);
-
-        render.characters();
-        currentCharacter.set(last, cell);
-        return;
+        return render.characters();
       }
+
+      // move
+
+      var movementPath = path;
+
+      if (collisions.length) {
+        var movementCollision = collisions[0];
+
+        movementPath = filter(path, function (item, index) {
+          return index < movementCollision.index;
+        });
+      }
+
+      if (movementPath.length < 2) { return; }
+
+      var last = movementPath[movementPath.length - 1],
+          lastButOne = movementPath[movementPath.length - 2];
+
+      delete activeCharacter.cell.character;
+      activeCharacter.cell = model.at(last.x, last.y);
+      activeCharacter.pos = last;
+      activeCharacter.direction = direction(lastButOne, last);
+      activeCharacter.cell.character = activeCharacter;
+
+      render.characters();
+      currentCharacter.set(last, activeCharacter.cell);
     });
   };
 
