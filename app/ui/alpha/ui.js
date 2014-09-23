@@ -1,7 +1,8 @@
 define('app.ui', function (require) {
   'use strict';
 
-  var filter          = require('mu.list.filter'),
+  var each            = require('mu.list.each'),
+      filter          = require('mu.list.filter'),
       straightLine    = require('straightLine'),
       log             = require('log'),
       model           = require('app.model'),
@@ -179,9 +180,9 @@ define('app.ui', function (require) {
         var collision = bulletCollisions[0];
 
         if (collision && collision.character) {
-
-          // TODO hit to collision.character
-          hit(activeCharacter, targetCharacter);
+          collision.cell.character.cell = collision.cell;
+          collision = collision.cell.character;
+          hit(activeCharacter, collision);
         }
 
         return render.characters();
@@ -199,10 +200,13 @@ define('app.ui', function (require) {
         });
       }
 
-      if (movementPath.length < 2) { return; }
-
       var last = movementPath[movementPath.length - 1],
           lastButOne = movementPath[movementPath.length - 2];
+
+      if (movementPath.length < 2) {
+        activeCharacter.direction = direction(last, movementCollision);
+        return render.characters(); 
+      }
 
       delete activeCharacter.cell.character;
       activeCharacter.cell = model.at(last.x, last.y);
