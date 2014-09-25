@@ -1,38 +1,38 @@
 define.root(function (require) {
   'use strict';
   
-  var model = require('app.model'),
-      ui    = require('app.ui');
+  var characterModel = require('app.model.character'),
+      ui             = require('app.ui');
 
   // sample characters
 
-  model.at(3, 3).character = {
+  characterModel.add({
     team: 'red',
-    id: 0,
     direction: 'SE',
-    health: 10
-  };
+    health: 10,
+    pos: { x: 3, y: 3 }
+  });
 
-  model.at(7, 5).character = {
+  characterModel.add({
     team: 'red',
-    id: 1,
     direction: 'E',
-    health: 10
-  };
+    health: 10,
+    pos: { x: 7, y: 5 }
+  });
 
-  model.at(12, 7).character = {
+  characterModel.add({
     team: 'blue',
-    id: 0,
     direction: 'NW',
-    health: 10
-  };
+    health: 10,
+    pos: { x: 12, y: 7 }
+  });
 
-  model.at(10, 10).character = {
+  characterModel.add({
     team: 'blue',
-    id: 1,
     direction: 'N',
-    health: 10
-  };
+    health: 10,
+    pos: { x: 10, y: 10 }
+  });
 
   ui.init();
 });

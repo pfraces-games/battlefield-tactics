@@ -9,10 +9,10 @@ define('app.path.direction', function () {
 
     var dir = '';
 
-    if (north) { dir += 'N'; }
-    if (south) { dir += 'S'; }
-    if (east) { dir += 'E'; }
-    if (west) { dir += 'W'; }
+    if (north) { dir += 'north'; }
+    if (south) { dir += 'south'; }
+    if (east) { dir += 'east'; }
+    if (west) { dir += 'west'; }
 
     return dir;
   };
