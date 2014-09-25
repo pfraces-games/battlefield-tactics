@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/page.css" />
     <link rel="stylesheet" href="css/render.css" />
 
-    <!-- 3rd party libs -->
+    <!-- dependencies -->
     
     <script src="bower_components/define/define.js"></script>
     <script src="bower_components/mu.is/is.js"></script>
@@ -16,7 +16,7 @@
     <script src="bower_components/mu.api/api.js"></script>
     <script src="bower_components/domo/domo.js"></script>
 
-    <!-- game libs -->
+    <!-- libs -->
 
     <script src="lib/matrix.js"></script>
     <script src="lib/uid.js"></script>
@@ -25,25 +25,26 @@
 
     <!-- mechanics -->
 
-    <script src="app/app.js"></script>
-    <script src="app/actions.js"></script>
-    <script src="app/path/nodes.js"></script>
-    <script src="app/path/direction.js"></script>
+    <script src="app/mechanics/actions.js"></script>
+    <script src="app/mechanics/path.js"></script>
 
     <!-- models -->
 
-    <script src="app/model/map.js"></script>
-    <script src="app/model/character.js"></script>
-    <script src="app/state/team.js"></script>
-    <script src="app/state/character.js"></script>
+    <script src="app/models/cells.js"></script>
+    <script src="app/models/characters.js"></script>
+    <script src="app/models/teams.js"></script>
 
-    <!-- render -->
+    <!-- ui -->
 
     <script src="app/ui/alpha/render.js"></script>
     <script src="app/ui/alpha/ui.js"></script>
     <script src="app/ui/alpha/cell.js"></script>
     <script src="app/ui/alpha/template.cell.js"></script>
     <script src="app/ui/alpha/template.character.js"></script>
+
+    <!-- entry point -->
+
+    <script src="app/app.js"></script>
 
     <!-- config -->
 
