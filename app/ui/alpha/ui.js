@@ -5,30 +5,14 @@ define('app.ui', function (require) {
       domo         = require('domo'),
       log          = require('log'),
       actions      = require('app.actions'),
-      team         = require('app.state.team'),
-      character    = require('app.state.character'),
+      teams        = require('app.model.teams'),
+      characters   = require('app.model.characters'),
       render       = require('app.ui.render'),
       uiCell       = require('app.ui.cell'),
       tplCharacter = require('app.ui.template.character');
 
   var dom = domo.use({
-    on:          require('domo.on'),
-    addClass:    require('domo.addClass'),
-    removeClass: require('domo.removeClass'),
-    replaceWith: require('domo.replaceWith')
-  });
-
-  team.onChange(function (newTeam) {
-    dom('#turn').replaceWith(tplCharacter(newTeam, 'south'));
-  });
-
-  character.onChange(function (newCharacter) {
-    dom('.selected').removeClass('selected');
-
-    if (newCharacter) {
-      dom('#' + uiCell.posId(newCharacter.pos) + ' > .selector')
-      .addClass('selected');
-    }
+    on: require('domo.on')
   });
 
   var setListeners = function () {
@@ -39,9 +23,12 @@ define('app.ui', function (require) {
     };
 
     dom('#turn').on('click', function () {
-      if (!team.get()) { return; }
-      team.toggle();
-      character.set();
+      if (!teams.current()) { return; }
+      teams.toggle();
+      characters.current(false);
+
+      render.panels();
+      render.characters();
     });
 
     dom('#canvas')
@@ -53,6 +40,8 @@ define('app.ui', function (require) {
           pos = uiCell.idPos(event.target.parentNode.id);
 
       actions(btn, pos);
+
+      render.panels();
       render.characters();
     });
   };

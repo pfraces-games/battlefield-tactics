@@ -1,23 +1,22 @@
 define('app.actions', function (require) {
   'use strict';
 
-  var partial        = require('mu.fn.partial'),
-      each           = require('mu.list.each'),
-      filter         = require('mu.list.filter'),
-      nodes          = require('app.path.nodes'),
-      direction      = require('app.path.direction'),
-      characterModel = require('app.model.character'),
-      mapModel       = require('app.model.map'),
-      team           = require('app.state.team'),
-      character      = require('app.state.character');
+  var partial    = require('mu.fn.partial'),
+      each       = require('mu.list.each'),
+      filter     = require('mu.list.filter'),
+      nodes      = require('app.path.nodes'),
+      direction  = require('app.path.direction'),
+      characters = require('app.model.characters'),
+      cells      = require('app.model.cells'),
+      teams      = require('app.model.teams');
 
   var select = function (target) {
     if (!target) { return; }
 
-    var currentTeam = team.get() || team.set(target.team);
+    var currentTeam = teams.current() || teams.current(target.team);
     if (currentTeam !== target.team) { return; }
 
-    character.set(target);
+    characters.current(target);
     return target;
   };
 
@@ -27,14 +26,14 @@ define('app.actions', function (require) {
     var health = target.health -= WEAPON_DAMAGE; 
 
     if (health <= 0) {
-      characterModel.remove(target);
-      delete mapModel.at(target.pos).character;
+      characters.remove(target);
+      delete cells.at(target.pos).character;
     }
   };
 
   var shoot = function (current, target) {
     if (!current || !target) { return; }
-    if (team.get() === target.team) { return; }
+    if (teams.current() === target.team) { return; }
 
     var path = nodes(current.pos, target.pos);
     current.direction = direction(path[0].pos, path[1].pos);
@@ -72,11 +71,9 @@ define('app.actions', function (require) {
     each(path, function (node) {
       current.direction = direction(current.pos, node.pos);
 
-      delete mapModel.at(current.pos).character;
+      delete cells.at(current.pos).character;
       current.pos = node.pos;
-      mapModel.at(current.pos).character = current;
-
-      character.set(current); // TODO: mark current character from render
+      cells.at(current.pos).character = current;
     });
 
     return current;
@@ -98,8 +95,8 @@ define('app.actions', function (require) {
   };
 
   var actions = function (btn, targetPos) {
-    var currentCharacter = character.get(),
-        node = mapModel.at(targetPos);
+    var currentCharacter = characters.current(),
+        node = cells.at(targetPos);
 
     if (btn === 'left') {
       return or([

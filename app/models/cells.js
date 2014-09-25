@@ -1,4 +1,4 @@
-define('app.model.map', function (require) {
+define('app.model.cells', function (require) {
   'use strict';
 
   var matrix = require('matrix'),
