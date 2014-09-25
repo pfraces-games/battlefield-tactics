@@ -27,7 +27,7 @@ define('app.actions', function (require) {
     var health = target.health -= WEAPON_DAMAGE; 
 
     if (health <= 0) {
-      characterModel.remove(target.index);
+      characterModel.remove(target);
       delete mapModel.at(target.pos).character;
     }
   };

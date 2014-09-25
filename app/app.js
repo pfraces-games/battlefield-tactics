@@ -8,28 +8,28 @@ define.root(function (require) {
 
   characterModel.add({
     team: 'red',
-    direction: 'SE',
+    direction: 'southeast',
     health: 10,
     pos: { x: 3, y: 3 }
   });
 
   characterModel.add({
     team: 'red',
-    direction: 'E',
+    direction: 'east',
     health: 10,
     pos: { x: 7, y: 5 }
   });
 
   characterModel.add({
     team: 'blue',
-    direction: 'NW',
+    direction: 'northwest',
     health: 10,
     pos: { x: 12, y: 7 }
   });
 
   characterModel.add({
     team: 'blue',
-    direction: 'N',
+    direction: 'north',
     health: 10,
     pos: { x: 10, y: 10 }
   });

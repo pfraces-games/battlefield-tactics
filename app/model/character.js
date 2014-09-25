@@ -3,26 +3,19 @@ define('app.model.character', function (require) {
 
   var partial  = require('mu.fn.partial'),
       each     = require('mu.list.each'),
-      removeAt = require('mu.list.removeAt'),
+      remove   = require('mu.list.remove'),
       mapModel = require('app.model.map');
 
   var characters = [];
 
   var add = function (character) {
-    var index = characters.length;
-    character.index = index;
-    characters[index] = character;
+    characters[characters.length] = character;
     mapModel.at(character.pos).character = character;
-  };
-
-  var at = function (index) {
-    return characters[index];
   };
 
   return {
     add: add,
-    at: at,
-    remove: partial(removeAt, characters),
+    remove: partial(remove, characters),
     each: partial(each, characters)
   };
 });
