@@ -26,7 +26,7 @@ define('app.ui.render', function (require) {
 
     mapModel.each(function (cell) {
       var terrain = TERRAIN[cell.terrain];
-      canvas.append(tplCell(uiCell.newId(), terrain));
+      canvas.append(tplCell(uiCell.id(), terrain));
     });
   };
 
@@ -34,7 +34,7 @@ define('app.ui.render', function (require) {
     dom('.terrain').empty();
 
     characterModel.each(function (character) {
-      dom('#' + uiCell.id(character.pos) + ' > .terrain')
+      dom('#' + uiCell.posId(character.pos) + ' > .terrain')
       .append(tplCharacter(character.team, character.direction));
     });
   };

@@ -7,14 +7,14 @@ define('app.ui.cell', function (require) {
       CANVAS_HEIGHT = 12,
       CELL_PREFIX = 'cell_';
 
-  var newId = uid(function (id) {
+  var id = uid(function (id) {
     return CELL_PREFIX + id;
   });
 
-  var pos = function (nodeId) {
-    var id = parseInt(nodeId.slice(CELL_PREFIX.length), 10),
-        x = id % CANVAS_WIDTH,
-        y = parseInt(id / CANVAS_WIDTH, 10);
+  var idPos = function (domId) {
+    var nodeId = parseInt(domId.slice(CELL_PREFIX.length), 10),
+        x = nodeId % CANVAS_WIDTH,
+        y = parseInt(nodeId / CANVAS_WIDTH, 10);
 
     return {
       x: x,
@@ -22,16 +22,16 @@ define('app.ui.cell', function (require) {
     };
   };
 
-  var id = function (pos) {
-    var id = (pos.y * CANVAS_WIDTH) + pos.x,
-        nodeId = CELL_PREFIX + id;
+  var posId = function (pos) {
+    var nodeId = (pos.y * CANVAS_WIDTH) + pos.x,
+        domId = CELL_PREFIX + nodeId;
 
-    return nodeId;
+    return domId;
   };
 
   return {
-    newId: newId,
-    pos: pos,
-    id: id
+    id: id,
+    idPos: idPos,
+    posId: posId
   };
 });

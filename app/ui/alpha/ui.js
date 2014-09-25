@@ -26,7 +26,7 @@ define('app.ui', function (require) {
     dom('.selected').removeClass('selected');
 
     if (newCharacter) {
-      dom('#' + uiCell.id(newCharacter.pos) + ' > .selector')
+      dom('#' + uiCell.posId(newCharacter.pos) + ' > .selector')
       .addClass('selected');
     }
   });
@@ -50,7 +50,7 @@ define('app.ui', function (require) {
     })
     .on('mouseup', function (event) {
       var btn = BTN[event.button],
-          pos = uiCell.pos(event.target.parentNode.id);
+          pos = uiCell.idPos(event.target.parentNode.id);
 
       actions(btn, pos);
       render.characters();
