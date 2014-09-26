@@ -23,4 +23,4 @@ Usage
     cd /path/to/tufo
     grunt
 
-Browse to http://localhost:3000
+Browse to [http://localhost:3000](http://localhost:3000)
