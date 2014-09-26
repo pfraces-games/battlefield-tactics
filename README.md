@@ -7,7 +7,7 @@ Pre-requisites
 --------------
 
 1.  **git** (http://git-scm.org)
-2.  **node** + npm (http://nodejs.org)
+2.  **node + npm** (http://nodejs.org)
 3.  **bower** (`npm install -g bower`)
 
 Install
