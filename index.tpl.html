@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- styles --><% styles.forEach(function (file) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- scripts --><% scripts.forEach(function (file) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+  </head>
+
+  <body>
+    <div id="title">
+      <h1>tufo</h1>
+      <h2>- odor unknown</h2>
+    </div>
+    <div id="game">
+      <div id="left-panel" class="side-panel">
+        <div class="panel-widget">
+          <div id="turn" class="panel-widget input"></div>
+          <div style="clear: both;"></div>
+        </div>
+      </div>
+      <div id="right-panel" class="side-panel"></div>
+      <div id="center-panel">
+        <div id="canvas"></div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -4,7 +4,7 @@ define('app.ui.cell', function (require) {
   var uid = require('uid');
 
   var CANVAS_WIDTH = 16,
-      CANVAS_HEIGHT = 12,
+      // CANVAS_HEIGHT = 12,
       CELL_PREFIX = 'cell_';
 
   var id = uid(function (id) {

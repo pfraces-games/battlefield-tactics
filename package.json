@@ -1,0 +1,16 @@
+{
+  "name": "tufo",
+  "description": "odor unknown",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "grunt": "*",
+    "matchdep": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-less": "*",
+    "grunt-contrib-copy": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-freddie": "*"
+  }
+}

@@ -1,1 +1,10 @@
-bower_components
+# Generated directories
+node_modules/
+bower_components/
+build/
+
+# Vim swap files
+.*.sw?
+
+# Logs
+*.log

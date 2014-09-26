@@ -2,7 +2,7 @@
   "name": "tufo",
   "description": "odor unknown",
   "version": "0.1.0",
-  "main": "app/app.js",
+  "private": true,
   "dependencies": {
     "firebase": "*",
     "define": "*",
@@ -10,12 +10,5 @@
     "mu.fn": "*",
     "mu.list": "*",
     "domo": "*"
-  },
-  "keywords": [
-    "strategy",
-    "turn-based",
-    "rpg"
-  ],
-  "license": "MIT"
+  }
 }
-

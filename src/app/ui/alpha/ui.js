@@ -4,11 +4,10 @@ define('app.ui', function (require) {
   var partial    = require('mu.fn.partial'),
       each       = require('mu.list.each'),
       domo       = require('domo'),
-      log        = require('log'),
+      actions    = require('app.mechanics.action.list'),
       characters = require('app.model.characters'),
       cells      = require('app.model.cells'),
       turn       = require('app.model.turn'),
-      actions    = require('app.actions'),
       render     = require('app.ui.render'),
       uiCell     = require('app.ui.cell'),
       storage    = require('app.storage.firebase');

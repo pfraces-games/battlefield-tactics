@@ -34,7 +34,7 @@ define('app.ui.render', function (require) {
 
   var renderWidgets = function () {
     dom('#turn').replaceWith(tplCharacter(turn.current(), 'south'));
-  }
+  };
 
   var renderCharacters = function () {
     dom('.terrain').empty();

@@ -5,11 +5,6 @@ define('app.model.turn', function (require) {
 
   var currentTurn = false;
 
-  var model = function (update) {
-    if (isDefined(update)) { currentTurn = update; }
-    return currentTurn;
-  };
-
   var current = function (turn) {
     if (isDefined(turn)) { currentTurn = turn; }
     return currentTurn;
@@ -21,7 +16,7 @@ define('app.model.turn', function (require) {
   };
 
   return {
-    model: model,
+    model: current,
     current: current,
     toggle: toggle
   };
