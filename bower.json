@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "main": "app/app.js",
   "dependencies": {
+    "firebase": "*",
     "define": "*",
     "mu.is": "*",
     "mu.fn": "*",

@@ -2,7 +2,7 @@ define('app.ui.render', function (require) {
   'use strict';
 
   var domo           = require('domo'),
-      teams          = require('app.model.teams'),
+      turn           = require('app.model.turn'),
       cells          = require('app.model.cells'),
       characters     = require('app.model.characters'),
       uiCell         = require('app.ui.cell'),
@@ -32,8 +32,8 @@ define('app.ui.render', function (require) {
     });
   };
 
-  var renderPanels = function () {
-    dom('#turn').replaceWith(tplCharacter(teams.current(), 'south'));
+  var renderWidgets = function () {
+    dom('#turn').replaceWith(tplCharacter(turn.current(), 'south'));
   }
 
   var renderCharacters = function () {
@@ -43,7 +43,9 @@ define('app.ui.render', function (require) {
       dom('#' + uiCell.posId(character.pos) + ' > .terrain')
       .append(tplCharacter(character.team, character.direction));
     });
+  };
 
+  var renderActiveCharacter = function () {
     dom('.selected').removeClass('selected');
 
     if (characters.current()) {
@@ -54,7 +56,8 @@ define('app.ui.render', function (require) {
 
   return {
     map: renderMap,
-    panels: renderPanels,
-    characters: renderCharacters
+    widgets: renderWidgets,
+    characters: renderCharacters,
+    activeCharacter: renderActiveCharacter
   };
 });

@@ -66,7 +66,7 @@
   left: 24px;
   border-bottom: 10px solid transparent;
   border-top: 10px solid transparent;
-  border-left: 15px solid;
+  border-left: 15px solid transparent;
 }
 
 .character.red > .arrow {

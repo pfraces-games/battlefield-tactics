@@ -1,19 +1,18 @@
 define('app.actions', function (require) {
   'use strict';
 
-  var partial    = require('mu.fn.partial'),
-      each       = require('mu.list.each'),
+  var each       = require('mu.list.each'),
       filter     = require('mu.list.filter'),
       nodes      = require('app.path.nodes'),
       direction  = require('app.path.direction'),
       characters = require('app.model.characters'),
       cells      = require('app.model.cells'),
-      teams      = require('app.model.teams');
+      turn       = require('app.model.turn');
 
   var select = function (target) {
     if (!target) { return; }
 
-    var currentTeam = teams.current() || teams.current(target.team);
+    var currentTeam = turn.current() || turn.current(target.team);
     if (currentTeam !== target.team) { return; }
 
     characters.current(target);
@@ -33,7 +32,7 @@ define('app.actions', function (require) {
 
   var shoot = function (current, target) {
     if (!current || !target) { return; }
-    if (teams.current() === target.team) { return; }
+    if (turn.current() === target.team) { return; }
 
     var path = nodes(current.pos, target.pos);
     current.direction = direction(path[0].pos, path[1].pos);
@@ -88,36 +87,11 @@ define('app.actions', function (require) {
 
   var scroll = function () { /* TODO */ };  
 
-  var or = function (actions) {
-    return each(actions, function (action) {
-      return action();
-    });
+  return {
+    select: select,
+    shoot: shoot,
+    move: move,
+    rotate: rotate,
+    scroll: scroll
   };
-
-  var actions = function (btn, targetPos) {
-    var currentCharacter = characters.current(),
-        node = cells.at(targetPos);
-
-    if (btn === 'left') {
-      return or([
-        partial(select, node.character),
-        partial(shoot, currentCharacter, node.character),
-        partial(move, currentCharacter, node)
-      ]);
-    }
-
-    if (btn === 'right') {
-      return or([
-        partial(rotate, currentCharacter, node)
-      ]);
-    }
-
-    if (btn === 'middle') {
-      return or([
-        partial(scroll)
-      ]);
-    }
-  };
-
-  return actions;
 });

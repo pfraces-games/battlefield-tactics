@@ -4,16 +4,22 @@ define('app.model.cells', function (require) {
   var matrix = require('matrix'),
       map    = require('app.map.river');
 
-  var buffer = matrix(map).map(function (terrain, pos) {
+  var cells = matrix(map).map(function (terrain, pos) {
     return {
       terrain: terrain,
       pos: pos
     };
   });
 
-  var buffer = matrix(buffer);
+  var model = function (update) {
+    if (update) { cells = update; }
+    return cells;
+  };
+
+  var buffer = matrix(cells);
 
   return {
+    model: model,
     at: buffer.at,
     each: buffer.each,
     map: buffer.map

@@ -1,34 +1,83 @@
 define('app.ui', function (require) {
   'use strict';
 
-  var each         = require('mu.list.each'),
-      domo         = require('domo'),
-      log          = require('log'),
-      actions      = require('app.actions'),
-      teams        = require('app.model.teams'),
-      characters   = require('app.model.characters'),
-      render       = require('app.ui.render'),
-      uiCell       = require('app.ui.cell'),
-      tplCharacter = require('app.ui.template.character');
+  var partial    = require('mu.fn.partial'),
+      each       = require('mu.list.each'),
+      domo       = require('domo'),
+      log        = require('log'),
+      characters = require('app.model.characters'),
+      cells      = require('app.model.cells'),
+      turn       = require('app.model.turn'),
+      actions    = require('app.actions'),
+      render     = require('app.ui.render'),
+      uiCell     = require('app.ui.cell'),
+      storage    = require('app.storage.firebase');
 
   var dom = domo.use({
     on: require('domo.on')
   });
 
-  var setListeners = function () {
-    var BTN = {
-      0: 'left',
-      1: 'middle',
-      2: 'right'
-    };
+  var or = function (actions) {
+    return each(actions, function (action) {
+      return action();
+    });
+  };
 
-    dom('#turn').on('click', function () {
-      if (!teams.current()) { return; }
-      teams.toggle();
-      characters.current(false);
+  var actionHandler = function (btn, pos) {
+    var currentCharacter = characters.current(),
+        node = cells.at(pos);
 
-      render.panels();
+    if (btn === 'left') {
+      return or([
+        partial(actions.select, node.character),
+        partial(actions.shoot, currentCharacter, node.character),
+        partial(actions.move, currentCharacter, node)
+      ]);
+    }
+
+    if (btn === 'right') {
+      return or([
+        partial(actions.rotate, currentCharacter, node)
+      ]);
+    }
+
+    if (btn === 'middle') {
+      return or([
+        partial(actions.scroll)
+      ]);
+    }
+  };
+
+  var syncCharacters = function () {
+    storage.child('characters').set(characters.model());
+  };
+
+  var syncTurn = function () {
+    storage.child('turn').set(turn.model());
+  };
+
+  var setStorageListeners = function () {
+    storage.child('characters').on('value', function (snapshot) {
+      characters.model(snapshot.val());
       render.characters();
+      render.activeCharacter();
+    });
+
+    storage.child('turn').on('value', function (snapshot) {
+      var newVal = snapshot.val();
+      if (newVal !== turn.current()) { characters.current(false); }
+      turn.model(newVal);
+      render.widgets();
+      render.activeCharacter();
+    });
+  };
+
+  var setDomListeners = function () {
+    dom('#turn').on('click', function () {
+      if (!turn.current()) { return; }
+      turn.toggle();
+      characters.current(false);
+      syncTurn();
     });
 
     dom('#canvas')
@@ -36,20 +85,28 @@ define('app.ui', function (require) {
       event.preventDefault();
     })
     .on('mouseup', function (event) {
+      var BTN = {
+        0: 'left',
+        1: 'middle',
+        2: 'right'
+      };
+
       var btn = BTN[event.button],
           pos = uiCell.idPos(event.target.parentNode.id);
 
-      actions(btn, pos);
-
-      render.panels();
-      render.characters();
+      actionHandler(btn, pos);
+      syncCharacters();
+      syncTurn();
+      render.activeCharacter();
     });
   };
 
   var init = function () {
     render.map();
-    render.characters();
-    setListeners();
+    syncTurn();
+    syncCharacters();
+    setDomListeners();
+    setStorageListeners();
   };
 
   return {

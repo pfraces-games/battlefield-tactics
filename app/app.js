@@ -2,7 +2,10 @@ define.root(function (require) {
   'use strict';
   
   var characters = require('app.model.characters'),
+      turn       = require('app.model.turn'),
       ui         = require('app.ui');
+
+  turn.current(false);
 
   // sample characters
 
