@@ -15,22 +15,6 @@ module.exports = function (grunt) {
       fixtures: 'fixtures',
       vendor: 'bower_components',
 
-      dependencies: [
-        '<%= prj.vendor %>/define/define.js',
-        '<%= prj.vendor %>/mu.is/is.js',
-        '<%= prj.vendor %>/mu.fn/fn.js',
-        '<%= prj.vendor %>/mu.list/list.js',
-        '<%= prj.vendor %>/mu.api/api.js',
-        '<%= prj.vendor %>/domo/domo.js',
-        '<%= prj.vendor %>/firebase/firebase.js'
-      ],
-
-      cssDependencies: [
-      ],
-
-      devDependencies: [
-      ],
-
       css: {
         src: '<%= prj.src %>/less',
         build: '<%= prj.build %>/css'
@@ -44,7 +28,17 @@ module.exports = function (grunt) {
       assets: {
         src: '<%= prj.src %>/assets',
         build: '<%= prj.build %>/assets'
-      }
+      },
+
+      dependencies: [
+        '<%= prj.vendor %>/define/define.js',
+        '<%= prj.vendor %>/mu.is/is.js',
+        '<%= prj.vendor %>/mu.fn/fn.js',
+        '<%= prj.vendor %>/mu.list/list.js',
+        '<%= prj.vendor %>/mu.api/api.js',
+        '<%= prj.vendor %>/domo/domo.js',
+        '<%= prj.vendor %>/firebase/firebase.js'
+      ]
     },
 
     clean: {
@@ -52,13 +46,14 @@ module.exports = function (grunt) {
     },
 
     less: {
-      build: {
+      styles: {
         options: {
           sourceMap: true,
+          outputSourceFiles: true,
           sourceMapFilename: '<%= prj.css.build %>/styles.css.map',
           sourceMapURL: 'styles.css.map'
         },
-        src: ['<%= prj.css.src %>/**/*.less'],
+        src: ['<%= prj.css.src %>/styles.less'],
         dest: '<%= prj.css.build %>/styles.css'
       }
     },
@@ -79,8 +74,7 @@ module.exports = function (grunt) {
       build: {
         dir: '<%= prj.build %>',
         src: [
-          '<%= prj.cssDependencies %>',
-          '<%= less.build.dest %>',
+          '<%= less.styles.dest %>',
           '<%= prj.dependencies %>',
           '<%= jshint.scripts.src %>'
         ]
@@ -94,10 +88,6 @@ module.exports = function (grunt) {
       },
       dependencies: {
         src: ['<%= prj.dependencies %>'],
-        dest: '<%= prj.build %>/'
-      },
-      cssDependencies: {
-        src: ['<%= prj.cssDependencies %>'],
         dest: '<%= prj.build %>/'
       },
       assets: {
@@ -144,7 +134,6 @@ module.exports = function (grunt) {
     'less',
     'copy:scripts',
     'copy:dependencies',
-    'copy:cssDependencies',
     'copy:assets'
   ]);
 

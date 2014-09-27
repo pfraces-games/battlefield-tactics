@@ -1,51 +1,17 @@
 define('app.ui', function (require) {
   'use strict';
 
-  var partial    = require('mu.fn.partial'),
-      each       = require('mu.list.each'),
-      domo       = require('domo'),
-      actions    = require('app.mechanics.action.list'),
-      characters = require('app.model.characters'),
-      cells      = require('app.model.cells'),
-      turn       = require('app.model.turn'),
-      render     = require('app.ui.render'),
-      uiCell     = require('app.ui.cell'),
-      storage    = require('app.storage.firebase');
+  var domo          = require('domo'),
+      actionHandler = require('app.mechanics.action.handler'),
+      characters    = require('app.model.characters'),
+      turn          = require('app.model.turn'),
+      render        = require('app.ui.render'),
+      uiCell        = require('app.ui.cell'),
+      storage       = require('app.storage.firebase');
 
   var dom = domo.use({
     on: require('domo.on')
   });
-
-  var or = function (actions) {
-    return each(actions, function (action) {
-      return action();
-    });
-  };
-
-  var actionHandler = function (btn, pos) {
-    var currentCharacter = characters.current(),
-        node = cells.at(pos);
-
-    if (btn === 'left') {
-      return or([
-        partial(actions.select, node.character),
-        partial(actions.shoot, currentCharacter, node.character),
-        partial(actions.move, currentCharacter, node)
-      ]);
-    }
-
-    if (btn === 'right') {
-      return or([
-        partial(actions.rotate, currentCharacter, node)
-      ]);
-    }
-
-    if (btn === 'middle') {
-      return or([
-        partial(actions.scroll)
-      ]);
-    }
-  };
 
   var syncCharacters = function () {
     storage.child('characters').set(characters.model());
