@@ -1,11 +1,12 @@
 define.root(function (require) {
   'use strict';
   
-  var characters = require('app.model.characters'),
+  var views      = require('app.views'),
+      characters = require('app.model.characters'),
       turn       = require('app.model.turn'),
       ui         = require('app.ui');
 
-  turn.current(false);
+  views.init();
 
   // sample characters
 
@@ -36,6 +37,8 @@ define.root(function (require) {
     health: 10,
     pos: { x: 10, y: 10 }
   });
+
+  turn.current(false);
 
   ui.init();
 });

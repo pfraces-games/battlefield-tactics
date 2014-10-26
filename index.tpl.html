@@ -9,20 +9,355 @@
   </head>
 
   <body>
-    <div id="title">
-      <h1>tufo</h1>
-      <h2>- odor unknown</h2>
+    <div class="title main">
+      <div class="center">
+        <h1>tufo</h1>
+        <h2>odor unknown</h2>
+        <div class="btn-group">
+          <div id="show-battle" class="tab">battle</div>
+          <div id="show-character-class" class="tab">character class</div>
+          <div id="show-weapon" class="tab">weapon</div>
+          <div id="show-soldier" class="tab">soldier</div>
+          <div id="show-squad" class="tab">squad</div>
+          <div id="show-rooms" class="tab">rooms</div>
+          <div id="show-login" class="tab">login</div>
+          <div id="show-signup" class="tab">signup</div>
+          <div id="show-profile" class="tab">profile</div>
+        </div>
+      </div>
     </div>
-    <div id="game">
-      <div id="left-panel" class="side-panel">
-        <div class="panel-widget">
-          <div id="turn" class="panel-widget input"></div>
+
+    <!-- battle view -->
+    <div id="battle" class="view">
+      <div class="side-panel left-panel">
+      </div>
+      <div class="side-panel right-panel">
+        <div class="widget panel-widget">
+          <div id="turn" class="widget panel-widget input"></div>
           <div style="clear: both;"></div>
         </div>
       </div>
-      <div id="right-panel" class="side-panel"></div>
-      <div id="center-panel">
+      <div class="center-panel">
         <div id="canvas"></div>
+      </div>
+    </div>
+
+    <!-- character class builder view -->
+    <div id="character-class" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>character class</h2>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">name</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">value</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">action points</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">health</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">accuracy</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="submit-character-class" class="widget submit btn">
+              save
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- weapon builder view -->
+    <div id="weapon" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>weapon</h2>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">name</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">value</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">short range</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">medium range</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">long range</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="submit-weapon" class="widget submit btn">
+              save
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- soldier builder view -->
+    <div id="soldier" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>soldier</h2>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">name</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">value</td>
+                    <td>
+                      <div class="widget readonly">
+                        <input type="text" readonly />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">character class</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">weapon</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="submit-soldier" class="widget submit btn">
+              save
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- squad builder view -->
+    <div id="squad" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>squad</h2>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">name</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">value</td>
+                    <td>
+                      <div class="widget readonly">
+                        <input type="text" readonly />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="soldiers" class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">soldier</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                    <td class="action">
+                      <div id="remove-soldier-0" class="widget btn">x</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="tag"></td>
+                    <td></td>
+                    <td class="action">
+                      <div id="add-soldier" class="widget btn">+</div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="submit-soldier" class="widget submit btn">
+              save
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- rooms view -->
+    <div id="rooms" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>rooms</h2>
+            </div>
+            <div class="widget">
+              <ul>
+                <li><div id="room-0">leo</div></li>
+                <li><div id="room-1">toni</div></li>
+                <li><div id="room-2">pau</div></li>
+              </ul>
+            </div>
+            <div id="create-room" class="widget submit btn">
+              create room
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- login view -->
+    <div id="login" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>login</h2>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">user</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">password</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="login" class="widget submit btn">
+              login
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- signup view -->
+    <div id="signup" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>signup</h2>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">user</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">password</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="signup" class="widget submit btn">
+              signup
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- profile view -->
+    <div id="profile" class="view">
+      <div class="center-panel">
+        <div class="builder">
+          <div class="center">
+            <div class="title">
+              <h2>profile</h2>
+            </div>
+            <div class="widget">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="tag">password</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                  <tr>
+                    <td class="tag">new password</td>
+                    <td><div class="widget"><input type="text" /></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="change-pwd" class="widget submit btn">
+              change password
+            </div>
+            <div style="clear:both"></div>
+          </div>
+        </div>
       </div>
     </div>
   </body>

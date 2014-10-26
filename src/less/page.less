@@ -2,47 +2,63 @@ body {
   background-color: black;
   margin: 0;
   font-family: sans-serif;
-}
-
-#title {
-  width: 100%;
   color: yellow;
-  margin-bottom: 4px;
-  border-bottom: 1px solid yellow;
 }
 
-#title > h1 {
+.title {
+  width: 100%;
+  border-bottom: 1px solid yellow;
+  background-color: black;
+}
+
+.title.main {
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+.title h1 {
   display: inline;
   margin-right: 10px;
-  padding-left: 10px;
 }
 
-#title > h2 {
+.title h2 {
   display: inline;
+}
+
+.title.main > .center {
+  width: 800px;
+  margin: auto;
+}
+
+.title.main h2 {
   font-size: medium;
   font-style: italic;
 }
 
-#game {
-  width: 100%;
-  min-width: 800px;
-  position: relative;
-}
-
-#left-panel {
-  float: left;
-}
-
-#right-panel {
+.title .btn-group {
   float: right;
+  cursor: default;
 }
 
-#center-panel {
-  position: relative;
-  width: 800px;
-  height: 600px;
-  margin: auto;
-  background-color: white;
+.btn-group > .tab {
+  padding: 5px;
+  padding-top: 15px;
+  display: inline-block;
+}
+
+.btn-group > .tab.current {
+  background-color: yellow;
+  color: black;
+}
+
+.view {
+  margin-top: 40px;
+  display: none;
+}
+
+.view.current {
+  display: block;
 }
 
 #canvas {
@@ -59,22 +75,43 @@ body {
   pointer-events: none;
 }
 
-.panel-widget {
-  margin: 10px;
+.left-panel {
+  float: left;
+}
+
+.right-panel {
+  float: right;
+}
+
+.center-panel {
+  position: relative;
+  width: 800px;
+  margin: auto;
+}
+
+#battle > .center-panel {
+  height: 600px;
+}
+
+.widget {
   border: 1px solid yellow;
   border-radius: 5px;
+}
+
+.panel-widget {
+  margin: 10px;
 }
 
 .panel-widget + .panel-widget {
   margin-left: 0;
 }
 
-#left-panel > .panel-widget > .panel-widget {
-  float: left;
+.left-panel > .panel-widget > .panel-widget {
+  float: right;
 }
 
-#right-panel > .panel-widget > .panel-widget {
-  float: right;
+.right-panel > .panel-widget > .panel-widget {
+  float: left;
 }
 
 .panel-widget > .panel-widget {
