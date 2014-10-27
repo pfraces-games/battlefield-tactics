@@ -14,7 +14,7 @@ define('app.ui.render', function (require) {
     append:      require('domo.append'),
     addClass:    require('domo.addClass'),
     removeClass: require('domo.removeClass'),
-    replaceWith: require('domo.replaceWith')
+    html:        require('domo.html')
   });
 
   var dom = function (selector) {
@@ -37,7 +37,7 @@ define('app.ui.render', function (require) {
   };
 
   var renderWidgets = function () {
-    dom('#turn').replaceWith(tplCharacter(turn.current(), 'south'));
+    dom('#turn').html(tplCharacter(turn.current(), 'south'));
   };
 
   var renderCharacters = function () {
