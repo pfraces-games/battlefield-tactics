@@ -9,13 +9,16 @@ define.root(function (require) {
 
     // active views
 
+    views.enable('login');
     views.enable('battle');
-    views.enable('character-class');
+    views.enable('notifications');
+    views.enable('leatherboard');
+
+    views.enable('character');
     views.enable('weapon');
     views.enable('soldier');
     views.enable('squad');
     views.enable('rooms');
-    views.enable('login');
     
 
     // sample characters

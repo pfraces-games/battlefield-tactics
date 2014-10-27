@@ -1,0 +1,31 @@
+.tab {
+  pointer-events: auto;
+  display: none;
+  background-color: transparent;
+  color: yellow;
+  padding: 0 5px;
+  cursor: default;
+  font-family: monospace;
+  height: 22px;
+
+  &.visible {
+    display: inline-block; 
+  }
+
+  &.selected {
+    background-color: yellow;
+    color: black;
+  }
+
+  .center & {
+    padding-top: 10px;
+    margin-top: 8px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .side & {
+    padding-top: 5px;
+    border-radius: 5px 0 0 5px;
+    width: 100%;
+  }
+}

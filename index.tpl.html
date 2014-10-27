@@ -15,22 +15,26 @@
         <h2>(odor unknown)</h2>
         <div class="btn-group">
           <div id="show-battle" class="tab">battle</div>
-          <div id="show-character-class" class="tab">character class</div>
-          <div id="show-weapon" class="tab">weapon</div>
-          <div id="show-soldier" class="tab">soldier</div>
-          <div id="show-squad" class="tab">squad</div>
-          <div id="show-rooms" class="tab">rooms</div>
-          <div id="show-login" class="visible tab">login</div>
+          <div id="show-notifications" class="tab">notiications</div>
+          <div id="show-leatherboard" class="tab">leatherboard</div>
+          <div id="show-login" class="tab">login</div>
           <div id="show-profile" class="tab">profile</div>
         </div>
       </div>
     </div>
 
     <div class="panel side left">
+      <ul>
+        <li><div id="show-character" class="tab">character</div></li>
+        <li><div id="show-weapon" class="tab">weapon</div></li>
+        <li><div id="show-soldier" class="tab">soldier</div></li>
+        <li><div id="show-squad" class="tab">squad</div></li>
+        <li><div id="show-rooms" class="tab">rooms</div></li>
+      </ul>
     </div>
 
     <div class="panel side right">
-      <div id="battle-panel">
+      <div id="panel-battle">
         <div class="widget">
           <div id="turn" class="widget box input"></div>
           <div style="clear: both;"></div>
@@ -41,16 +45,14 @@
     <div class="panel center">
 
       <!-- home view -->
-      <div id="home" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>welcome</h2>
-          </div>
-          <div class="widget">
-            <p>
-              choose your soldiers, create your squads, fight!
-            </p>
-          </div>
+      <div id="home" class="view builder">
+        <div class="title">
+          <h2>welcome</h2>
+        </div>
+        <div class="widget">
+          <p>
+            choose your soldiers, create your squads, fight!
+          </p>
         </div>
       </div>
 
@@ -59,275 +61,261 @@
         <div id="canvas"></div>
       </div>
 
-      <!-- character class builder view -->
-      <div id="character-class" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>character class</h2>
-          </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">name</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">value</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">action points</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">health</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">accuracy</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="submit-area">
-            <div id="submit-character-class" class="widget btn">save</div>
-            <div style="clear:both"></div>
-          </div>
+      <!-- character builder view -->
+      <div id="character" class="view builder">
+        <div class="title">
+          <h2>character class</h2>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">name</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">value</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">action points</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">health</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">accuracy</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="submit-area">
+          <div id="submit-character-class" class="widget btn">save</div>
+          <div style="clear:both"></div>
         </div>
       </div>
 
       <!-- weapon builder view -->
-      <div id="weapon" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>weapon</h2>
+      <div id="weapon" class="view builder">
+        <div class="title">
+          <h2>weapon</h2>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">name</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">value</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">short range</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">medium range</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">long range</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="submit-area">
+          <div id="submit-weapon" class="widget btn">
+            save
           </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">name</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">value</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">short range</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">medium range</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">long range</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="submit-area">
-            <div id="submit-weapon" class="widget btn">
-              save
-            </div>
-            <div style="clear:both"></div>
-          </div>
+          <div style="clear:both"></div>
         </div>
       </div>
 
       <!-- soldier builder view -->
-      <div id="soldier" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>soldier</h2>
+      <div id="soldier" class="view builder">
+        <div class="title">
+          <h2>soldier</h2>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">name</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">value</td>
+                <td>
+                  <div class="widget readonly">
+                    <input type="text" readonly />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">character class</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">weapon</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="submit-area">
+          <div id="submit-soldier" class="widget btn">
+            save
           </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">name</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">value</td>
-                  <td>
-                    <div class="widget readonly">
-                      <input type="text" readonly />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">character class</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">weapon</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="submit-area">
-            <div id="submit-soldier" class="widget btn">
-              save
-            </div>
-            <div style="clear:both"></div>
-          </div>
+          <div style="clear:both"></div>
         </div>
       </div>
 
       <!-- squad builder view -->
-      <div id="squad" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>squad</h2>
+      <div id="squad" class="view builder">
+        <div class="title">
+          <h2>squad</h2>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">name</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">value</td>
+                <td>
+                  <div class="widget readonly">
+                    <input type="text" readonly />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="soldiers" class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">soldier</td>
+                <td><div class="widget"><input type="text" /></div></td>
+                <td class="action">
+                  <div id="remove-soldier-0" class="widget btn">x</div>
+                </td>
+              </tr>
+              <tr>
+                <td class="tag"></td>
+                <td></td>
+                <td class="action">
+                  <div id="add-soldier" class="widget btn">+</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="submit-area">
+          <div id="submit-soldier" class="widget btn">
+            save
           </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">name</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">value</td>
-                  <td>
-                    <div class="widget readonly">
-                      <input type="text" readonly />
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div id="soldiers" class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">soldier</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                  <td class="action">
-                    <div id="remove-soldier-0" class="widget btn">x</div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="tag"></td>
-                  <td></td>
-                  <td class="action">
-                    <div id="add-soldier" class="widget btn">+</div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="submit-area">
-            <div id="submit-soldier" class="widget btn">
-              save
-            </div>
-            <div style="clear:both"></div>
-          </div>
+          <div style="clear:both"></div>
         </div>
       </div>
 
       <!-- rooms view -->
-      <div id="rooms" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>rooms</h2>
+      <div id="rooms" class="view builder">
+        <div class="title">
+          <h2>rooms</h2>
+        </div>
+        <div class="widget">
+          <ul>
+            <li><div id="room-0">leo</div></li>
+            <li><div id="room-1">toni</div></li>
+            <li><div id="room-2">pau</div></li>
+          </ul>
+        </div>
+        <div class="submit-area">
+          <div id="create-room" class="widget btn">
+            create room
           </div>
-          <div class="widget">
-            <ul>
-              <li><div id="room-0">leo</div></li>
-              <li><div id="room-1">toni</div></li>
-              <li><div id="room-2">pau</div></li>
-            </ul>
-          </div>
-          <div class="submit-area">
-            <div id="create-room" class="widget btn">
-              create room
-            </div>
-            <div style="clear:both"></div>
-          </div>
+          <div style="clear:both"></div>
         </div>
       </div>
 
       <!-- login/signup view -->
-      <div id="login" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>login</h2>
+      <div id="login" class="view builder">
+        <div class="title">
+          <h2>login</h2>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">user</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">password</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="submit-area">
+          <div id="forgot-password" class="widget btn secondary">
+            forgot password
           </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">user</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">password</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="submit-area">
-            <div id="forgot-password" class="widget btn secondary">
-              forgot password
-            </div>
-            <div id="signup" class="widget btn secondary">signup</div>
-            <div id="login" class="widget btn">login</div>
-            <div style="clear:both"></div>
-          </div>
+          <div id="signup" class="widget btn secondary">signup</div>
+          <div id="login" class="widget btn">login</div>
+          <div style="clear:both"></div>
         </div>
       </div>
 
       <!-- profile view -->
-      <div id="profile" class="view">
-        <div class="builder">
-          <div class="title">
-            <h2>profile</h2>
-          </div>
-          <div class="widget">
-            <table>
-              <tbody>
-                <tr>
-                  <td class="tag">password</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-                <tr>
-                  <td class="tag">new password</td>
-                  <td><div class="widget"><input type="text" /></div></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="submit-area">
-            <div id="change-pwd" class="widget btn">
-              change password
-            </div>
+      <div id="profile" class="view builder">
+        <div class="title">
+          <h2>profile</h2>
+        </div>
+        <div class="widget">
+          <table>
+            <tbody>
+              <tr>
+                <td class="tag">password</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+              <tr>
+                <td class="tag">new password</td>
+                <td><div class="widget"><input type="text" /></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="submit-area">
+          <div id="change-pwd" class="widget btn">
+            change password
           </div>
           <div style="clear:both"></div>
         </div>
