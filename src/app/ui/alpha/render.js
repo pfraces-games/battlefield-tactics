@@ -9,13 +9,17 @@ define('app.ui.render', function (require) {
       tplCell        = require('app.ui.template.cell'),
       tplCharacter   = require('app.ui.template.character');
 
-  var dom = domo.use({
+  var domoSelect = domo.use({
     empty:       require('domo.empty'),
     append:      require('domo.append'),
     addClass:    require('domo.addClass'),
     removeClass: require('domo.removeClass'),
     replaceWith: require('domo.replaceWith')
   });
+
+  var dom = function (selector) {
+    return domoSelect('#battle ' + selector);
+  };
 
   var TERRAIN = {
     'G': 'grass',

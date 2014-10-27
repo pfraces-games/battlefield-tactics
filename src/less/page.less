@@ -1,29 +1,19 @@
 body {
   background-color: black;
   margin: 0;
-  font-family: sans-serif;
   color: yellow;
+  font-family: monospace;
+  font-size: 1em;
 }
 
-.title {
-  width: 100%;
-  border-bottom: 1px solid yellow;
-  background-color: black;
+table {
+  border-collapse: collapse;
+  margin: inherit 50px;
+  text-align: right;
 }
 
-.title.main {
-  position: fixed;
-  top: 0;
-  z-index: 2;
-}
-
-.title h1 {
-  display: inline;
-  margin-right: 10px;
-}
-
-.title h2 {
-  display: inline;
+td {
+  padding: 3px 10px;
 }
 
 .title.main > .center {
@@ -31,34 +21,12 @@ body {
   margin: auto;
 }
 
-.title.main h2 {
-  font-size: medium;
-  font-style: italic;
+.btn-group {
+  cursor: default;
 }
 
 .title .btn-group {
   float: right;
-  cursor: default;
-}
-
-.btn-group > .tab {
-  padding: 5px;
-  padding-top: 15px;
-  display: inline-block;
-}
-
-.btn-group > .tab.current {
-  background-color: yellow;
-  color: black;
-}
-
-.view {
-  margin-top: 40px;
-  display: none;
-}
-
-.view.current {
-  display: block;
 }
 
 #canvas {

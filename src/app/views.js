@@ -11,34 +11,30 @@ define('app.views', function (require) {
   });
 
   var setView = function (view) {
-    dom('.view').removeClass('current');
-    dom('#' + view).addClass('current');
-    dom('.tab').removeClass('current');
-    dom('#show-' + view).addClass('current');
+    dom('.view').removeClass('visible');
+    dom('#' + view).addClass('visible');
+    dom('.tab').removeClass('selected');
+    dom('#show-' + view).addClass('selected');
   };
 
-  var viewTab = function (view) {
-    dom('#show-' + view).on('click', partial(setView, view)); 
+  var enableViewTab = function (view) {
+    dom('#show-' + view)
+    .addClass('visible')
+    .on('click', partial(setView, view)); 
   };
 
-  var setEventHandlers = function () {
-    viewTab('battle');
-    viewTab('character-class');
-    viewTab('weapon');
-    viewTab('soldier');
-    viewTab('squad');
-    viewTab('rooms');
-    viewTab('login');
-    viewTab('signup');
-    viewTab('profile');
+  var disableViewTab = function (view) {
+    dom('#show-' + view)
+    .removeClass('visible');
   };
 
   var init = function () {
-    setEventHandlers();
-    setView('battle');
+    setView('home');
   };
 
   return {
+    enable: enableViewTab,
+    disable: disableViewTab,
     init: init
   };
 });

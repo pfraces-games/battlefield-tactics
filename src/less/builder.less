@@ -10,21 +10,12 @@
 
 .center > .title {
   margin-bottom: 10px;
+  h2 { margin-bottom: 0; }
 }
 
 .center > .widget {
   margin-bottom: 10px;
   padding: 10px;
-}
-
-.builder table {
-  border-collapse: collapse;
-  margin: inherit 50px;
-  text-align: right;
-}
-
-.builder td {
-  padding: 3px 10px;
 }
 
 .builder td.tag {
@@ -46,12 +37,21 @@
   cursor: default;
   color: black;
   background-color: yellow;
+  margin-top: 5px;
   padding: 5px 10px;
+  display: inline-block;
 }
 
-.widget.submit {
+.widget.btn.secondary {
+  color: yellow;
+  background-color: black;
+  font-size: 0.7em;
+}
+
+.submit-area {
   float: right;
-  margin: 0 57px;
+  margin: 0;
+  margin-right: 57px;
 }
 
 input[readonly] {

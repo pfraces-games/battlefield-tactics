@@ -1,3 +1,5 @@
+@import "mixins";
+
 .cell {
   position: relative;
   float: left;
@@ -97,43 +99,23 @@
 }
 
 .character.southeast {
-  -moz-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  .rotate(45deg);
 }
 
 .character.south {
-  -moz-transform: rotate(90deg);
-  -webkit-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
+  .rotate(90deg);
 }
 
 .character.southwest {
-  -moz-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  transform: rotate(135deg);
+  .rotate(135deg);
 }
 
 .character.west {
-  -moz-transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  transform: rotate(180deg);
+  .rotate(180deg);
 }
 
 .character.northwest {
-  -moz-transform: rotate(225deg);
-  -webkit-transform: rotate(225deg);
-  -o-transform: rotate(225deg);
-  -ms-transform: rotate(225deg);
-  transform: rotate(225deg);
+  .rotate(225deg);
 }
 
 .character.north {
