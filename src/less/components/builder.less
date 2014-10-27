@@ -1,65 +1,37 @@
 .builder {
-  margin-top: 10px;
-  padding: 20px;
-}
-
-.builder > .center {
+  padding-top: 20px;
   width: 410px;
   margin: auto;
-};
 
-.center > .title {
-  margin-bottom: 10px;
-  h2 { margin-bottom: 0; }
-}
+  .title {
+    margin-bottom: 10px;
+    h2 { margin-bottom: 0; }
+  }
 
-.center > .widget {
-  margin-bottom: 10px;
-  padding: 10px;
-}
+  & > .widget {
+    margin-bottom: 10px;
+    padding: 10px;
+  }
 
-.builder td.tag {
-  width: 120px;
-}
+  .widget.btn {
+    padding: 5px 10px;
+  }
 
-.builder td.action {
-  padding: 3px 0;
-}
+  .widget.btn.secondary {
+    font-size: 0.7em;
+  }
 
-.builder input {
-  background-color: black;
-  color: #ff0;
-  padding: 5px;
-  border: 0;
-}
+  td.tag {
+    width: 120px;
+  }
 
-.widget.btn {
-  cursor: default;
-  color: black;
-  background-color: yellow;
-  margin-top: 5px;
-  padding: 5px 10px;
-  display: inline-block;
-}
+  td.action {
+    padding: 3px 0;
+  }
 
-.widget.btn.secondary {
-  color: yellow;
-  background-color: black;
-  font-size: 0.7em;
-}
-
-.submit-area {
-  float: right;
-  margin: 0;
-  margin-right: 57px;
-}
-
-input[readonly] {
-  color: black;
-  cursor: not-allowed;
-  background-color: yellow;
-}
-
-.widget.readonly {
-  background-color: yellow;
+  .submit-area {
+    float: right;
+    margin: 0;
+    margin-right: 61px;
+  }
 }

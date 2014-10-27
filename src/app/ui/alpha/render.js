@@ -9,17 +9,13 @@ define('app.ui.render', function (require) {
       tplCell        = require('app.ui.template.cell'),
       tplCharacter   = require('app.ui.template.character');
 
-  var domoSelect = domo.use({
+  var dom = domo.use({
     empty:       require('domo.empty'),
     append:      require('domo.append'),
     addClass:    require('domo.addClass'),
     removeClass: require('domo.removeClass'),
     html:        require('domo.html')
   });
-
-  var dom = function (selector) {
-    return domoSelect('#battle ' + selector);
-  };
 
   var TERRAIN = {
     'G': 'grass',
@@ -41,7 +37,7 @@ define('app.ui.render', function (require) {
   };
 
   var renderCharacters = function () {
-    dom('.terrain').empty();
+    dom('#canvas .terrain').empty();
 
     characters.each(function (character) {
       dom('#' + uiCell.posId(character.pos) + ' > .terrain')
@@ -50,7 +46,7 @@ define('app.ui.render', function (require) {
   };
 
   var renderActiveCharacter = function () {
-    dom('.selected').removeClass('selected');
+    dom('#canvas .selected').removeClass('selected');
 
     if (characters.current()) {
       dom('#' + uiCell.posId(characters.current().pos) + ' > .selector')
