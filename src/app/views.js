@@ -10,15 +10,20 @@ define('app.views', function (require) {
     on:          require('domo.on')
   });
 
-  var setView = function (view) {
+  var setView = function (view) {    
+    dom('.tab').removeClass('selected');
+    dom('#tab-' + view).addClass('selected');
+
+
     dom('.view').removeClass('visible');
     dom('#' + view).addClass('visible');
-    dom('.tab').removeClass('selected');
-    dom('#show-' + view).addClass('selected');
+
+    dom('.view-panel').removeClass('visible');
+    dom('#panel-' + view).addClass('visible');
   };
 
   var enableViewTab = function (view) {
-    dom('#show-' + view)
+    dom('#tab-' + view)
     .addClass('visible')
     .on('click', partial(setView, view)); 
   };
