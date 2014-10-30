@@ -1,11 +1,11 @@
-.panel {
-  top: 40px;
-  position: absolute;
+@import "layout/layer";
 
-  &.side {
+.panel {
+  position: absolute;
+  top: 40px;
+
+  &.side:extend(.layer) {
     width: 218px;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    pointer-events: none;
+    z-index: 2;
   }
 }

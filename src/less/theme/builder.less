@@ -1,16 +1,17 @@
 .builder {
   padding-top: 20px;
-  width: 410px;
+  width: 430px;
   margin: auto;
 
   .title {
-    margin-bottom: 10px;
-    h2 { margin-bottom: 0; }
-  }
+    margin: 10px;
 
-  & > .widget {
-    margin-bottom: 10px;
-    padding: 10px;
+    h2 {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+    
+    width: initial;
   }
 
   .widget.btn {
@@ -23,6 +24,7 @@
 
   td.tag {
     width: 120px;
+    text-align: right;
   }
 
   td.action {
@@ -31,7 +33,14 @@
 
   .submit-area {
     float: right;
-    margin: 0;
-    margin-right: 61px;
+    margin-right: 71px;
+
+    .widget {
+      margin: 0;
+    }
+  }
+
+  &.popup {
+    padding-top: 0;
   }
 }
