@@ -12,8 +12,12 @@ define('app.views', function (require) {
   });
 
   var view = function (name) {    
-    // HACK: determine if there is a popup visible
-    var isBackground = dom('.popup-tab.selected').hasClass('selected') === true;
+    // determine if there is a popup visible
+    // with null selectors, domo plugins are not called causing the chain
+    // to be returned instead. this is by design
+    // that is why `=== true` is needed
+    var isBackground = dom('.popup-tab.selected')
+        .hasClass('selected') === true;
 
     if (isBackground) {
       dom('.view-tab.background').removeClass('background');
