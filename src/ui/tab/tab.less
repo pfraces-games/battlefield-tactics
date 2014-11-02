@@ -18,15 +18,15 @@
       display: inline-block;
     }
 
-    &.active {
+    &.active, &.active:hover {
       background-color: yellow;
       color: black;
+    }
 
-      &.secondary {
-        border: 1px solid yellow;
-        background-color: transparent;
-        color: yellow;
-      }
+    &.warning, &:hover {
+      border: 1px solid yellow;
+      background-color: transparent;
+      color: yellow;
     }
   }
 

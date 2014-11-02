@@ -5,10 +5,27 @@
   background-color: transparent;
   font-family: 'Nimbus Mono L', monospace;
   height: 40px;
+
+  &.left {
+    margin: 0;
+    margin-left: 80px;
+    overflow: hidden;
+    width: 127px;
+    border-right: 1px solid yellow;
+
+    & h3 {
+      width: 100%;
+      padding-left: 15px;
+    }
+  }
   
-  h1, h2 {
+  h1, h2, h3 {
     margin: 0;
     display: inline-block;
+
+    & + & {
+      margin-left: 10px;
+    }
   }
 
   h1 {
@@ -20,17 +37,17 @@
     padding-top: 10px;
   }
 
+  h3 {
+    font-size: 1em;
+    padding-top: 15px;
+  }
+
   &.main {
     width: 100%;
     position: fixed;
     top: 0;
     margin: 0;
     z-index: 3;
-
-    h2 {
-      font-size: 1em;
-      margin-left: 10px;
-    }
   }
 
   .popup & {
