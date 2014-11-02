@@ -16,7 +16,7 @@ module.exports = function (grunt) {
       vendor: 'bower_components',
 
       css: {
-        src: '<%= prj.src %>/less',
+        src: '<%= prj.src %>',
         build: '<%= prj.build %>/css'
       },
 
@@ -50,11 +50,11 @@ module.exports = function (grunt) {
         options: {
           sourceMap: true,
           outputSourceFiles: true,
-          sourceMapFilename: '<%= prj.css.build %>/styles.css.map',
-          sourceMapURL: 'styles.css.map'
+          sourceMapFilename: '<%= prj.css.build %>/ui.css.map',
+          sourceMapURL: 'ui.css.map'
         },
-        src: ['<%= prj.css.src %>/styles.less'],
-        dest: '<%= prj.css.build %>/styles.css'
+        src: ['<%= prj.css.src %>/ui.less'],
+        dest: '<%= prj.css.build %>/ui.css'
       }
     },
 
@@ -111,17 +111,21 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      scripts: {
-        files: ['<%= jshint.scripts.src %>'],
-        tasks: ['jshint:scripts' /* , 'karma:build' */ , 'copy:scripts']
+      index: {
+        files: ['<%= prj.src %>/index.tpl.html'],
+        tasks: ['index:build']
+      },
+      less: {
+        files: ['<%= prj.css.src %>/**/*.less'],
+        tasks: ['less']
       },
       assets: {
         files: ['<%= prj.assets.src %>/**'],
         tasks: ['copy:assets']
       },
-      less: {
-        files: ['<%= prj.css.src %>/**/*.less'],
-        tasks: ['less']
+      scripts: {
+        files: ['<%= jshint.scripts.src %>'],
+        tasks: ['jshint:scripts' /* , 'karma:build' */ , 'copy:scripts']
       },
       tests: {
         files: ['<%= jshint.tests.src %>'],
@@ -171,7 +175,7 @@ module.exports = function (grunt) {
           styles = files.filter(ext('css')).map(relativePath),
           dev = grunt.task.current.target === 'build';
 
-      var src = 'index.tpl.html',
+      var src = 'src/index.tpl.html',
           dest = dir + '/index.html';
 
       grunt.file.copy(src, dest, {

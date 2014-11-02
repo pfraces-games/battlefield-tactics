@@ -1,80 +1,46 @@
 define('app.views', function (require) {
   'use strict';
 
-  var partial = require('mu.fn.partial'),
-      domo    = require('domo');
+  var domo    = require('domo'),
+      tab     = require('ui.tab');
 
   var dom = domo.use({
-    hasClass:    require('domo.hasClass'),
     addClass:    require('domo.addClass'),
     removeClass: require('domo.removeClass'),
+    toggleClass: require('domo.toggleClass'),
     on:          require('domo.on')
   });
 
-  var view = function (name) {    
-    // determine if there is a popup visible
-    // with null selectors, domo plugins are not called causing the chain
-    // to be returned instead. this is by design
-    // that is why `=== true` is needed
-    var isBackground = dom('.popup-tab.selected')
-        .hasClass('selected') === true;
-
-    if (isBackground) {
-      dom('.view-tab.background').removeClass('background');
-      dom('#tab-' + name).addClass('background');
-    } else {
-      dom('.view-tab.selected').removeClass('selected');
-      dom('#tab-' + name).addClass('selected');
-    }
-
-    dom('.view.visible').removeClass('visible');
-    dom('#' + name).addClass('visible');
-
-    dom('.view-panel.visible').removeClass('visible');
-    dom('#panel-' + name).addClass('visible');
+  var showTab = function (tab) {
+    dom('#tab-' +  tab).addClass('visible');
   };
 
-  var popup = function (name) {
-    var isSelected = dom('#tab-' + name).hasClass('selected');
-
-    dom('.popup-tab.selected').removeClass('selected');
-    dom('.popup.visible').removeClass('visible');
-    
-    if (isSelected) {
-      dom('.view-tab.background')
-      .removeClass('background').addClass('selected');
-      
-      return;
-    }
-
-    dom('.view-tab.selected')
-    .removeClass('selected').addClass('background');
-    
-    dom('#tab-' + name).addClass('selected');
-    dom('#' + name).addClass('visible');
-  };
-
-  var enableView = function (name) {
-    var tab = dom('#tab-' +  name),
-        isPopup = tab.hasClass('popup-tab'),
-        handler = isPopup ? popup : view;
-
-    tab
-    .addClass('visible')
-    .on('click', partial(handler, name)); 
-  };
-
-  var disableView = function (view) {
-    dom('#tab-' + view).removeClass('visible');
+  var hideTab = function (tab) {
+    dom('#tab-' + tab).removeClass('visible');
   };
 
   var init = function () {
-    view('home');
+    var TAB_PREFIX = 'tab-';
+
+    tab.group('view-tab', function (node) {
+      var view = node.id.slice(TAB_PREFIX.length);
+
+      dom('.view.visible').removeClass('visible');
+      dom('#' + view).addClass('visible');
+
+      dom('.view-panel.visible').removeClass('visible');
+      dom('#panel-' + view).addClass('visible');
+    });
+
+    tab.pin(function (node) {
+      var view = node.id.slice(TAB_PREFIX.length);
+      dom('#' + view).toggleClass('visible');
+    });
   };
 
   return {
-    enable: enableView,
-    disable: disableView,
+    enable: showTab,
+    disable: hideTab,
     init: init
   };
 });
