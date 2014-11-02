@@ -22,7 +22,9 @@ define('app.views', function (require) {
   var init = function () {
     var TAB_PREFIX = 'tab-';
 
-    tab.group('view-tab', function (node) {
+    // main tabs
+
+    tab.group('tab-view', function (node) {
       var view = node.id.slice(TAB_PREFIX.length);
 
       dom('.view.visible').removeClass('visible');
@@ -35,6 +37,15 @@ define('app.views', function (require) {
     tab.pin(function (node) {
       var view = node.id.slice(TAB_PREFIX.length);
       dom('#' + view).toggleClass('visible');
+    });
+
+    // login tabs
+
+    tab.group('tab-login', function (node) {
+      var section = node.id.slice(TAB_PREFIX.length);
+
+      dom('.login.section.visible').removeClass('visible');
+      dom('#' + section).addClass('visible');
     });
   };
 

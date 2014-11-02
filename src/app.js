@@ -10,16 +10,23 @@ define.root(function (require) {
     // active views
 
     views.enable('login');
-    views.enable('battle');
-    views.enable('notifications');
     views.enable('leatherboard');
 
-    views.enable('character');
-    views.enable('weapon');
-    views.enable('soldier');
-    views.enable('squad');
+    views.enable('profile');
+    views.enable('notifications');
     views.enable('rooms');
+
+    views.enable('battle');
     
+    views.enable('characters');
+    views.enable('weapons');
+    views.enable('maps');
+
+    views.enable('soldiers');
+    views.enable('squads');
+
+    views.enable('chat-foo');
+    views.enable('chat-bar');
 
     // sample characters
 

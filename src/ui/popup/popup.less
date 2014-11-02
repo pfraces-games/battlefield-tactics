@@ -1,9 +1,24 @@
 @import "ui/base/base";
-@import "ui/layer/layer";
 @import "ui/view/view";
+@import "ui/layer/layer";
 
-.popup:extend(.center):extend(.layer all):extend(.view all) {
+.popups {
+  &:extend(.center all);
+  pointer-events: none;
+
   position: absolute;
-  top: 0;
+  bottom: 0;
   z-index: 1;
+  margin: 5px;
+  width: 790px;
+
+  & > .popup {
+    &:extend(.view all);
+    &:extend(.layer all);
+
+    width: 385px;
+    height: 285px;
+    margin: 5px;
+    float: left;
+  }
 }
