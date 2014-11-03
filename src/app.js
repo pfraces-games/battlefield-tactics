@@ -10,7 +10,7 @@ define.root(function (require) {
     // active views
 
     views.enable('login');
-    views.enable('leatherboard');
+    views.enable('leaderboard');
 
     views.enable('profile');
     views.enable('notifications');
