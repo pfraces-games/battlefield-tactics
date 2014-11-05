@@ -15,6 +15,8 @@ module.exports = function (grunt) {
       fixtures: 'fixtures',
       vendor: 'bower_components',
 
+      partials: '<%= prj.src %>/partials',
+
       css: {
         src: '<%= prj.src %>',
         build: '<%= prj.build %>/css'
@@ -43,6 +45,18 @@ module.exports = function (grunt) {
 
     clean: {
       build: ['<%= prj.build %>']
+    },
+
+    includes: {
+      build: {
+        expand: true,
+        cwd: '<%= prj.build %>',
+        src: [ 'index.html' ],
+        dest: '<%= prj.build %>',
+        options: {
+          includePath: '<%= prj.partials %>'
+        }
+      }
     },
 
     less: {
@@ -146,7 +160,8 @@ module.exports = function (grunt) {
     'jshint',
     /* 'karma:build', */
     'compile',
-    'index:build'
+    'index:build',
+    'includes'
   ]);
 
   grunt.registerTask('dev', [
