@@ -12,6 +12,7 @@
     "grunt-contrib-jshint": "*",
     "grunt-contrib-watch": "*",
     "grunt-freddie": "*",
-    "grunt-includes": "*"
+    "grunt-includes": "*",
+    "grunt-notify": "*"
   }
 }

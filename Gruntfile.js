@@ -124,26 +124,59 @@ module.exports = function (grunt) {
       }
     },
 
+    notify: {
+      partials: {
+        options: {
+          message: 'partials are ready'
+        }
+      },
+      less: {
+        options: {
+          message: 'styles are ready'
+        }
+      },
+      assets: {
+        options: {
+          message: 'assets are ready'
+        }
+      },
+      scripts: {
+        options: {
+          message: 'scripts are ready'
+        }
+      },
+      tests: {
+        options: {
+          message: 'tests are ready'
+        }
+      },
+    },
+
     watch: {
-      index: {
-        files: ['<%= prj.src %>/index.tpl.html'],
-        tasks: ['index:build']
+      partials: {
+        files: ['<%= prj.src %>/**/*.html'],
+        tasks: ['index:build', 'includes', 'notify:partials']
       },
       less: {
         files: ['<%= prj.css.src %>/**/*.less'],
-        tasks: ['less']
+        tasks: ['less', 'notify:less']
       },
       assets: {
         files: ['<%= prj.assets.src %>/**'],
-        tasks: ['copy:assets']
+        tasks: ['copy:assets', 'notify:assets']
       },
       scripts: {
         files: ['<%= jshint.scripts.src %>'],
-        tasks: ['jshint:scripts' /* , 'karma:build' */ , 'copy:scripts']
+        tasks: [
+          'jshint:scripts',
+          /* TODO: add tests, */
+          'copy:scripts',
+          'notify:scripts'
+        ]
       },
       tests: {
         files: ['<%= jshint.tests.src %>'],
-        tasks: ['jshint:tests' /* , 'karma:build' */ ]
+        tasks: ['jshint:tests' /* , TODO: add tests */, 'notify:tests']
       }
     }
   });
@@ -158,7 +191,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', [
     'clean',
     'jshint',
-    /* 'karma:build', */
+    /* TODO: add tests */
     'compile',
     'index:build',
     'includes'

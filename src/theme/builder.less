@@ -25,18 +25,11 @@
   }
 
   .submit-area {
+    &:extend(.inner-right);
+    &:extend(.clearfix all);
+
     margin-right: 71px;
     margin-top: 15px;
-
-    & > * {
-      float: right;
-    }
-
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
 
     .widget {
       margin: 0;
