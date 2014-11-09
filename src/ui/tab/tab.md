@@ -4,8 +4,6 @@ tabs
 page tabs (markup)
 ------------------
 
-### template
-
 ```html
 <div class="tabs {{ orientation }}">
   <div id="tab-{{ viewname }}" class="tab tab-view">{{ viewname }}</div>
@@ -31,8 +29,6 @@ page tabs (markup)
 page view (markup)
 ------------------
 
-### template
-
 ```html
 <div id="{{ viewname }}" class="view">
   ...
@@ -46,10 +42,8 @@ page view (markup)
 </div>
 ```
 
-view tabs markup
-----------------
-
-### template
+view tabs (markup)
+------------------
 
 ```html
 <div class="title">
@@ -85,8 +79,6 @@ view tabs markup
 view section (markup)
 ---------------------
 
-### template
-
 ```html
 <div id="{{ viewname }}-{{ section }}"
     class="{{ viewname }} section {{ visible }}">
@@ -105,8 +97,6 @@ view section (markup)
 
 view tabs (script)
 ------------------
-
-### template
 
 ```js
 var tab = require('ui.tab');
