@@ -39,4 +39,35 @@
       vertical-align: middle;
     }
   }
+
+  table.list {
+    width: 100%;
+
+    thead {
+      border-bottom: 2px solid yellow;
+    }
+
+    tbody {
+      &:before {
+        line-height:1em;
+        content:"-";
+        color: transparent; 
+        display:block;
+      }
+
+      tr {
+        cursor: default;
+
+        &:hover {
+          color: black;
+          background-color: yellow;
+        }
+      }
+
+      td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
+  }
 }

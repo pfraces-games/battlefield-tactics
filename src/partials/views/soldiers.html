@@ -1,43 +1,88 @@
 <div id="soldiers" class="view builder">
   <div class="title">
     <h2>soldiers</h2>
-  </div>
-  <div class="widget">
-    <table>
-      <tbody>
-        <tr>
-          <td class="tag">name</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-        <tr>
-          <td class="tag">value</td>
-          <td>
-            <div class="widget input readonly">
-              <input type="text" readonly />
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="widget">
-    <table>
-      <tbody>
-        <tr>
-          <td class="tag">character class</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-        <tr>
-          <td class="tag">weapon</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="submit-area">
-    <div id="submit-soldier" class="widget btn">
-      save
+
+    <div class="tabs top">
+      <div id="tab-soldiers-detail" class="tab tab-soldiers">
+        item
+      </div>
+      <div id="tab-soldiers-master" class="tab tab-soldiers active">
+        list
+      </div>
     </div>
-    <div style="clear:both;"></div>
+  </div>
+
+  <!-- section: master -->
+
+  <div id="soldiers-master" class="soldiers section visible">
+    <div class="widget">
+      <table class="list">
+        <thead>
+          <tr>
+            <td class="w30">soldier</td>
+            <td class="w10">value</td>
+            <td>squad</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>aragorn</td>
+            <td class="rtl">400</td>
+            <td>fellowship of the ring</td>
+          </tr>
+          <tr>
+            <td>gimli</td>
+            <td class="rtl">320</td>
+            <td>fellowship of the ring</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="new-soldier" class="widget btn">new</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+  <!-- section: detail -->
+
+  <div id="soldiers-detail" class="soldiers section">
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">name</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">value</td>
+            <td>
+              <div class="widget input readonly">
+                <input type="text" readonly />
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">character class</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">weapon</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="submit-soldier" class="widget btn">save</div>
+      <div id="delete-soldier" class="widget btn secondary">delete</div>
+      <div style="clear:both;"></div>
+    </div>
   </div>
 </div>

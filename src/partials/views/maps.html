@@ -1,5 +1,71 @@
 <div id="maps" class="view builder">
   <div class="title">
     <h2>maps</h2>
+
+    <div class="tabs top">
+      <div id="tab-maps-detail" class="tab tab-maps">
+        item
+      </div>
+      <div id="tab-maps-master" class="tab tab-maps active">
+        list
+      </div>
+    </div>
   </div>
+
+  <!-- section: master -->
+
+  <div id="maps-master" class="maps section visible">
+    <div class="widget">
+      <table class="list">
+        <thead>
+          <tr>
+            <td>map</td>
+            <td class="w20">size</td>
+            <td class="w30">user</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>fooland</td>
+            <td>50x50</td>
+            <td>foo</td>
+          </tr>
+          <tr>
+            <td>laberynth</td>
+            <td>112x84</td>
+            <td>foo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="new-map" class="widget btn">new</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+  <!-- section: detail -->
+
+  <div id="maps-detail" class="maps section">
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">name</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">bitmap</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="submit-map" class="widget btn">save</div>
+      <div id="delete-map" class="widget btn secondary">delete</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
 </div>

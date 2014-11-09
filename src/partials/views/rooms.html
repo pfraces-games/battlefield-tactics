@@ -1,18 +1,85 @@
 <div id="rooms" class="view builder">
   <div class="title">
     <h2>rooms</h2>
-  </div>
-  <div class="widget">
-    <ul>
-      <li><div id="room-0">foo</div></li>
-      <li><div id="room-1">bar</div></li>
-      <li><div id="room-2">qux</div></li>
-    </ul>
-  </div>
-  <div class="submit-area">
-    <div id="create-room" class="widget btn">
-      create room
+
+    <div class="tabs top">
+      <div id="tab-rooms-detail" class="tab tab-rooms">
+        item
+      </div>
+      <div id="tab-rooms-master" class="tab tab-rooms active">
+        list
+      </div>
     </div>
-    <div style="clear:both;"></div>
   </div>
+
+  <!-- section: master -->
+
+  <div id="rooms-master" class="rooms section visible">
+    <div class="widget">
+      <table class="list">
+        <thead>
+          <tr>
+            <td>squad</td>
+            <td class="w10">value</td>
+            <td class="w30">user</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>foo man choos</td>
+            <td class="rtl">870</td>
+            <td>foo</td>
+          </tr>
+          <tr>
+            <td>barbarians</td>
+            <td class="rtl">850</td>
+            <td>bar</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="new-room" class="widget btn">new</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+  <!-- section: detail -->
+
+  <div id="rooms-detail" class="rooms section">
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">squad</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">map</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">rounds</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">round time</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="submit-room" class="widget btn">save</div>
+      <div id="delete-room" class="widget btn secondary">delete</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
 </div>

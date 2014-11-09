@@ -1,53 +1,99 @@
 <div id="weapons" class="view builder">
   <div class="title">
     <h2>weapons</h2>
-  </div>
-  <div class="widget">
-    <table>
-      <tbody>
-        <tr>
-          <td class="tag">name</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-        <tr>
-          <td class="tag">value</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="widget">
-    <table>
-      <tbody>
-        <tr>
-          <td class="tag">damage</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="widget">
-    <table>
-      <tbody>
-        <tr>
-          <td class="tag">short range</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-        <tr>
-          <td class="tag">medium range</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-        <tr>
-          <td class="tag">long range</td>
-          <td><div class="widget input"><input type="text" /></div></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="submit-area">
-    <div id="submit-weapon" class="widget btn">
-      save
+
+    <div class="tabs top">
+      <div id="tab-weapons-detail" class="tab tab-weapons">
+        item
+      </div>
+      <div id="tab-weapons-master" class="tab tab-weapons active">
+        list
+      </div>
     </div>
-    <div style="clear:both;"></div>
   </div>
+
+  <!-- section: master -->
+
+  <div id="weapons-master" class="weapons section visible">
+    <div class="widget">
+      <table class="list">
+        <thead>
+          <tr>
+            <td>class</td>
+            <td class="w10">value</td>
+            <td class="w30">user</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>gun</td>
+            <td class="rtl">50</td>
+            <td>foo</td>
+          </tr>
+          <tr>
+            <td>rifle</td>
+            <td class="rtl">100</td>
+            <td>foo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="new-weapon" class="widget btn">new</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
+  <!-- section: detail -->
+
+  <div id="weapons-detail" class="weapons section">
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">name</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">value</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">damage</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="widget">
+      <table>
+        <tbody>
+          <tr>
+            <td class="tag">short range</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">medium range</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+          <tr>
+            <td class="tag">long range</td>
+            <td><div class="widget input"><input type="text" /></div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="submit-area">
+      <div id="submit-weapon" class="widget btn">save</div>
+      <div id="delete-weapon" class="widget btn secondary">delete</div>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+
 </div>

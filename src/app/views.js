@@ -47,6 +47,60 @@ define('app.views', function (require) {
       dom('.login.section.visible').removeClass('visible');
       dom('#' + section).addClass('visible');
     });
+
+    // rooms tabs
+
+    tab.group('tab-rooms', function (node) {
+      var section = node.id.slice(TAB_PREFIX.length);
+
+      dom('.rooms.section.visible').removeClass('visible');
+      dom('#' + section).addClass('visible');
+    });
+
+    // characters tabs
+
+    tab.group('tab-characters', function (node) {
+      var section = node.id.slice(TAB_PREFIX.length);
+
+      dom('.characters.section.visible').removeClass('visible');
+      dom('#' + section).addClass('visible');
+    });
+
+    // weapons tabs
+
+    tab.group('tab-weapons', function (node) {
+      var section = node.id.slice(TAB_PREFIX.length);
+
+      dom('.weapons.section.visible').removeClass('visible');
+      dom('#' + section).addClass('visible');
+    });
+
+    // maps tabs
+
+    tab.group('tab-maps', function (node) {
+      var section = node.id.slice(TAB_PREFIX.length);
+
+      dom('.maps.section.visible').removeClass('visible');
+      dom('#' + section).addClass('visible');
+    });
+
+    // soldiers tabs
+
+    tab.group('tab-soldiers', function (node) {
+      var section = node.id.slice(TAB_PREFIX.length);
+
+      dom('.soldiers.section.visible').removeClass('visible');
+      dom('#' + section).addClass('visible');
+    });
+
+    // squads tabs
+
+    tab.group('tab-squads', function (node) {
+      var section = node.id.slice(TAB_PREFIX.length);
+
+      dom('.squads.section.visible').removeClass('visible');
+      dom('#' + section).addClass('visible');
+    });
   };
 
   return {
