@@ -1,4 +1,4 @@
-define('app.ui.template.cell', function () {
+define('app.battle.tpl.cell', function () {
   'use strict';
 
   var cell = function (cellId, terrain) {

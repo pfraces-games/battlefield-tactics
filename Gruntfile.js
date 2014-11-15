@@ -15,8 +15,6 @@ module.exports = function (grunt) {
       fixtures: 'fixtures',
       vendor: 'bower_components',
 
-      partials: '<%= prj.src %>/partials',
-
       css: {
         src: '<%= prj.src %>',
         build: '<%= prj.build %>/css'
@@ -54,7 +52,7 @@ module.exports = function (grunt) {
         src: [ 'index.html' ],
         dest: '<%= prj.build %>',
         options: {
-          includePath: '<%= prj.partials %>'
+          includePath: '<%= prj.src %>'
         }
       }
     },

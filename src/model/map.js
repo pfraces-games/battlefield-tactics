@@ -1,7 +1,9 @@
-define('app.map.river', function () {
+define('app.model.map', function () {
   'use strict';
 
   /**
+   * map: "the river"
+   *
    * Terrain types:
    *
    * 'G' - Grass

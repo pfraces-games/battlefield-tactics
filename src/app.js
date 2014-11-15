@@ -3,7 +3,7 @@ define.root(function (require) {
   
   var views      = require('app.views'),
       characters = require('app.model.characters'),
-      ui         = require('app.ui');
+      battle     = require('app.battle');
 
   var init = function () {
 
@@ -61,5 +61,5 @@ define.root(function (require) {
 
   init();
   views.init();
-  ui.init();
+  battle.init();
 });

@@ -1,4 +1,4 @@
-define('app.ui.template.character', function () {
+define('app.battle.tpl.character', function () {
   'use strict';
 
   var character = function (team, direction) {

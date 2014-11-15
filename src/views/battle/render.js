@@ -1,13 +1,13 @@
-define('app.ui.render', function (require) {
+define('app.battle.render', function (require) {
   'use strict';
 
   var domo           = require('domo'),
       turn           = require('app.model.turn'),
       cells          = require('app.model.cells'),
       characters     = require('app.model.characters'),
-      uiCell         = require('app.ui.cell'),
-      tplCell        = require('app.ui.template.cell'),
-      tplCharacter   = require('app.ui.template.character');
+      uiCell         = require('app.battle.cell'),
+      tplCell        = require('app.battle.tpl.cell'),
+      tplCharacter   = require('app.battle.tpl.character');
 
   var dom = domo.use({
     empty:       require('domo.empty'),

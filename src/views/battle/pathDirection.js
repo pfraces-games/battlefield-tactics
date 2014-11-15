@@ -1,4 +1,4 @@
-define('app.mechanics.path.direction', function () {
+define('app.battle.pathDirection', function () {
   'use strict';
 
   var direction = function (from, to) {

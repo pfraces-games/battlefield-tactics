@@ -1,4 +1,4 @@
-define('app.mechanics.path.nodes', function (require) {
+define('app.battle.pathNodes', function (require) {
   'use strict';
 
   var map          = require('mu.list.map'),

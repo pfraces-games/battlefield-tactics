@@ -1,4 +1,4 @@
-define('app.ui.cell', function (require) {
+define('app.battle.cell', function (require) {
   'use strict';
 
   var uid = require('uid');

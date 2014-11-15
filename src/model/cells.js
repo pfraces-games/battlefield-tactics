@@ -2,7 +2,7 @@ define('app.model.cells', function (require) {
   'use strict';
 
   var matrix = require('matrix'),
-      map    = require('app.map.river');
+      map    = require('app.model.map');
 
   var cells = matrix(map).map(function (terrain, pos) {
     return {

@@ -1,13 +1,13 @@
-define('app.ui', function (require) {
+define('app.battle', function (require) {
   'use strict';
 
   var domo          = require('domo'),
-      actionHandler = require('app.mechanics.action.handler'),
+      actionHandler = require('app.battle.actionHandler'),
       characters    = require('app.model.characters'),
       turn          = require('app.model.turn'),
-      render        = require('app.ui.render'),
-      uiCell        = require('app.ui.cell'),
-      storage       = require('app.storage.firebase');
+      render        = require('app.battle.render'),
+      uiCell        = require('app.battle.cell'),
+      storage       = require('firebase');
 
   var dom = domo.use({
     on: require('domo.on')

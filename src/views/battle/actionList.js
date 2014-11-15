@@ -1,10 +1,10 @@
-define('app.mechanics.action.list', function (require) {
+define('app.battle.actionList', function (require) {
   'use strict';
 
   var each       = require('mu.list.each'),
       filter     = require('mu.list.filter'),
-      nodes      = require('app.mechanics.path.nodes'),
-      direction  = require('app.mechanics.path.direction'),
+      nodes      = require('app.battle.pathNodes'),
+      direction  = require('app.battle.pathDirection'),
       characters = require('app.model.characters'),
       cells      = require('app.model.cells'),
       turn       = require('app.model.turn');
