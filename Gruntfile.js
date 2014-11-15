@@ -221,7 +221,7 @@ module.exports = function (grunt) {
           styles = files.filter(ext('css')).map(relativePath),
           dev = grunt.task.current.target === 'build';
 
-      var src = 'src/index.tpl.html',
+      var src = 'build_templates/index.tpl.html',
           dest = dir + '/index.html';
 
       grunt.file.copy(src, dest, {
