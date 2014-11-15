@@ -8,8 +8,10 @@ define('ui.tab', function (require) {
     toggleClass: require('domo.toggleClass')
   });
 
+  var TAB_PREFIX = 'tab-';
+
   var group = function (tabgroup, func) {
-    tabgroup = tabgroup ? '.' + tabgroup : '';
+    tabgroup = tabgroup ? '.' + TAB_PREFIX + tabgroup : '';
 
     var tab = '.tabs' + ' > .tab' + tabgroup,
         tabActive = tab + '.active';
@@ -17,19 +19,35 @@ define('ui.tab', function (require) {
     dom(tab).on('click', function () {
       dom(tabActive).removeClass('active');
       dom(this).addClass('active');
-      func(this);
+
+      var contentId = this.id.slice(TAB_PREFIX.length);
+      if (func) { func(contentId); }
     });
   };
 
   var pin = function (func) {
     dom('.pin').on('click', function () {
       dom(this).toggleClass('active');
-      func(this);
+
+      var view = this.id.slice(TAB_PREFIX.length);
+      dom('#' + view).toggleClass('visible');
+
+      if (func) { func(view); }
     });
+  };
+
+  var enable = function (tab) {
+    dom('#' + TAB_PREFIX + tab).addClass('visible');
+  };
+
+  var disable = function (tab) {
+    dom('#' + TAB_PREFIX + tab).removeClass('visible');
   };
 
   return {
     group: group,
-    pin: pin
+    pin: pin,
+    enable: enable,
+    disable: disable
   };
 });

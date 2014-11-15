@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- styles --><% styles.forEach(function (file) { %>
-    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
-    <!-- scripts --><% scripts.forEach(function (file) { %>
-    <script type="text/javascript" src="<%= file %>"></script><% }); %>
-  </head>
+<head>
+  <!-- styles --><% styles.forEach(function (file) { %>
+  <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
-  <body>
-    include "layout/title.html"
+  <!-- scripts --><% scripts.forEach(function (file) { %>
+  <script type="text/javascript" src="<%= file %>"></script><% }); %>
+</head>
 
-    <div class="body">
+<body>
+  include "layout/page.html"
+</body>
 
-      include "layout/panel-left.html"
-      include "layout/panel-right.html"
-      include "layout/panel-center.html"
-
-    </div>
-
-  </body>
 </html>
