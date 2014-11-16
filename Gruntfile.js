@@ -30,15 +30,18 @@ module.exports = function (grunt) {
         build: '<%= prj.build %>/assets'
       },
 
-      dependencies: [
-        '<%= prj.vendor %>/define/define.js',
-        '<%= prj.vendor %>/mu.is/is.js',
-        '<%= prj.vendor %>/mu.fn/fn.js',
-        '<%= prj.vendor %>/mu.list/list.js',
-        '<%= prj.vendor %>/mu.api/api.js',
-        '<%= prj.vendor %>/domo/domo.js',
-        '<%= prj.vendor %>/firebase/firebase.js'
-      ]
+      deps: {
+        css: ['<%= prj.src %>/lib/ui'],
+        js: [
+          '<%= prj.vendor %>/define/define.js',
+          '<%= prj.vendor %>/mu.is/is.js',
+          '<%= prj.vendor %>/mu.fn/fn.js',
+          '<%= prj.vendor %>/mu.list/list.js',
+          '<%= prj.vendor %>/mu.api/api.js',
+          '<%= prj.vendor %>/domo/domo.js',
+          '<%= prj.vendor %>/firebase/firebase.js'
+        ]
+      }
     },
 
     clean: {
@@ -62,11 +65,12 @@ module.exports = function (grunt) {
         options: {
           sourceMap: true,
           outputSourceFiles: true,
-          sourceMapFilename: '<%= prj.css.build %>/ui.css.map',
-          sourceMapURL: 'ui.css.map'
+          sourceMapFilename: '<%= prj.css.build %>/app.css.map',
+          sourceMapURL: 'app.css.map',
+          paths: '<%= prj.deps.css %>'
         },
-        src: ['<%= prj.css.src %>/ui.less'],
-        dest: '<%= prj.css.build %>/ui.css'
+        src: ['<%= prj.css.src %>/app.less'],
+        dest: '<%= prj.css.build %>/app.css'
       }
     },
 
@@ -87,7 +91,7 @@ module.exports = function (grunt) {
         dir: '<%= prj.build %>',
         src: [
           '<%= less.styles.dest %>',
-          '<%= prj.dependencies %>',
+          '<%= prj.deps.js %>',
           '<%= jshint.scripts.src %>'
         ]
       }
@@ -98,8 +102,8 @@ module.exports = function (grunt) {
         src: ['<%= prj.js.src %>/**/*.js'],
         dest: '<%= prj.build %>/'
       },
-      dependencies: {
-        src: ['<%= prj.dependencies %>'],
+      deps: {
+        src: ['<%= prj.deps.js %>'],
         dest: '<%= prj.build %>/'
       },
       assets: {
@@ -182,7 +186,7 @@ module.exports = function (grunt) {
   grunt.registerTask('compile', [
     'less',
     'copy:scripts',
-    'copy:dependencies',
+    'copy:deps',
     'copy:assets'
   ]);
 

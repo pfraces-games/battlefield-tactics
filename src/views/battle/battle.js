@@ -7,7 +7,7 @@ define('app.battle', function (require) {
       turn          = require('app.model.turn'),
       render        = require('app.battle.render'),
       uiCell        = require('app.battle.cell'),
-      storage       = require('firebase');
+      storage       = require('storage');
 
   var dom = domo.use({
     on: require('domo.on')
