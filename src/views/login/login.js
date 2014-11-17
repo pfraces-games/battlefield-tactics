@@ -11,11 +11,19 @@ define('app.login', function (require) {
     val:         require('domo.val')
   });
 
+  var login = function (user) {
+    console.log(user);
+
+    tab.disable('login');
+    tab.enable('profile');
+    tab.enable('rooms');
+    tab.enable('battle');
+
+    tab.active('view', 'profile');
+  };
+
   var init = function () {
-    tab.group('login', function (contentId) {
-      dom('.login.section.visible').removeClass('visible');
-      dom('#' + contentId).addClass('visible');
-    });
+    tab.group('login');
 
     dom('#login-login-submit').on('click', function () {
       var user = {
@@ -25,7 +33,7 @@ define('app.login', function (require) {
 
       storage.authWithPassword(user, function (err, auth) {
         if (err) { throw err; }
-        console.log('user', auth);
+        login(auth);
       });
     });
 
@@ -51,6 +59,7 @@ define('app.login', function (require) {
           };
 
           storage.child('users').child(profile.uid).set(profile);
+          login(profile);
         });
       });
     });

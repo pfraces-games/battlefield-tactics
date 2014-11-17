@@ -15,9 +15,6 @@ define.root(function (require) {
   controllers.init();
 
   tab.group('view', function (contentId) {
-    dom('.view.visible').removeClass('visible');
-    dom('#' + contentId).addClass('visible');
-
     dom('.view-panel.visible').removeClass('visible');
     dom('#panel-' + contentId).addClass('visible');
   });
@@ -29,11 +26,7 @@ define.root(function (require) {
   tab.enable('login');
   tab.enable('leaderboard');
 
-  tab.enable('profile');
-  tab.enable('notifications');
-  tab.enable('rooms');
-
-  tab.enable('battle');
+  // tab.enable('notifications');
 
   tab.enable('characters');
   tab.enable('weapons');

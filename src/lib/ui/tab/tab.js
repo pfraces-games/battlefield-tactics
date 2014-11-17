@@ -10,17 +10,36 @@ define('ui.tab', function (require) {
 
   var TAB_PREFIX = 'tab-';
 
+  var enable = function (tab) {
+    dom('#' + TAB_PREFIX + tab).addClass('visible');
+  };
+
+  var disable = function (tab) {
+    dom('#' + TAB_PREFIX + tab).removeClass('visible');
+  };
+
+  var active = function (group, tab) {
+    var groupClass = '.' + TAB_PREFIX + group,
+        groupTabs = '.tabs' + ' > .tab' + groupClass,
+        activeTab = groupTabs + '.active',
+        targetTab = '#' + TAB_PREFIX + tab,
+        visibleContent = '.' + group + '.visible',
+        targetContent = '#' + tab;
+
+    dom(activeTab).removeClass('active');
+    dom(targetTab).addClass('active');
+
+    dom(visibleContent).removeClass('visible');
+    dom(targetContent).addClass('visible');
+  };
+
   var group = function (tabgroup, func) {
-    tabgroup = tabgroup ? '.' + TAB_PREFIX + tabgroup : '';
+    var groupClass = tabgroup ? '.' + TAB_PREFIX + tabgroup : '',
+        groupTabs = '.tabs' + ' > .tab' + groupClass;
 
-    var tab = '.tabs' + ' > .tab' + tabgroup,
-        tabActive = tab + '.active';
-
-    dom(tab).on('click', function () {
-      dom(tabActive).removeClass('active');
-      dom(this).addClass('active');
-
+    dom(groupTabs).on('click', function () {
       var contentId = this.id.slice(TAB_PREFIX.length);
+      active(tabgroup, contentId);
       if (func) { func(contentId); }
     });
   };
@@ -36,18 +55,11 @@ define('ui.tab', function (require) {
     });
   };
 
-  var enable = function (tab) {
-    dom('#' + TAB_PREFIX + tab).addClass('visible');
-  };
-
-  var disable = function (tab) {
-    dom('#' + TAB_PREFIX + tab).removeClass('visible');
-  };
-
   return {
-    group: group,
-    pin: pin,
     enable: enable,
-    disable: disable
+    disable: disable,
+    active: active,
+    group: group,
+    pin: pin
   };
 });
