@@ -1,42 +1,8 @@
 define.root(function (require) {
   'use strict';
   
-  var tab         = require('ui.tab'),
-      characters  = require('app.model.characters'),
-      controllers = require('app.controllers');
-
-  var dom =      require('domo').use({
-    addClass:    require('domo.addClass'),
-    removeClass: require('domo.removeClass')
-  });
-
-  // main tabs
-
-  controllers.init();
-
-  tab.group('view', function (contentId) {
-    dom('.view-panel.visible').removeClass('visible');
-    dom('#panel-' + contentId).addClass('visible');
-  });
-
-  tab.pin();
-
-  // active views
-
-  tab.enable('login');
-  tab.enable('leaderboard');
-
-  // tab.enable('notifications');
-
-  tab.enable('characters');
-  tab.enable('weapons');
-  tab.enable('maps');
-
-  tab.enable('soldiers');
-  tab.enable('squads');
-
-  tab.enable('chat-foo');
-  tab.enable('chat-bar');
+  var views      = require('app.views'),
+      characters = require('app.model.characters');
 
   // sample characters
 
@@ -67,4 +33,7 @@ define.root(function (require) {
     health: 10,
     pos: { x: 10, y: 10 }
   });
+
+  // init battle view after characters are set
+  views.init();
 });

@@ -5,22 +5,9 @@ define('app.login', function (require) {
       tab     = require('ui.tab');
 
   var dom =      require('domo').use({
-    addClass:    require('domo.addClass'),
-    removeClass: require('domo.removeClass'),
     on:          require('domo.on'),
     val:         require('domo.val')
   });
-
-  var login = function (user) {
-    console.log(user);
-
-    tab.disable('login');
-    tab.enable('profile');
-    tab.enable('rooms');
-    tab.enable('battle');
-
-    tab.active('view', 'profile');
-  };
 
   var init = function () {
     tab.group('login');
@@ -31,9 +18,8 @@ define('app.login', function (require) {
         password: dom('#login-login-password').val()
       };
 
-      storage.authWithPassword(user, function (err, auth) {
+      storage.authWithPassword(user, function (err) {
         if (err) { throw err; }
-        login(auth);
       });
     });
 
@@ -59,7 +45,6 @@ define('app.login', function (require) {
           };
 
           storage.child('users').child(profile.uid).set(profile);
-          login(profile);
         });
       });
     });
