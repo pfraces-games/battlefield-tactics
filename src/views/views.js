@@ -11,14 +11,15 @@ define('app.views', function (require) {
   });
 
   var views = {
-    battle:     require('app.battle'),
     login:      require('app.login'),
+    logout:     require('app.logout'),
+    battle:     require('app.battle'),
     rooms:      require('app.rooms'),
+    soldiers:   require('app.soldiers'),
+    squads:     require('app.squads'),
     characters: require('app.characters'),
     weapons:    require('app.weapons'),
-    maps:       require('app.maps'),
-    soldiers:   require('app.soldiers'),
-    squads:     require('app.squads')
+    maps:       require('app.maps')
   };
 
   var VIEWS = {
@@ -31,7 +32,14 @@ define('app.views', function (require) {
     each(VIEWS.MEMBERS, tab.enable);
     each(VIEWS.GUESTS, tab.disable);
 
-    /* if (tab.current() === 'login') */ tab.active('view', 'profile');
+    /*
+    var isCurrentViewDisabled = each(VIEWS.GUESTS, function (view) {
+      if (view === tab.current()) { return true; }
+    });
+    */
+    var isCurrentViewDisabled = true;
+    
+    if (isCurrentViewDisabled) { tab.active('view', 'rooms'); }
   };
 
   var logout = function () {
@@ -65,6 +73,8 @@ define('app.views', function (require) {
     });
 
     tab.pin();
+
+    tab.enable('logout');
 
     tab.enable('characters');
     tab.enable('weapons');

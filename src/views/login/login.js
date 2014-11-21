@@ -12,7 +12,9 @@ define('app.login', function (require) {
   var init = function () {
     tab.group('login');
 
-    dom('#login-login-submit').on('click', function () {
+    dom('#login-login-submit').on('submit', function (event) {
+      event.preventDefault();
+
       var user = {
         email: dom('#login-login-email').val(),
         password: dom('#login-login-password').val()
@@ -23,7 +25,9 @@ define('app.login', function (require) {
       });
     });
 
-    dom('#login-signup-submit').on('click', function () {
+    dom('#login-signup-submit').on('submit', function (event) {
+      event.preventDefault();
+
       var user = {
         name: dom('#login-signup-user').val(),
         email: dom('#login-signup-email').val(),
