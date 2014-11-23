@@ -14,21 +14,21 @@ define('app.battle', function (require) {
   });
 
   var syncCharacters = function () {
-    storage.child('characters').set(characters.model());
+    storage.child('battle/characters').set(characters.model());
   };
 
   var syncTurn = function () {
-    storage.child('turn').set(turn.model());
+    storage.child('battle/turn').set(turn.model());
   };
 
   var setStorageListeners = function () {
-    storage.child('characters').on('value', function (snapshot) {
+    storage.child('battle/characters').on('value', function (snapshot) {
       characters.model(snapshot.val());
       render.characters();
       render.activeCharacter();
     });
 
-    storage.child('turn').on('value', function (snapshot) {
+    storage.child('battle/turn').on('value', function (snapshot) {
       var newVal = snapshot.val();
       if (newVal !== turn.current()) { characters.current(false); }
       turn.model(newVal);

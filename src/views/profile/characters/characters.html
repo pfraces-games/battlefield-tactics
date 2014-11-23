@@ -3,6 +3,9 @@
     <h2>characters</h2>
 
     <div class="tabs top">
+      <div id="tab-characters-new" class="tab tab-characters">
+        new
+      </div>
       <div id="tab-characters-detail" class="tab tab-characters">
         item
       </div>
@@ -10,6 +13,135 @@
         list
       </div>
     </div>
+  </div>
+
+  <!-- section: new -->
+
+  <div id="characters-new" class="characters section">
+    <form id="characters-new-submit">
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">name</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="characters-new-name" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">value</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="characters-new-value" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">action points</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="characters-new-action-points" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">health</td>
+              <td>
+                <div class="widget input">
+                  <input type="text"id="characters-new-health" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">accuracy</td>
+              <td>
+                <div class="widget input">
+                  <input type="text"id="characters-new-accuracy" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submit-area">
+        <button type="submit" class="widget btn">save</button>
+        <div style="clear:both;"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- section: detail -->
+
+  <div id="characters-detail" class="characters section">
+    <form id="characters-detail-submit">
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">name</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="characters-detail-name" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">value</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="characters-detail-value" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">action points</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="characters-detail-action-points" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">health</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">accuracy</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="characters-detail-accuracy" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submit-area">
+        <button type="submit" class="widget btn">save</button>
+        <button id="characters-detail-delete" class="widget btn secondary">
+          delete
+        </button>
+        <div style="clear:both;"></div>
+      </div>
+    </form>
   </div>
 
   <!-- section: master -->
@@ -37,52 +169,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="submit-area">
-      <div id="new-character" class="widget btn">new</div>
-      <div style="clear:both;"></div>
-    </div>
-  </div>
-
-  <!-- section: detail -->
-
-  <div id="characters-detail" class="characters section">
-    <div class="widget">
-      <table>
-        <tbody>
-          <tr>
-            <td class="tag">name</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-          <tr>
-            <td class="tag">value</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="widget">
-      <table>
-        <tbody>
-          <tr>
-            <td class="tag">action points</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-          <tr>
-            <td class="tag">health</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-          <tr>
-            <td class="tag">accuracy</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="submit-area">
-      <div id="submit-character-class" class="widget btn">save</div>
-      <div id="delete-character-class" class="widget btn secondary">delete</div>
-      <div style="clear:both;"></div>
     </div>
   </div>
 
