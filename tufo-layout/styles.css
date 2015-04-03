@@ -1,0 +1,54 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+ 
+.header, .footer {
+  z-index: 2;
+  position: fixed;
+  height: 50px;
+  left: 0;
+  right: 0;
+  background-color: lightblue;
+}
+ 
+.header {
+  top: 0;
+}
+ 
+.footer {
+  bottom: 0;
+}
+ 
+.panel-left, .panel-right {
+  z-index: 1;
+  position: fixed;
+  width: 200px;
+  top: 50px;
+  bottom: 50px;
+  background-color: lightgreen;
+}
+ 
+.panel-left {
+  left: 0;
+}
+ 
+.panel-right {
+  right: 0;
+}
+ 
+.view {
+  /* position: fixed; disables global scroll */
+  /* top: 50px; requires position fixed to work */
+  /* bottom: 50px; requires position fixed to work */
+  margin-top: 50px; /* .view top replacement */
+  margin-bottom: 50px; /* .view bottom replacement */
+  overflow-x: hidden;
+}
+ 
+.content {
+  margin: auto; /* just for centering */
+  width: 500px; /* width/min-width/max-width prevents content to be wrapped */
+  padding: 1px; /* break margin collapse */
+  background-color: #fcc;
+}
