@@ -1,11 +1,11 @@
 define('app.login', function (require) {
   'use strict';
 
-  var storage = require('storage'),
-      tab     = require('ui.tab');
+  var firebase = require('firebase'),
+      tab      = require('ui.tab');
 
   var dom =      require('domo').use({
-    on:          require('domo.on'),
+    on:           require('domo.on'),
     val:         require('domo.val')
   });
 
@@ -20,7 +20,7 @@ define('app.login', function (require) {
         password: dom('#login-login-password').val()
       };
 
-      storage.authWithPassword(user, function (err) {
+      firebase.authWithPassword(user, function (err) {
         if (err) { throw err; }
       });
     });
@@ -34,12 +34,12 @@ define('app.login', function (require) {
         password: dom('#login-signup-password').val()
       };
 
-      storage.createUser(user, function (err) {
+      firebase.createUser(user, function (err) {
         if (err) { throw err; }
 
         // auto login
 
-        storage.authWithPassword(user, function (err, auth) {
+        firebase.authWithPassword(user, function (err, auth) {
           if (err) { throw err; }
 
           var profile = {
@@ -48,7 +48,7 @@ define('app.login', function (require) {
             email: auth.password.email
           };
 
-          storage.child('users').child(profile.uid).set(profile);
+          firebase.child('users').child(profile.uid).set(profile);
         });
       });
     });

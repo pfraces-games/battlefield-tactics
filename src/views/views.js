@@ -1,9 +1,9 @@
 define('app.views', function (require) {
   'use strict';
 
-  var each    = require('mu.list.each'),
-      storage = require('storage'),
-      tab     = require('ui.tab');
+  var each     = require('mu.list.each'),
+      firebase = require('firebase'),
+      tab      = require('ui.tab');
 
   var dom =      require('domo').use({
     addClass:    require('domo.addClass'),
@@ -62,7 +62,7 @@ define('app.views', function (require) {
     each(VIEWS.PUBLIC, tab.enable);
     each(VIEWS.GUESTS, tab.enable);
 
-    storage.onAuth(function (auth) {
+    firebase.onAuth(function (auth) {
       if (auth) { login(); }
       else { logout(); }
     });

@@ -1,12 +1,12 @@
 define('app.weapons', function (require) {
   'use strict';
 
-  var tab     = require('ui.tab'),
-      storage = require('storage');
+  var tab      = require('ui.tab'),
+      firebase = require('firebase');
 
-  var dom = require('domo').use({
-    on:     require('domo.on'),
-    val:    require('domo.val')
+  var dom      = require('domo').use({
+    on:          require('domo.on'),
+    val:         require('domo.val')
   });
 
   var init = function () {
@@ -21,7 +21,7 @@ define('app.weapons', function (require) {
         damage: dom('#weapons-new-damage').val()
       };
 
-      storage.child('weapons').push(weapon);
+      firebase.child('weapons').push(weapon);
     });
   };
 

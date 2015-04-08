@@ -7,28 +7,28 @@ define('app.battle', function (require) {
       turn          = require('app.model.turn'),
       render        = require('app.battle.render'),
       uiCell        = require('app.battle.cell'),
-      storage       = require('storage');
+      firebase      = require('firebase');
 
   var dom = domo.use({
     on: require('domo.on')
   });
 
   var syncCharacters = function () {
-    storage.child('battle/characters').set(characters.model());
+    firebase.child('battle/characters').set(characters.model());
   };
 
   var syncTurn = function () {
-    storage.child('battle/turn').set(turn.model());
+    firebase.child('battle/turn').set(turn.model());
   };
 
   var setStorageListeners = function () {
-    storage.child('battle/characters').on('value', function (snapshot) {
+    firebase.child('battle/characters').on('value', function (snapshot) {
       characters.model(snapshot.val());
       render.characters();
       render.activeCharacter();
     });
 
-    storage.child('battle/turn').on('value', function (snapshot) {
+    firebase.child('battle/turn').on('value', function (snapshot) {
       var newVal = snapshot.val();
       if (newVal !== turn.current()) { characters.current(false); }
       turn.model(newVal);

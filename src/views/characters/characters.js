@@ -1,12 +1,12 @@
 define('app.characters', function (require) {
   'use strict';
 
-  var tab     = require('ui.tab'),
-      storage = require('storage');
+  var tab      = require('ui.tab'),
+      firebase = require('firebase');
 
-  var dom = require('domo').use({
-    on:     require('domo.on'),
-    val:    require('domo.val')
+  var dom      = require('domo').use({
+    on:          require('domo.on'),
+    val:         require('domo.val')
   });
 
   var init = function () {
@@ -23,7 +23,7 @@ define('app.characters', function (require) {
         accuracy: dom('#characters-new-accuracy').val()
       };
 
-      storage.child('characters').push(character);
+      firebase.child('characters').push(character);
     });
   };
 
