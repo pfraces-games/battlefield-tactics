@@ -3,6 +3,9 @@
     <h2>maps</h2>
 
     <div class="tabs top">
+      <div id="tab-maps-new" class="tab tab-maps">
+        new
+      </div>
       <div id="tab-maps-detail" class="tab tab-maps">
         item
       </div>
@@ -10,6 +13,71 @@
         list
       </div>
     </div>
+  </div>
+
+  <!-- section: new -->
+
+  <div id="maps-new" class="maps section">
+    <form id="maps-new-submit">
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">name</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="maps-new-name" /></div></td>
+            </tr>
+            <tr>
+              <td class="tag">bitmap</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="maps-new-bitmap" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submit-area">
+        <button type="submit" class="widget btn">save</button>
+        <div style="clear:both;"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- section: detail -->
+
+  <div id="maps-detail" class="maps section">
+    <form id="maps-detail-submit">
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">name</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="maps-detail-name" /></div></td>
+            </tr>
+            <tr>
+              <td class="tag">bitmap</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="maps-detail-bitmap" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submit-area">
+        <button type="submit" class="widget btn">save</button>
+        <button id="maps-detail-delete" class="widget btn secondary">
+          delete
+        </button>
+        <div style="clear:both;"></div>
+      </div>
+    </form>
   </div>
 
   <!-- section: master -->
@@ -40,30 +108,6 @@
     </div>
     <div class="submit-area">
       <div id="new-map" class="widget btn">new</div>
-      <div style="clear:both;"></div>
-    </div>
-  </div>
-
-  <!-- section: detail -->
-
-  <div id="maps-detail" class="maps section">
-    <div class="widget">
-      <table>
-        <tbody>
-          <tr>
-            <td class="tag">name</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-          <tr>
-            <td class="tag">bitmap</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="submit-area">
-      <div id="submit-map" class="widget btn">save</div>
-      <div id="delete-map" class="widget btn secondary">delete</div>
       <div style="clear:both;"></div>
     </div>
   </div>

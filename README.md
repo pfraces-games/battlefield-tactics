@@ -31,12 +31,12 @@ Roadmap
 ### Iteration #9: new item controllers
 
 *   rooms
-    *   markup: new item
+    *   [DONE] markup: new item
 *   squads
-    *   markup: new item
+    *   [DONE] markup: new item
     *   controller: new item
 *   soldiers
-    *   markup: new item
+    *   [DONE] markup: new item
     *   controller: new item
 *   characters
     *   [DONE] markup: new item
@@ -45,7 +45,7 @@ Roadmap
     *   [DONE] markup: new item
     *   [DONE] controller: new item
 *   maps
-    *   markup: new item
+    *   [DONE] markup: new item
 
 ### Iteration #10: list items controllers
 
@@ -127,3 +127,40 @@ Roadmap
     *   expect
 *   unit tests
 *   backend: nodejs + mongodb
+
+Hack
+----
+
+### How to create a form controller
+
+Using `<form>` and its `onSubmit` event we can delegate to the browser
+the work of capturing `onKey` events
+
+Create a `<form>` and several `<input>`s, all with ids
+
+They can be wrapped in the desired layout boilerplate since we are going to
+use its unique ids to find them
+
+```html
+<form id="{{ form_id }}">
+    <input type="text" id="{{ input_id }}" />
+    <button type="submit"></button>
+</form>
+```
+
+Capture `onSubmit` event of the form and get the input values
+with `.val()`
+
+Prevent the default submit action of reloading the page
+
+```js
+dom('#form_id').on('submit', function (event) {
+    event.preventDefault();
+
+    var scope = {
+        field: dom('#input_id').val()
+    };
+
+    doSomethingWith(scope);
+});
+```

@@ -3,6 +3,9 @@
     <h2>squads</h2>
 
     <div class="tabs top">
+      <div id="tab-squads-new" class="tab tab-squads">
+        new
+      </div>
       <div id="tab-squads-detail" class="tab tab-squads">
         item
       </div>
@@ -10,6 +13,131 @@
         list
       </div>
     </div>
+  </div>
+
+  <!-- section: new -->
+
+  <div id="squads-new" class="squads section">
+    <form id="squads-new-submit">
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">name</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="squads-new-name" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">value</td>
+              <td>
+                <div class="widget input readonly">
+                  <input type="text" readonly id="squads-new-value" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="squads" class="widget">
+        <table>
+          <tbody>
+            <tr id="squads-new-soldiers">
+              <td class="tag">soldier</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" class="squads-new-soldier" />
+                </div>
+              </td>
+              <td class="action">
+                <button class="squads-new-remove-soldier widget btn">
+                  x
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag"></td>
+              <td></td>
+              <td class="action">
+                <button id="squads-new-add-soldier" class="widget btn">
+                  +
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submit-area">
+        <button type="submit" class="widget btn">save</button>
+        <div style="clear:both;"></div>
+      </div>
+    </form>
+  </div>
+
+  <!-- section: detail -->
+
+  <div id="squads-detail" class="squads section">
+    <form id="squads-detail-submit">
+      <div class="widget">
+        <table>
+          <tbody>
+            <tr>
+              <td class="tag">name</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" id="squads-detail-name" />
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag">value</td>
+              <td>
+                <div class="widget input readonly">
+                  <input type="text" readonly id="squads-detail-value" />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="squads" class="widget">
+        <table>
+          <tbody>
+            <tr id="squads-detail-soldiers">
+              <td class="tag">soldier</td>
+              <td>
+                <div class="widget input">
+                  <input type="text" class="squads-detail-soldier" />
+                </div>
+              </td>
+              <td class="action">
+                <button class="squads-detail-remove-soldier widget btn">
+                  x
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="tag"></td>
+              <td></td>
+              <td class="action">
+                <button id="squads-detail-add-soldier" class="widget btn">
+                  +
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="submit-area">
+        <button type="submit" class="widget btn">save</button>
+        <button id="squads-detail-delete" class="widget btn secondary">
+          delete
+        </button>
+        <div style="clear:both;"></div>
+      </div>
+    </form>
   </div>
 
   <!-- section: master -->
@@ -44,51 +172,4 @@
     </div>
   </div>
 
-  <!-- section: detail -->
-
-  <div id="squads-detail" class="squads section">
-    <div class="widget">
-      <table>
-        <tbody>
-          <tr>
-            <td class="tag">name</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-          </tr>
-          <tr>
-            <td class="tag">value</td>
-            <td>
-              <div class="widget input readonly">
-                <input type="text" readonly />
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div id="squads" class="widget">
-      <table>
-        <tbody>
-          <tr>
-            <td class="tag">soldier</td>
-            <td><div class="widget input"><input type="text" /></div></td>
-            <td class="action">
-              <div id="remove-soldier-0" class="widget btn">x</div>
-            </td>
-          </tr>
-          <tr>
-            <td class="tag"></td>
-            <td></td>
-            <td class="action">
-              <div id="add-soldier" class="widget btn">+</div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="submit-area">
-      <div id="submit-squad" class="widget btn">save</div>
-      <div id="delete-squad" class="widget btn secondary">delete</div>
-      <div style="clear:both;"></div>
-    </div>
-  </div>
 </div>
