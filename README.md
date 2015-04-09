@@ -135,7 +135,7 @@ Roadmap
 Hack
 ----
 
-### How to create a form controller
+### Form controller: Basics
 
 Using `<form>` and its `onSubmit` event we can delegate to the browser
 the work of capturing `onKey` events
@@ -147,8 +147,8 @@ use its unique ids to find them
 
 ```html
 <form id="{{ form_id }}">
-    <input type="text" id="{{ input_id }}" />
-    <button type="submit"></button>
+  <input type="text" id="{{ input_id }}" />
+  <button type="submit"></button>
 </form>
 ```
 
@@ -158,13 +158,34 @@ with `.val()`
 Prevent the default submit action of reloading the page
 
 ```js
-dom('#form_id').on('submit', function (event) {
-    event.preventDefault();
+dom('#{{ form_id }}').on('submit', function (event) {
+  event.preventDefault();
 
-    var scope = {
-        field: dom('#input_id').val()
-    };
+  var scope = {
+    field: dom('#{{ input_id }}').val()
+  };
 
-    doSomethingWith(scope);
+  doSomethingWith(scope);
+});
+```
+
+### Form controller: 2-way data binding
+
+**Brute force approach:**
+
+Create a function with the parts of the UI to be updated
+
+```js
+var updateView = function () {
+  dom('{{ selector }}').val(scope.computedValue());
+};
+```
+
+Listen `onInput` events of the inputs by id
+
+```js
+dom('#{{ input_id }}').on('input', function () {
+  scope.property = dom(this).val();
+  updateView();
 });
 ```
