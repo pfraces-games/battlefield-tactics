@@ -30,21 +30,25 @@ Roadmap
 
 ### Iteration #9: new item controllers
 
-*   rooms
+*   update `domo.val`
+*   [DONE] rooms
     *   [DONE] markup: new item
 *   squads
     *   [DONE] markup: new item
     *   controller: new item
-*   soldiers
+*   [WIP] soldiers
     *   [DONE] markup: new item
-    *   controller: new item
-*   characters
+    *   [WIP] controller: new item
+        *   [DONE] 2-way model-view sync
+        *   [DONE] submit data
+        *   [WIP] calculate value
+*   [DONE] characters
     *   [DONE] markup: new item
     *   [DONE] controller: new item
-*   weapons
+*   [DONE] weapons
     *   [DONE] markup: new item
     *   [DONE] controller: new item
-*   maps
+*   [DONE] maps
     *   [DONE] markup: new item
 
 ### Iteration #10: list items controllers
