@@ -23,7 +23,7 @@ define('app.views', function (require) {
   };
 
   var VIEWS = {
-    PUBLIC: ['leaderboard'],
+    PUBLIC: [], // 'leaderboard'
     GUESTS: ['login'],
     MEMBERS: ['profile', 'rooms', 'battle'] // 'notifications'
   };
@@ -72,8 +72,6 @@ define('app.views', function (require) {
       dom('#panel-' + contentId).addClass('visible');
     });
 
-    tab.pin();
-
     tab.enable('logout');
 
     tab.enable('characters');
@@ -83,8 +81,11 @@ define('app.views', function (require) {
     tab.enable('soldiers');
     tab.enable('squads');
 
+    /*
+    tab.pin();
     tab.enable('chat-foo');
     tab.enable('chat-bar');
+    */
   };
 
   return {

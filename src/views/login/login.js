@@ -5,7 +5,7 @@ define('app.login', function (require) {
       tab      = require('ui.tab');
 
   var dom =      require('domo').use({
-    on:           require('domo.on'),
+    on:          require('domo.on'),
     val:         require('domo.val')
   });
 
