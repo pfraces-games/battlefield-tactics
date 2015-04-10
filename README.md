@@ -31,6 +31,9 @@ Roadmap
 ### Iteration #9: new item controllers
 
 *   [TASK] update `domo.val`
+    *   update repo and bump version
+    *   publish to bower: git tag
+    *   update tufo dependency version
 *   [DONE] rooms
     *   [DONE] markup: new item
 *   [WIP] squads

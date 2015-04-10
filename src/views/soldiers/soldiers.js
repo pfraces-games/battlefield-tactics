@@ -27,12 +27,10 @@ define('app.soldiers', function (require) {
     var soldier = {
       name: '',
       value: function () {
-        var computed = (
+        return (
             (parseInt(soldier.character.value, 10) || 0) +
             (parseInt(soldier.weapon.value, 10) || 0)
         );
-
-        return computed;
       },
       character: {
         id: '',
