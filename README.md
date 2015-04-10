@@ -33,15 +33,15 @@ Roadmap
 *   [TASK] update `domo.val`
 *   [DONE] rooms
     *   [DONE] markup: new item
-*   squads
-    *   [DONE] markup: new item
-    *   controller: new item
-*   [WIP] soldiers
+*   [WIP] squads
     *   [DONE] markup: new item
     *   [WIP] controller: new item
+*   [DONE] soldiers
+    *   [DONE] markup: new item
+    *   [DONE] controller: new item
         *   [TASK] [DONE] 2-way model-view sync
         *   [TASK] [DONE] submit data
-        *   [TASK] [WIP] calculate value
+        *   [TASK] [DONE] calculate value
 *   [DONE] characters
     *   [DONE] markup: new item
     *   [DONE] controller: new item
