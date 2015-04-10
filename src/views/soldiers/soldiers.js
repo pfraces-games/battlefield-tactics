@@ -9,6 +9,10 @@ define('app.soldiers', function (require) {
     val:         require('domo.val')
   });
 
+  var int = function (arg) {
+    return parseInt(arg, 10) || 0;
+  };
+
   var filter = function (model, key, value, callback) {
     firebase.child(model)
     .orderByChild(key)
@@ -27,10 +31,7 @@ define('app.soldiers', function (require) {
     var soldier = {
       name: '',
       value: function () {
-        return (
-            (parseInt(soldier.character.value, 10) || 0) +
-            (parseInt(soldier.weapon.value, 10) || 0)
-        );
+        return int(soldier.character.value) + int(soldier.weapon.value); 
       },
       character: {
         id: '',
