@@ -30,15 +30,13 @@ Roadmap
 
 ### Iteration #9: new item controllers
 
-*   [TASK] update `domo.val`
-    *   update repo and bump version
-    *   publish to bower: git tag
-    *   update tufo dependency version
 *   [DONE] rooms
     *   [DONE] markup: new item
 *   [WIP] squads
     *   [DONE] markup: new item
     *   [WIP] controller: new item
+        *   [DONE] list management
+        *   [WIP] create/use domo.remove
 *   [DONE] soldiers
     *   [DONE] markup: new item
     *   [DONE] controller: new item
@@ -168,7 +166,7 @@ dom('#{{ form_id }}').on('submit', function (event) {
     field: dom('#{{ input_id }}').val()
   };
 
-  doSomethingWith(scope);
+  save(scope);
 });
 ```
 

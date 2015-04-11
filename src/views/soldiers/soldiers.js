@@ -25,6 +25,10 @@ define('app.soldiers', function (require) {
     });
   };
 
+  var updateView = function (soldier) {
+    dom('#soldiers-new-value').val(soldier.value());
+  };
+
   var init = function () {
     tab.group('soldiers');
 
@@ -45,38 +49,33 @@ define('app.soldiers', function (require) {
       }
     };
 
-    var updateView = function () {
-      dom('#soldiers-new-value').val(soldier.value());
-    };
-
     dom('#soldiers-new-name').on('input', function () {
       soldier.name = dom(this).val();
-      updateView();
     });
 
     dom('#soldiers-new-character').on('input', function () {
       soldier.character = {};
-      updateView();
+      updateView(soldier);
 
       filter('characters', 'name', dom(this).val(), function (item, index) {
         soldier.character.id = index;
         soldier.character.name = item.name; 
         soldier.character.value = item.value;
 
-        updateView();
+        updateView(soldier);
       });
     });
 
     dom('#soldiers-new-weapon').on('input', function () {
       soldier.weapon = {};
-      updateView();
+      updateView(soldier);
 
       filter('weapons', 'name', dom(this).val(), function (item, index) {
         soldier.weapon.id = index;
         soldier.weapon.name = item.name; 
         soldier.weapon.value = item.value;
 
-        updateView();
+        updateView(soldier);
       });
     });
 
@@ -85,6 +84,7 @@ define('app.soldiers', function (require) {
 
       firebase.child('soldiers').push({
         name: soldier.name,
+        value: soldier.value(),
         character: soldier.character,
         weapon: soldier.weapon
       });
