@@ -25,10 +25,6 @@ define('app.soldiers', function (require) {
     });
   };
 
-  var updateView = function (soldier) {
-    dom('#soldiers-new-value').val(soldier.value());
-  };
-
   var init = function () {
     tab.group('soldiers');
 
@@ -48,6 +44,12 @@ define('app.soldiers', function (require) {
         value: 0
       }
     };
+
+    var updateView = function (soldier) {
+      dom('#soldiers-new-value').val(soldier.value());
+    };
+
+    updateView(soldier);
 
     dom('#soldiers-new-name').on('input', function () {
       soldier.name = dom(this).val();

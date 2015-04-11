@@ -8,8 +8,12 @@ define('app.squads', function (require) {
   var dom      = require('domo').use({
     on:          require('domo.on'),
     val:         require('domo.val'),
-    index:       require('domo.index')
+    remove:      require('domo.remove')
   });
+
+  var tpl      = require('domo').use({
+    repeater:    require('domo.repeater')
+   });
 
   var int = function (arg) {
     return parseInt(arg, 10) || 0;
@@ -47,70 +51,55 @@ define('app.squads', function (require) {
     var updateView = function (squad) {
       dom('#squads-new-value').val(squad.value());
     };
-   
-    var addSoldier = (function () {
-      var dom = require('domo').use({
-        append: require('domo.append'),
-        clone:  require('domo.clone'),
-        parent: require('domo.parent')
-      });
-   
-      var node = dom('.squads-new-soldier'),
-          parent = dom(node.parent()),
-          tpl = dom(node.clone());
-      
-      var addSoldier = function () {
-          var copy = tpl.clone();
-          parent.append(copy);
-          return copy;
+
+    var addRow = function (template, list) {
+      var row = template(),
+          item = {};
+
+      list.push(item);
+
+      var updateItem = function (newItem) {
+        var index = list.indexOf(item);
+        list[index] = item = newItem;
       };
-   
-      return addSoldier;
-    })();
+
+      var removeItem = function () {
+        var index = list.indexOf(item);
+        list.splice(index, 1);
+      };
+
+      dom(row).on('input', function () {
+        var value = dom('.squads-new-soldier-name', this).val;
+        updateItem({});
+        updateView(squad);
+
+        filter('soldiers', 'name', value(), function (soldier, index) {
+          item.id = index;
+          item.name = soldier.name; 
+          item.value = soldier.value;
+
+          updateView(squad);
+        });
+      });
+      
+      dom('.squads-new-remove-soldier', row).on('click', function () {
+        dom(row).remove();
+        removeItem();
+        updateView(squad);
+      });
+    };
+
+    var soldierTpl = tpl('.squads-new-soldier').repeater();
+    addRow(soldierTpl, squad.soldiers);
+    updateView(squad);
 
     dom('#squads-new-name').on('input', function () {
       squad.name = dom(this).val();
     });
 
-    /*
-    
-    <tr id="squads-new-soldiers">
-      <td><input type="text" class="squads-new-soldier" /></td>
-    </tr>
-    
-    */
-    
-    var onSoldierInput = function () {
-      var index = dom(this).index(),
-          value = dom('.squads-new-soldier-name', this).val,
-          soldier = squad.soldiers[index] = {};
-
-      updateView(squad);
-
-      filter('soldiers', 'name', value(), function (item, index) {
-        soldier.id = index;
-        soldier.name = item.name; 
-        soldier.value = item.value;
-
-        updateView(squad);
-      });
-    };
-
-    dom('.squads-new-soldier').on('input', onSoldierInput);
-
     dom('#squads-new-add-soldier').on('click', function (event) {
       event.preventDefault(); // prevent firing submit event
-
-      var soldier = addSoldier(),
-          index = squad.soldiers.push(null) - 1;
-
-      dom(soldier).on('input', onSoldierInput);
-      
-      dom('.squads-new-remove-soldier', soldier).on('click', function () {
-        soldier.parentNode.removeChild(soldier);
-        squad.soldiers.splice(index, 1);
-        updateView(squad);
-      });
+      addRow(soldierTpl, squad.soldiers);
     });
 
     dom('#squads-new-submit').on('submit', function (event) {

@@ -30,27 +30,9 @@ Roadmap
 
 ### Iteration #9: new item controllers
 
-*   [DONE] rooms
-    *   [DONE] markup: new item
-*   [WIP] squads
-    *   [DONE] markup: new item
-    *   [WIP] controller: new item
-        *   [DONE] list management
-        *   [WIP] create/use domo.remove
-*   [DONE] soldiers
-    *   [DONE] markup: new item
-    *   [DONE] controller: new item
-        *   [TASK] [DONE] 2-way model-view sync
-        *   [TASK] [DONE] submit data
-        *   [TASK] [DONE] calculate value
-*   [DONE] characters
-    *   [DONE] markup: new item
-    *   [DONE] controller: new item
-*   [DONE] weapons
-    *   [DONE] markup: new item
-    *   [DONE] controller: new item
-*   [DONE] maps
-    *   [DONE] markup: new item
+*   squads and soldiers under user model
+*   `squads.js`: refactor list management
+*   `squads.js`, `soldiers.js`: duplicated `int` and `filter` utils
 
 ### Iteration #10: list items controllers
 
@@ -74,38 +56,36 @@ Roadmap
 *   weapons
     *   controller: view item
 
+### Iteration #12: rooms crud
+
+*   isolated rooms
+*   waiting room
+*   render battle from stored data
+
 ### Next iterations
 
-*   rooms crud
-    *   isolated rooms
-    *   waiting room
-*   decouple ui components logic from markup and style
-*   related cruds: autocomplete
 *   layout refactor
     *   use proof of concept
-    *   oanels inside views
+    *   panels inside views
     *   bottom bar
         *   chat (width 100%)
         *   notifications
 *   move profile:shared to admin:content
     *   markup: admin
+*   maps
+    *   crud
+    *   fullscreen
+    *   scrolling
+    *   share viewport between devices
 *   battle
-    *   render from stored data
     *   path preview
     *   lock client during enemy turn
     *   widget: team view
     *   widget: current soldier stats
     *   finish battle: on 'give up'
     *   finish battle: when no more enemies
-*   maps
-    *   crud
-    *   fullscreen
-    *   scrolling
-    *   share viewport between devices
-*   engine
-    *   accuracy
-    *   time units
-    *   visibility
+*   decouple ui components logic from markup and style
+*   autocomplete component
 *   model listeners
     *   pubsub library
     *   promises library
@@ -117,6 +97,10 @@ Roadmap
     *   repeat
     *   if
     *   ui components directives
+*   engine
+    *   accuracy
+    *   time units
+    *   visibility
 *   isometric view
     *   canvas render
     *   bitmap animations
