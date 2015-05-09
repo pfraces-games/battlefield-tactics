@@ -1,4 +1,4 @@
-define('app.model.turn', function (require) {
+define('battle.model.turn', function (require) {
   'use strict';
 
   var isDefined = require('mu.is.defined');

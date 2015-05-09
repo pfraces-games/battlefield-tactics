@@ -2,9 +2,9 @@ define('app.battle.render', function (require) {
   'use strict';
 
   var domo           = require('domo'),
-      turn           = require('app.model.turn'),
-      cells          = require('app.model.cells'),
-      characters     = require('app.model.characters'),
+      turn           = require('battle.model.turn'),
+      cells          = require('battle.model.cells'),
+      characters     = require('battle.model.characters'),
       uiCell         = require('app.battle.cell'),
       tplCell        = require('app.battle.tpl.cell'),
       tplCharacter   = require('app.battle.tpl.character');

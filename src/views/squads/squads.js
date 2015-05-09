@@ -1,7 +1,8 @@
 define('app.squads', function (require) {
   'use strict';
 
-  var reduce   = require('mu.list.reduce'),
+  var partial  = require('mu.fn.partial'),
+      reduce   = require('mu.list.reduce'),
       tab      = require('ui.tab'),
       firebase = require('firebase');
 
@@ -19,7 +20,7 @@ define('app.squads', function (require) {
     return parseInt(arg, 10) || 0;
   };
 
-  var filter = function (model, key, value, callback) {
+  var query = function (model, key, value, callback) {
     firebase.child(model)
     .orderByChild(key)
     .equalTo(value)
@@ -28,6 +29,16 @@ define('app.squads', function (require) {
           index = snapshot.key();
 
       callback(item, index);
+    });
+  };
+
+  var soldierByName = function (name, callback) {
+    query('soldiers', 'name', name, function (item, index) {
+      callback({
+        id: index,
+        name: item.name,
+        value: item.value
+      });
     });
   };
 
@@ -48,50 +59,43 @@ define('app.squads', function (require) {
       } */]
     };
 
-    var updateView = function (squad) {
+    var updateView = function () {
       dom('#squads-new-value').val(squad.value());
     };
 
-    var addRow = function (template, list) {
-      var row = template(),
+    var addItem = function (template, list) {
+      var node = template(),
           item = {};
 
       list.push(item);
+      updateView();
 
       var updateItem = function (newItem) {
         var index = list.indexOf(item);
-        list[index] = item = newItem;
+        item = newItem || {};
+        list[index] = item;
+        updateView();
       };
 
       var removeItem = function () {
         var index = list.indexOf(item);
         list.splice(index, 1);
+        dom(node).remove();
+        updateView();
       };
 
-      dom(row).on('input', function () {
-        var value = dom('.squads-new-soldier-name', this).val;
-        updateItem({});
-        updateView(squad);
-
-        filter('soldiers', 'name', value(), function (soldier, index) {
-          item.id = index;
-          item.name = soldier.name; 
-          item.value = soldier.value;
-
-          updateView(squad);
-        });
+      dom('.squads-new-soldier-name', node).on('input', function () {
+        updateItem();
+        soldierByName(dom(this).val(), updateItem);
       });
-      
-      dom('.squads-new-remove-soldier', row).on('click', function () {
-        dom(row).remove();
-        removeItem();
-        updateView(squad);
-      });
+
+      dom('.squads-new-remove-soldier', node).on('click', removeItem);
     };
 
-    var soldierTpl = tpl('.squads-new-soldier').repeater();
-    addRow(soldierTpl, squad.soldiers);
-    updateView(squad);
+    var soldierTpl = tpl('.squads-new-soldier').repeater(),
+        addSoldier = partial(addItem, soldierTpl, squad.soldiers);
+
+    addSoldier();
 
     dom('#squads-new-name').on('input', function () {
       squad.name = dom(this).val();
@@ -99,11 +103,11 @@ define('app.squads', function (require) {
 
     dom('#squads-new-add-soldier').on('click', function (event) {
       event.preventDefault(); // prevent firing submit event
-      addRow(soldierTpl, squad.soldiers);
+      addSoldier();
     });
 
     dom('#squads-new-submit').on('submit', function (event) {
-      event.preventDefault();
+      event.preventDefault(); // prevent firing submit event
 
       firebase.child('squads').push({
         name: squad.name,

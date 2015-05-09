@@ -1,8 +1,8 @@
 define.root(function (require) {
   'use strict';
-  
+
   var views      = require('app.views'),
-      characters = require('app.model.characters');
+      characters = require('battle.model.characters');
 
   // sample characters
 

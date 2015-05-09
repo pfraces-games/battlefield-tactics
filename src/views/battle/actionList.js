@@ -5,9 +5,9 @@ define('app.battle.actionList', function (require) {
       filter     = require('mu.list.filter'),
       nodes      = require('app.battle.pathNodes'),
       direction  = require('app.battle.pathDirection'),
-      characters = require('app.model.characters'),
-      cells      = require('app.model.cells'),
-      turn       = require('app.model.turn');
+      characters = require('battle.model.characters'),
+      cells      = require('battle.model.cells'),
+      turn       = require('battle.model.turn');
 
   var select = function (target) {
     if (!target) { return; }

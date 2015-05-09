@@ -8,14 +8,14 @@ Pre-requisites
 
 1.  **git** (http://git-scm.org)
 2.  **node + npm** (http://nodejs.org)
-3.  **bower** (`npm install -g bower`)
+3.  **udm** (`npm install -g udm`)
 
 Install
 -------
 
     git clone https://github.com/pfraces-wip/tufo.git
     cd tufo
-    npm install && bower install
+    npm install && udm
 
 Usage
 -----

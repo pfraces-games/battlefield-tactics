@@ -13,7 +13,7 @@ module.exports = function (grunt) {
       build: 'build',
       test: 'test',
       fixtures: 'fixtures',
-      vendor: 'bower_components',
+      vendor: 'dependencies',
 
       css: {
         src: '<%= prj.src %>',
@@ -33,13 +33,17 @@ module.exports = function (grunt) {
       deps: {
         css: ['<%= prj.src %>/lib/ui'],
         js: [
-          '<%= prj.vendor %>/define/define.js',
-          '<%= prj.vendor %>/mu.is/is.js',
-          '<%= prj.vendor %>/mu.fn/fn.js',
-          '<%= prj.vendor %>/mu.list/list.js',
-          '<%= prj.vendor %>/mu.api/api.js',
-          '<%= prj.vendor %>/domo/domo.js',
-          '<%= prj.vendor %>/firebase/firebase.js'
+          '<%= prj.vendor %>/define/master/src/define.js',
+          '<%= prj.vendor %>/mu.is/master/src/is.js',
+          '<%= prj.vendor %>/mu.fn/master/src/fn.js',
+          '<%= prj.vendor %>/mu.list/master/src/list.js',
+          '<%= prj.vendor %>/mu.api/master/src/api.js',
+          '<%= prj.vendor %>/domo/master/src/domo.js',
+          '<%= prj.vendor %>/domo.repeater/master/src/repeater.js',
+          '<%= prj.vendor %>/domo.on.extras/master/src/on.extras.js',
+          '<%= prj.vendor %>/mu.async/master/src/async.js',
+          '<%= prj.vendor %>/model/master/src/model.js',
+          '<%= prj.vendor %>/firebase-bower/master/firebase.js'
         ]
       }
     },

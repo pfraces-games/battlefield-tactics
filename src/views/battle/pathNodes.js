@@ -3,7 +3,7 @@ define('app.battle.pathNodes', function (require) {
 
   var map          = require('mu.list.map'),
       straightLine = require('straightLine'),
-      cells        = require('app.model.cells');
+      cells        = require('battle.model.cells');
 
   var nodes = function (from, to) {
     return map(straightLine(from, to), function (node) {

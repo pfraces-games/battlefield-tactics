@@ -1,4 +1,4 @@
-define('app.model.map', function () {
+define('battle.model.map', function () {
   'use strict';
 
   /**
@@ -25,6 +25,23 @@ define('app.model.map', function () {
     ['G','G','G','G','G','G','L','L','L','L','G','W','W','W','G','G'],
     ['G','G','G','G','G','G','L','L','L','L','G','G','G','G','G','G']
   ];
+
+  /*
+  var map = [
+    '      ~~~~      ',
+    '  OOO ~~~~      ',
+    '    O ~~~~      ',
+    '    O ~~~~  O   ',
+    '      ~~~~  OO  ',
+    '   O         O  ',
+    '             O  ',
+    '      ~~~~ O    ',
+    ' O  O ~~~~      ',
+    ' O    ~~~~      ',
+    '      ~~~~ OOO  ',
+    '      ~~~~      '
+  ];
+  */
 
   return map;
 });
