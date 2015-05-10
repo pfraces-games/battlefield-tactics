@@ -3,8 +3,8 @@ define('app.battle.actionHandler', function (require) {
 
   var partial    = require('mu.fn.partial'),
       each       = require('mu.list.each'),
-      cells      = require('battle.model.cells'),
-      characters = require('battle.model.characters'),
+      cells      = require('app.battle.model.cells'),
+      characters = require('app.battle.model.characters'),
       actions    = require('app.battle.actionList');
 
   var or = function (actions) {

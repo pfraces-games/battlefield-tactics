@@ -2,7 +2,7 @@ define.root(function (require) {
   'use strict';
 
   var views      = require('app.views'),
-      characters = require('battle.model.characters');
+      characters = require('app.battle.model.characters');
 
   // sample characters
 

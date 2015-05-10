@@ -1,4 +1,4 @@
-define('battle.model.map', function () {
+define('app.battle.model.map', function () {
   'use strict';
 
   /**

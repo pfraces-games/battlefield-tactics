@@ -1,8 +1,8 @@
-define('battle.model.cells', function (require) {
+define('app.battle.model.cells', function (require) {
   'use strict';
 
   var matrix = require('matrix'),
-      map    = require('battle.model.map');
+      map    = require('app.battle.model.map');
 
   var cells = matrix(map).map(function (terrain, pos) {
     return {

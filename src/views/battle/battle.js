@@ -2,8 +2,8 @@ define('app.battle', function (require) {
   'use strict';
 
   var domo          = require('domo'),
-      characters    = require('battle.model.characters'),
-      turn          = require('battle.model.turn'),
+      characters    = require('app.battle.model.characters'),
+      turn          = require('app.battle.model.turn'),
       actionHandler = require('app.battle.actionHandler'),
       render        = require('app.battle.render'),
       uiCell        = require('app.battle.cell'),

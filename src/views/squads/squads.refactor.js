@@ -1,23 +1,25 @@
 /**
- * TODO: real selectors
  * TODO: storage.soldiers.byName
  * TODO: storage.squads.create
+ * TODO: real selectors
+ * TODO: app.squads controller with tab.group
+ * TODO: save numeric data as number
  */
 
 define('app.squads.create', function (require) {
   'use strict';
 
-  var reduce   = require('mu.list.reduce'),
-      model    = require('model'),
-      storage  = require('app.storage');
+  var reduce  = require('mu.list.reduce'),
+      model   = require('model'),
+      storage = require('app.storage');
 
-  var dom      = require('domo').use({
-    onInput    : require('domo.on.input'),
-    onClick    : require('domo.on.click'),
-    onSubmit   : require('domo.on.submit'),
-    val        : require('domo.val'),
-    remove     : require('domo.remove'),
-    repeater   : require('domo.repeater')
+  var dom     = require('domo').use({
+    onInput   : require('domo.on.input'),
+    onClick   : require('domo.on.click'),
+    onSubmit  : require('domo.on.submit'),
+    val       : require('domo.val'),
+    remove    : require('domo.remove'),
+    repeater  : require('domo.repeater')
    });
 
   var init = function () {

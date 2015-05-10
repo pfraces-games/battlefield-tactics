@@ -1,4 +1,4 @@
-define('battle.model.characters', function (require) {
+define('app.battle.model.characters', function (require) {
   'use strict';
 
   var isDefined = require('mu.is.defined'),
@@ -7,7 +7,7 @@ define('battle.model.characters', function (require) {
       each      = require('mu.list.each'),
       remove    = require('mu.list.remove'),
       uid       = require('uid'),
-      cells     = require('battle.model.cells');
+      cells     = require('app.battle.model.cells');
 
   var id = uid(),
       characters = [],
