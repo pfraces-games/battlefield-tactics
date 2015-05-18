@@ -1,9 +1,3 @@
-/**
- * TODO: do not save soldier DOM nodes
- * TODO: app.squads controller with tab.group
- * TODO: save numeric data as number
- */
-
 define('app.squads.create', function (require) {
   'use strict';
 
@@ -27,18 +21,18 @@ define('app.squads.create', function (require) {
   var init = function () {
     var squad = model.object({
       name: '',
-      value: function (squad) { return squad.soldiers.value(); },
+      value: function () { return squad.soldiers.value(); },
       soldiers: model.array({
-        add: function (soldiers, soldier) {
-          soldiers.insert(soldier || {
+        add: function (soldier) {
+          squad.soldiers.insert(soldier || {
             id: '',
             name: '',
             value: 0
           });
         },
-        value: function (soldiers) {
-          return reduce(soldiers(), 0, function (acc, item) {
-            return acc + item.value();
+        value: function () {
+          return reduce(squad.soldiers(), 0, function (acc, item) {
+            return acc + item.value;
           });
         }
       })
@@ -55,13 +49,15 @@ define('app.squads.create', function (require) {
     squad.soldiers.add();
 
     squad.soldiers.on('insert', function (soldier) {
-      var node = soldier.value().node = $soldier();
-      dom('.squads-new-soldier-name', node).onInput(storage.soldiers.byName(soldier.update));
-      dom('.squads-new-remove-soldier', node).onClick(soldier.remove);
-    });
+      var node = $soldier();
 
-    squad.soldiers.on('remove', function (soldier) {
-      dom(soldier.node).remove();
+      dom('.squads-new-soldier-name', node)
+      .onInput(storage.soldiers.byName(soldier.update));
+
+      dom('.squads-new-remove-soldier', node).onClick(function () {
+        soldier.remove();
+        dom(node).remove();
+      });
     });
 
     dom('#squads-new-submit').onSubmit(function () {
