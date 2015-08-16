@@ -31,7 +31,7 @@ define('app.squads.create', function (require) {
           });
         },
         value: function () {
-          return reduce(squad.soldiers(), 0, function (acc, item) {
+          return reduce(squad.soldiers.snapshot(), 0, function (acc, item) {
             return acc + item.value;
           });
         }
@@ -61,7 +61,7 @@ define('app.squads.create', function (require) {
     });
 
     dom('#squads-new-submit').onSubmit(function () {
-      storage.squads.save(squad());
+      storage.squads.save(squad.snapshot());
     });
   };
 
