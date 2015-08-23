@@ -6,6 +6,6 @@
   "pfraces/domo": "*",
   "pfraces/domo.repeater": "*",
   "pfraces/domo.on.extras": "*",
-  "pfraces/model": "*",
+  "pfraces/model": "0.4.0",
   "firebase/firebase-bower": "*"
 }
