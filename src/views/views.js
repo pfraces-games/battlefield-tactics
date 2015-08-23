@@ -2,7 +2,7 @@ define('app.views', function (require) {
   'use strict';
 
   var each     = require('mu.list.each'),
-      firebase = require('firebase'),
+      session = require('storage.session'),
       tab      = require('ui.tab');
 
   var dom =      require('domo').use({
@@ -62,10 +62,8 @@ define('app.views', function (require) {
     each(VIEWS.PUBLIC, tab.enable);
     each(VIEWS.GUESTS, tab.enable);
 
-    firebase.onAuth(function (auth) {
-      if (auth) { login(); }
-      else { logout(); }
-    });
+    session.onLogin(login);
+    session.onLogout(logout);
 
     tab.group('view', function (contentId) {
       dom('.view-panel.visible').removeClass('visible');

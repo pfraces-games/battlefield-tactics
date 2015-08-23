@@ -1,17 +1,14 @@
 define('app.logout', function (require) {
   'use strict';
 
-  var firebase = require('firebase');
+  var session = require('storage.session');
 
-  var dom      = require('domo').use({
-    on:          require('domo.on')
+  var dom     = require('domo').use({
+    onSubmit  : require('domo.on.submit')
   });
 
   var init = function () {
-    dom('#logout-submit').on('submit', function (event) {
-      event.preventDefault();
-      firebase.unauth();
-    });
+    dom('#logout-submit').onSubmit(session.logout);
   };
 
   return {

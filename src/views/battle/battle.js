@@ -7,7 +7,7 @@ define('app.battle', function (require) {
       actionHandler = require('app.battle.actionHandler'),
       render        = require('app.battle.render'),
       uiCell        = require('app.battle.cell'),
-      firebase      = require('firebase');
+      firebase      = require('storage.firebase');
 
   var dom = domo.use({
     on: require('domo.on')

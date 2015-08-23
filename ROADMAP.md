@@ -1,46 +1,40 @@
 Roadmap
 =======
 
-Iteration 9: new item controllers
----------------------------------
-
-*   squads and soldiers under user model
-*   `squads.js`: refactor list management
-*   `squads.js`, `soldiers.js`: duplicated `int` and `filter` utils
-
-Iteration 10: list items controllers
-------------------------------------
-
-*   squads
-    *   controller: list items
-*   soldiers
-    *   controller: list items
-*   characters
-    *   controller: list items
-*   weapons
-    *   controller: list items
-
-Iteration 11: view item controllers
+Iteration 9: "new item" controllers
 -----------------------------------
 
-*   squads
-    *   controller: view item
-*   soldiers
-    *   controller: view item
-*   characters
-    *   controller: view item
-*   weapons
-    *   controller: view item
+*   store "squads" and "soldiers" under "user"
+*   duplicated functionality in storage and storage.user
 
-Iteration 12: rooms crud
-------------------------
+Iteration 10: "list items" controllers
+--------------------------------------
 
+*   squads: list items controller
+*   soldiers: list items controller
+*   characters: list items controller
+*   weapons: list items controller
+
+Iteration 11: "update item" controllers
+---------------------------------------
+
+*   squads: update item controller
+*   soldiers: update item controller
+*   characters: update item controller
+*   weapons: update item controller
+
+Next iterations
+===============
+
+Gameplay
+--------
+
+### rooms
+
+*   crud
 *   isolated rooms
 *   waiting room
 *   render battle from stored data
-
-Next iterations
----------------
 
 ### layout refactor
 
@@ -49,13 +43,6 @@ Next iterations
 *   bottom bar
     *   chat (width 100%)
     *   notifications
-
-### maps
-
-*   fullscreen
-*   scrolling
-*   share viewport between devices
-*   crud
 
 ### cruds
 
@@ -72,14 +59,45 @@ Next iterations
 *   finish battle: on 'give up'
 *   finish battle: when no more enemies
 
+### engine
+
+*   accuracy
+*   time units
+*   visibility
+
+### maps
+
+*   crud
+*   fullscreen
+*   battle widget: map
+*   scrolling
+*   share viewport between devices
+
+UX
+--
+
+### chat
+
+### notifications
+
+### renders
+
+*   canvas api
+*   bitmap animations
+*   cenital render
+*   dimetric render
+*   isometric render
+
+Architecture
+------------
+
+### view/model bindings
+
+*   create `dom.bind`
+
 ### ui components
 
 *   decouple logic from markup and style
-
-### community
-
-*   chat
-*   notifications
 
 ### directives
 
@@ -88,20 +106,6 @@ Next iterations
 *   repeat
 *   if
 *   ui components
-
-### engine
-
-*   accuracy
-*   time units
-*   visibility
-
-### isometric view
-
-*   canvas render
-*   bitmap animations
-*   cenital render
-*   dimetric render
-*   isometric render
 
 ### build system
 
