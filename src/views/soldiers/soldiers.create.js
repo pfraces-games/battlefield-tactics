@@ -42,7 +42,7 @@ define('app.soldiers.create', function (require) {
     .onInput(storage.filter('weapons', 'name', soldier.weapon.update));
 
     dom('#soldiers-new-submit').onSubmit(function () {
-      user.insert('soldiers', soldier.snapshot()); 
+      storage.insert(user.soldiers(), soldier.snapshot()); 
     });
   };
 

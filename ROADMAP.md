@@ -1,12 +1,6 @@
 Roadmap
 =======
 
-Iteration 9: "new item" controllers
------------------------------------
-
-*   store "squads" and "soldiers" under "user"
-*   duplicated functionality in storage and storage.user
-
 Iteration 10: "list items" controllers
 --------------------------------------
 

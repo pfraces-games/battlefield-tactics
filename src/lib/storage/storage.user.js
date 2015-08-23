@@ -10,25 +10,21 @@ define('storage.user', function (require) {
     user = firebase.child('users').child(auth.uid);
   });
 
-  var insert = function (listName, item) {
-    user.child(listName).push(item);
+  var profile = function () {
+    return user.child('profile');
   };
 
-  var filter = function (listName, attr, fn) {
-    return function (value) {
-      fn();
+  var soldiers = function () {
+    return user.child('soldiers');
+  };
 
-      user.child(listName).orderByChild(attr).equalTo(value)
-      .once('child_added', function (snapshot) {
-        var item = snapshot.val();
-        item.id = snapshot.key();
-        fn(item);
-      });
-    };
+  var squads = function () {
+    return user.child('squads');
   };
 
   return {
-    insert: insert,
-    filter: filter
+    profile: profile,
+    soldiers: soldiers,
+    squads: squads
   };
 });

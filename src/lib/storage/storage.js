@@ -1,10 +1,15 @@
 define('storage', function (require) {
   'use strict';
 
-  var firebase = require('storage.firebase');
+  var isString = require('mu.is.string'),
+      firebase = require('storage.firebase');
 
-  var filter = function (listName, attr, fn) {
-    var list = firebase.child(listName);
+  var node = function (node) {
+    return isString(node) ? firebase.child(node) : node;
+  };
+
+  var filter = function (list, attr, fn) {
+    list = node(list);
 
     return function (value) {
       fn();
@@ -18,8 +23,9 @@ define('storage', function (require) {
     };
   };
 
-  var insert = function (listName, item) {
-    firebase.child(listName).push(item);
+  var insert = function (list, item) {
+    list = node(list);
+    list.push(item);
   };
 
   return {
