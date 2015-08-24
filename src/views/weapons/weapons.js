@@ -2,11 +2,14 @@ define('app.weapons', function (require) {
   'use strict';
 
   var tab    = require('ui.tab'),
-      create = require('app.weapons.create');
+      master = require('app.weapons.master'),
+      detail = require('app.weapons.detail');
 
   var init = function () {
     tab.group('weapons');
-    create.init();
+
+    master.init();
+    detail.init();
   };
 
   return {

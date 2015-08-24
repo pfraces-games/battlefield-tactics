@@ -3,9 +3,6 @@
     <h2>weapons</h2>
 
     <div class="tabs top">
-      <div id="tab-weapons-new" class="tab tab-weapons">
-        new
-      </div>
       <div id="tab-weapons-detail" class="tab tab-weapons">
         item
       </div>
@@ -13,53 +10,6 @@
         list
       </div>
     </div>
-  </div>
-
-  <!-- section: new -->
-
-  <div id="weapons-new" class="weapons section">
-    <form id="weapons-new-submit">
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr>
-              <td class="tag">name</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="weapons-new-name" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tag">value</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="weapons-new-value" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr>
-              <td class="tag">damage</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="weapons-new-damage" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="submit-area">
-        <button type="submit" class="widget btn">save</button>
-        <div style="clear:both;"></div>
-      </div>
-    </form>
   </div>
 
   <!-- section: detail -->
@@ -121,19 +71,14 @@
           <tr>
             <td>class</td>
             <td class="w10">value</td>
-            <td class="w30">user</td>
+            <td class="w10">damage</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>gun</td>
-            <td class="rtl">50</td>
-            <td>foo</td>
-          </tr>
-          <tr>
-            <td>rifle</td>
-            <td class="rtl">100</td>
-            <td>foo</td>
+          <tr class="weapons-master-item">
+            <td class="weapons-master-item-name"></td>
+            <td class="weapons-master-item-value rtl"></td>
+            <td class="weapons-master-item-damage rtl"></td>
           </tr>
         </tbody>
       </table>

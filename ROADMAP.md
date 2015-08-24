@@ -4,10 +4,13 @@ Roadmap
 Iteration 10: "list items" controllers
 --------------------------------------
 
+*   weapons: list items controller
+    *   hide "delete" button when loading a weapon
+    *   show "delete" button when creating a new weapon
+    *   update tab names
 *   squads: list items controller
 *   soldiers: list items controller
 *   characters: list items controller
-*   weapons: list items controller
 
 Iteration 11: "update item" controllers
 ---------------------------------------
