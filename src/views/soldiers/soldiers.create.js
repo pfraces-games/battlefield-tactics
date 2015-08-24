@@ -1,4 +1,4 @@
-define('app.soldiers.create', function (require) {
+  define('app.soldiers.create', function (require) {
   'use strict';
 
   var model   = require('model'),
@@ -41,9 +41,11 @@ define('app.soldiers.create', function (require) {
     dom('#soldiers-new-weapon')
     .onInput(storage.filter('weapons', 'name', soldier.weapon.update));
 
-    dom('#soldiers-new-submit').onSubmit(function () {
-      storage.insert(user.soldiers(), soldier.snapshot()); 
-    });
+    dom('#soldiers-new-submit')
+    .onSubmit(storage.insert(user.soldiers, soldier.snapshot));
+
+    // initial redraw of soldier value
+    soldier.emit('event');
   };
 
   return {

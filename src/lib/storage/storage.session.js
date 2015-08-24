@@ -3,8 +3,10 @@ define('storage.session', function (require) {
 
   var firebase = require('storage.firebase');
 
-  var login = function (user, fn) {
-    firebase.authWithPassword(user, fn);
+  var login = function (user) {
+    firebase.authWithPassword(user, function (err) {
+      if (err) { throw err; }
+    });
   };
 
   var logout = function () {

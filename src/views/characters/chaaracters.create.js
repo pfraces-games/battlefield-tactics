@@ -24,9 +24,8 @@ define('app.characters.create', function (require) {
     dom('#characters-new-agility').onInput(character.agility);
     dom('#characters-new-accuracy').onInput(character.accuracy);
 
-    dom('#characters-new-submit').onSubmit(function () {
-      storage.insert('characters', character.snapshot());
-    });
+    dom('#characters-new-submit')
+    .onSubmit(storage.insert('characters', character.snapshot));
   };
 
   return {

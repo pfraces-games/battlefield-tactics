@@ -4,10 +4,7 @@ Roadmap
 Iteration 10: "list items" controllers
 --------------------------------------
 
-*   weapons: list items controller
-    *   hide "delete" button when loading a weapon
-    *   show "delete" button when creating a new weapon
-    *   update tab names
+*   [DONE] weapons: list items controller
 *   squads: list items controller
 *   soldiers: list items controller
 *   characters: list items controller
@@ -15,10 +12,10 @@ Iteration 10: "list items" controllers
 Iteration 11: "update item" controllers
 ---------------------------------------
 
+*   weapons: update item controller
 *   squads: update item controller
 *   soldiers: update item controller
 *   characters: update item controller
-*   weapons: update item controller
 
 Next iterations
 ===============
@@ -88,6 +85,13 @@ UX
 Architecture
 ------------
 
+### realtime controllers
+
+*   use model in master views
+*   listen "child_changed" events in master views
+*   listen to "child_changed" events in detail views
+*   listen to "child_removed" events in detail views
+
 ### view/model bindings
 
 *   create `dom.bind`
@@ -95,6 +99,15 @@ Architecture
 ### ui components
 
 *   decouple logic from markup and style
+
+#### ui.tab
+
+refactor:
+
+*   the api is not usable
+*   ability to create tabs dynamically
+*   ability to show/hide tabs
+*   ability to change tab names
 
 ### directives
 

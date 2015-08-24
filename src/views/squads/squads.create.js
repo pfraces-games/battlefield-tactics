@@ -44,7 +44,7 @@ define('app.squads.create', function (require) {
       var $node = $soldier();
 
       dom('.squads-new-soldier-name', $node)
-      .onInput(storage.filter(user.soldiers(), 'name', soldier.update));
+      .onInput(storage.filter(user.soldiers, 'name', soldier.update));
 
       dom('.squads-new-remove-soldier', $node).onClick(function () {
         removeSoldier();
@@ -52,9 +52,8 @@ define('app.squads.create', function (require) {
       });
     });
 
-    dom('#squads-new-submit').onSubmit(function () {
-      storage.insert(user.squads(), squad.snapshot());
-    });
+    dom('#squads-new-submit')
+    .onSubmit(storage.insert(user.squads, squad.snapshot));
 
     squad.soldiers.insert();
   };
