@@ -24,7 +24,7 @@ define('app.weapons.master', function (require) {
 
       dom($node).onClick(partial(detail.load, weapon.id));
       onRemove(dom($node).remove);
-  	});
+    });
 
     dom('#weapons-master-create').onClick(detail.load);
   };
