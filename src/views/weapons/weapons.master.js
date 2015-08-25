@@ -1,15 +1,15 @@
 define('app.weapons.master', function (require) {
   'use strict';
 
-  var partial = require('mu.fn.partial'),
-      storage = require('storage'),
-      detail  = require('app.weapons.detail');
+  var partial  = require('mu.fn.partial'),
+      storage  = require('storage'),
+      detail   = require('app.weapons.detail');
 
-  var dom     = require('domo').use({
-    html      : require('domo.html'),
-    remove    : require('domo.remove'),
-  	repeater  : require('domo.repeater'),
-    onClick   : require('domo.on.click')
+  var dom      = require('domo').use({
+      html     : require('domo.html'),
+      remove   : require('domo.remove'),
+  	  repeater : require('domo.repeater'),
+      onClick  : require('domo.on.click')
   });
 
   var init = function () {
