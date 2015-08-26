@@ -1,36 +1,16 @@
 Roadmap
 =======
 
-Iteration 10: "list items" controllers
---------------------------------------
+Iteration 10: CRUDs
+-------------------
 
-*   [DONE] weapons: list items controller
-*   squads: list items controller
-*   soldiers: list items controller
-*   characters: list items controller
+*   [DONE] weapons
+*   characters
+*   soldiers
+*   squads
 
-Iteration 11: "update item" controllers
----------------------------------------
-
-*   weapons: update item controller
-*   squads: update item controller
-*   soldiers: update item controller
-*   characters: update item controller
-
-Next iterations
-===============
-
-Gameplay
---------
-
-### rooms
-
-*   crud
-*   isolated rooms
-*   waiting room
-*   render battle from stored data
-
-### layout refactor
+Iteration 11: layout refactor
+-----------------------------
 
 *   use proof of concept
 *   panels inside views
@@ -38,11 +18,19 @@ Gameplay
     *   chat (width 100%)
     *   notifications
 
-### cruds
+Iteration 13: rooms
+-------------------
 
-*   move profile:shared views to an admin section
-*   autocomplete with drop down
-*   error messages
+*   crud
+*   isolated rooms
+*   waiting room
+*   render battle from stored data
+
+Next iterations
+===============
+
+Gameplay
+--------
 
 ### battle
 
@@ -70,11 +58,13 @@ Gameplay
 UX
 --
 
-### chat
+*   error messages
+*   autocomplete with drop down
+*   chat
+*   notifications
 
-### notifications
-
-### renders
+Renders
+-------
 
 *   canvas api
 *   bitmap animations
@@ -84,13 +74,6 @@ UX
 
 Architecture
 ------------
-
-### realtime controllers
-
-*   use model in master views
-*   listen "child_changed" events in master views
-*   listen to "child_changed" events in detail views
-*   listen to "child_removed" events in detail views
 
 ### view/model bindings
 

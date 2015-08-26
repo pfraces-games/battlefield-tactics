@@ -22,25 +22,46 @@ define('storage', function (require) {
   };
 
   var each = function (list, fn) {
-    var listeners = {};
+    var onChildRemoved, onChildChanged, onChildAdded,
+        listeners = {};
 
-    var onRemove = function (id, listener) {
-      listeners[id] = listener;
+    var addRemoveListener = function (id, listener) {
+      if (!listeners[id]) { listeners[id] = {}; }
+      listeners[id].onRemove = listener;
+    };
+
+    var addUpdateListener = function (id, listener) {
+      if (!listeners[id]) { listeners[id] = {}; }
+      listeners[id].onUpdate = listener;
     };
 
     var setupListeners = function () {
       list = node(list);
 
-      list.on('child_removed', function (snapshot) {
-        listeners[snapshot.key()]();
+      onChildRemoved = list.on('child_removed', function (snapshot) {
+        listeners[snapshot.key()].onRemove(listItem(snapshot));
       });
 
-      list.on('child_added', function (snapshot) {
-        fn(listItem(snapshot), partial(onRemove, snapshot.key()));
+      onChildChanged = list.on('child_changed', function (snapshot) {
+        listeners[snapshot.key()].onUpdate(listItem(snapshot));
+      });
+
+      onChildAdded = list.on('child_added', function (snapshot) {
+        var onRemove = partial(addRemoveListener, snapshot.key()),
+            onUpdate = partial(addUpdateListener, snapshot.key());
+        fn(listItem(snapshot), onRemove, onUpdate);
       });
     };
 
+    var releaseListeners = function () {
+      list.off(onChildRemoved);
+      list.off(onChildChanged);
+      list.off(onChildAdded);
+      list.reset();
+    };
+
     session.onLogin(setupListeners);
+    session.onLogout(releaseListeners);
   };
 
   var filter = function (list, attr, fn) {
@@ -61,9 +82,15 @@ define('storage', function (require) {
     };
   };
 
-  var insert = function (list, itemGetter) {
+  var save = function (list, idGetter, itemGetter) {
     return function () {
-      node(list).push(itemGetter());
+      var id = idGetter(),
+          item = itemGetter();
+
+      list = node(list);
+
+      if (id) { list.child(id).update(item); }
+      else { list.push(item); }
     };
   };
 
@@ -76,7 +103,7 @@ define('storage', function (require) {
   return {
     each: each,
   	filter: filter,
-  	insert: insert,
+  	save: save,
     remove: remove
   };
 });

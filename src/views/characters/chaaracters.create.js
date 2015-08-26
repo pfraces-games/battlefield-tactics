@@ -25,7 +25,7 @@ define('app.characters.create', function (require) {
     dom('#characters-new-accuracy').onInput(character.accuracy);
 
     dom('#characters-new-submit')
-    .onSubmit(storage.insert('characters', character.snapshot));
+    .onSubmit(storage.save('characters', null, character.snapshot));
   };
 
   return {

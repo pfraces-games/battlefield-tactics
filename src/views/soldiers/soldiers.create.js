@@ -42,7 +42,7 @@
     .onInput(storage.filter('weapons', 'name', soldier.weapon.update));
 
     dom('#soldiers-new-submit')
-    .onSubmit(storage.insert(user.soldiers, soldier.snapshot));
+    .onSubmit(storage.save(user.soldiers, null, soldier.snapshot));
 
     // initial redraw of soldier value
     soldier.emit('event');

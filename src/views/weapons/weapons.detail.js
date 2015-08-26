@@ -43,7 +43,7 @@ define('app.weapons.detail', function (require) {
     weapon.on('damage', dom('#weapons-detail-damage').val);
 
     dom('#weapons-detail-submit')
-    .onSubmit(storage.insert('weapons', weapon.snapshot))
+    .onSubmit(storage.save('weapons', view.weaponId, weapon.snapshot))
     .onSubmit(partial(tab.active, 'weapons', 'weapons-master'));
 
     dom('#weapons-detail-delete')

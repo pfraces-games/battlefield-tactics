@@ -2,6 +2,7 @@ define('app.weapons.master', function (require) {
   'use strict';
 
   var partial = require('mu.fn.partial'),
+      model   = require('model'),
       storage = require('storage'),
       detail  = require('app.weapons.detail');
 
@@ -12,21 +13,30 @@ define('app.weapons.master', function (require) {
     onClick   : require('domo.on.click')
   });
 
+  var weaponModel = partial(model, {
+    id: '',
+    name: '',
+    value: 0,
+    damage: 0
+  });
+
   var init = function () {
   	var $weapon = dom('.weapons-master-item').repeater();
 
-  	storage.each('weapons', function (weapon, onRemove) {
-      var $node = $weapon();
+    storage.each('weapons', function (item, onRemove, onUpdate) {
+      var weapon = weaponModel(),
+          $node = $weapon();
 
-  		dom('.weapons-master-item-name', $node).html(weapon.name);
-  		dom('.weapons-master-item-value', $node).html(weapon.value);
-      dom('.weapons-master-item-damage', $node).html(weapon.damage);
-      
-      dom($node).onClick(partial(detail.load, weapon.id));
+      weapon.update(item);
       onRemove(dom($node).remove);
-  	});
+      onUpdate(weapon.update);
 
-    dom('#weapons-master-create').onClick(detail.load);
+      weapon.on('name', dom('.weapons-master-item-name', $node).html);
+      weapon.on('value', dom('.weapons-master-item-value', $node).html);
+      weapon.on('damage', dom('.weapons-master-item-damage', $node).html);
+
+      dom($node).onClick(partial(detail.load, weapon.id()));
+    });
   };
 
   return {

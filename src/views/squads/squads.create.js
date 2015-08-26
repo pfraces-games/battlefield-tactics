@@ -53,7 +53,7 @@ define('app.squads.create', function (require) {
     });
 
     dom('#squads-new-submit')
-    .onSubmit(storage.insert(user.squads, squad.snapshot));
+    .onSubmit(storage.save(user.squads, null, squad.snapshot));
 
     squad.soldiers.insert();
   };
