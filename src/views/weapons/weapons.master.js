@@ -9,7 +9,7 @@ define('app.weapons.master', function (require) {
   var dom     = require('domo').use({
     html      : require('domo.html'),
     remove    : require('domo.remove'),
-  	repeater  : require('domo.repeater'),
+    repeater  : require('domo.repeater'),
     onClick   : require('domo.on.click')
   });
 
@@ -21,7 +21,7 @@ define('app.weapons.master', function (require) {
   });
 
   var init = function () {
-  	var $weapon = dom('.weapons-master-item').repeater();
+    var $weapon = dom('.weapons-master-item').repeater();
 
     storage.each('weapons', function (item, onRemove, onUpdate) {
       var weapon = weaponModel(),
@@ -40,6 +40,6 @@ define('app.weapons.master', function (require) {
   };
 
   return {
-  	init: init
+    init: init
   };
 });
