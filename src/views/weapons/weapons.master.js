@@ -37,6 +37,8 @@ define('app.weapons.master', function (require) {
 
       dom($node).onClick(partial(detail.load, weapon.id()));
     });
+
+    dom('#weapons-master-create').onClick(detail.load);
   };
 
   return {

@@ -60,6 +60,9 @@ UX
 
 *   error messages
 *   autocomplete with drop down
+*   [bug] master views: data is duplicated on relogin
+*   [bug] detail views: numeric fields show default value when input is empty
+*   arrow curson on master table header
 *   chat
 *   notifications
 

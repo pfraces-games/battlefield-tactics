@@ -3,11 +3,8 @@
     <h2>characters</h2>
 
     <div class="tabs top">
-      <div id="tab-characters-new" class="tab tab-characters">
-        new
-      </div>
       <div id="tab-characters-detail" class="tab tab-characters">
-        item
+        new character
       </div>
       <div id="tab-characters-master" class="tab tab-characters active">
         list
@@ -15,70 +12,7 @@
     </div>
   </div>
 
-  <!-- section: new -->
-
-  <div id="characters-new" class="characters section">
-    <form id="characters-new-submit">
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr>
-              <td class="tag">name</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="characters-new-name" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tag">value</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="characters-new-value" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr>
-              <td class="tag">agility</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="characters-new-agility" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tag">constitution</td>
-              <td>
-                <div class="widget input">
-                  <input type="text"id="characters-new-constitution" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tag">accuracy</td>
-              <td>
-                <div class="widget input">
-                  <input type="text"id="characters-new-accuracy" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="submit-area">
-        <button type="submit" class="widget btn">save</button>
-        <div style="clear:both;"></div>
-      </div>
-    </form>
-  </div>
-
-  <!-- section: detail -->
+  <!-- detail -->
 
   <div id="characters-detail" class="characters section">
     <form id="characters-detail-submit">
@@ -144,31 +78,34 @@
     </form>
   </div>
 
-  <!-- section: master -->
+  <!-- master -->
 
   <div id="characters-master" class="characters section visible">
     <div class="widget">
       <table class="list">
         <thead>
           <tr>
-            <td>character class</td>
+            <td>character</td>
             <td class="w10">value</td>
-            <td class="w30">user</td>
+            <td class="w10" title="agility">agi</td>
+            <td class="w10" title="constitution">con</td>
+            <td class="w10" title="accuracy">acc</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>soldier</td>
-            <td class="rtl">100</td>
-            <td>foo</td>
-          </tr>
-          <tr>
-            <td>captain</td>
-            <td class="rtl">300</td>
-            <td>foo</td>
+          <tr class="characters-master-item">
+            <td class="characters-master-item-name"></td>
+            <td class="characters-master-item-value rtl"></td>
+            <td class="characters-master-item-agility rtl"></td>
+            <td class="characters-master-item-constitution rtl"></td>
+            <td class="characters-master-item-accuracy rtl"></td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="submit-area">
+      <div id="characters-master-create" class="widget btn">new</div>
+      <div style="clear:both;"></div>
     </div>
   </div>
 

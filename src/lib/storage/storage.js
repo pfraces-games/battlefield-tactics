@@ -53,15 +53,7 @@ define('storage', function (require) {
       });
     };
 
-    var releaseListeners = function () {
-      list.off(onChildRemoved);
-      list.off(onChildChanged);
-      list.off(onChildAdded);
-      list.reset();
-    };
-
     session.onLogin(setupListeners);
-    session.onLogout(releaseListeners);
   };
 
   var filter = function (list, attr, fn) {
