@@ -56,13 +56,11 @@ define('app.weapons.detail', function (require) {
     });
   };
 
-  var load = function (weaponId) {
-    storage.filter('weapons', 'id', function (item) {
-      view.weaponId(item ? item.id : '');
-      weapon.update(item);
-      tab.active('weapons', 'weapons-detail');
-    })(weaponId);
-  };
+  var load = storage.filter('weapons', 'id', function (item) {
+    view.weaponId(item ? item.id : '');
+    weapon.update(item);
+    tab.active('weapons', 'weapons-detail');
+  });
 
   return {
     init: init,

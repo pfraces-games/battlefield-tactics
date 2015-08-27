@@ -10,7 +10,7 @@ define('storage', function (require) {
 
   var node = function (node) {
     if (isString(node)) { return firebase.child(node); }
-    if (isFunction(node)) { return firebase.child(node()); }
+    if (isFunction(node)) { return node(); }
     return node;
   };
 

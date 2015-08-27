@@ -3,11 +3,8 @@
     <h2>soldiers</h2>
 
     <div class="tabs top">
-      <div id="tab-soldiers-new" class="tab tab-soldiers">
-        new
-      </div>
       <div id="tab-soldiers-detail" class="tab tab-soldiers">
-        item
+        new soldier
       </div>
       <div id="tab-soldiers-master" class="tab tab-soldiers active">
         list
@@ -15,62 +12,7 @@
     </div>
   </div>
 
-  <!-- section: new -->
-
-  <div id="soldiers-new" class="soldiers section">
-    <form id="soldiers-new-submit">
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr>
-              <td class="tag">name</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="soldiers-new-name" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tag">value</td>
-              <td>
-                <div class="widget input readonly">
-                  <input type="text" readonly id="soldiers-new-value" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr>
-              <td class="tag">character</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="soldiers-new-character" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tag">weapon</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="soldiers-new-weapon" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="submit-area">
-        <button type="submit" class="widget btn">save</button>
-        <div style="clear:both;"></div>
-      </div>
-    </form>
-  </div>
-
-  <!-- section: detail -->
+  <!--  detail -->
 
   <div id="soldiers-detail" class="soldiers section">
     <form id="soldiers-detail-submit">
@@ -120,7 +62,7 @@
       </div>
       <div class="submit-area">
         <button type="submit" class="widget btn">save</button>
-        <button id="soldiers-detail-delete" class="widget btn secondary">
+        <button id="soldiers-detail-delete" class="widget btn secondary hidden">
           delete
         </button>
         <div style="clear:both;"></div>
@@ -128,7 +70,7 @@
     </form>
   </div>
 
-  <!-- section: master -->
+  <!-- master -->
 
   <div id="soldiers-master" class="soldiers section visible">
     <div class="widget">
@@ -137,25 +79,22 @@
           <tr>
             <td class="w30">soldier</td>
             <td class="w10">value</td>
-            <td>squad</td>
+            <td class="w10">character</td>
+            <td class="w10">weapon</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>aragorn</td>
-            <td class="rtl">400</td>
-            <td>fellowship of the ring</td>
-          </tr>
-          <tr>
-            <td>gimli</td>
-            <td class="rtl">320</td>
-            <td>fellowship of the ring</td>
+          <tr class="soldiers-master-item">
+            <td class="soldiers-master-item-name"></td>
+            <td class="soldiers-master-item-value rtl"></td>
+            <td class="soldiers-master-item-character"></td>
+            <td class="soldiers-master-item-weapon"></td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="submit-area">
-      <div id="new-soldier" class="widget btn">new</div>
+      <div id="soldiers-master-create" class="widget btn">new</div>
       <div style="clear:both;"></div>
     </div>
   </div>
