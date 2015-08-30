@@ -2,11 +2,13 @@ define('app.squads', function (require) {
   'use strict';
 
   var tab    = require('ui.tab'),
-      create = require('app.squads.create');
+      master = require('app.squads.master'),
+      detail = require('app.squads.detail');
 
   var init = function () {
     tab.group('squads');
-    create.init();
+    master.init();
+    detail.init();
   };
 
   return {

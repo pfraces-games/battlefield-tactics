@@ -53,11 +53,13 @@
     });
 
     dom('#soldiers-detail-character')
+    .onInput(soldier.character.reset)
     .onInput(storage.filter('characters', 'name', soldier.character.update));
 
     soldier.character.on('name', dom('#soldiers-detail-character').val);
 
     dom('#soldiers-detail-weapon')
+    .onInput(soldier.weapon.reset)
     .onInput(storage.filter('weapons', 'name', soldier.weapon.update));
 
     soldier.weapon.on('name', dom('#soldiers-detail-weapon').val);

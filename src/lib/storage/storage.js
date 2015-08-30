@@ -63,8 +63,6 @@ define('storage', function (require) {
     };
 
     return function (value) {
-      fn();
-
       if (!isDefined(value)) { return; }
 
       filter(attr).equalTo(value)

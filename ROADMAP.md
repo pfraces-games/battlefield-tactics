@@ -1,14 +1,6 @@
 Roadmap
 =======
 
-Iteration 10: CRUDs
--------------------
-
-*   [DONE] weapons
-*   characters
-*   soldiers
-*   squads
-
 Iteration 11: layout refactor
 -----------------------------
 
@@ -18,7 +10,7 @@ Iteration 11: layout refactor
     *   chat (width 100%)
     *   notifications
 
-Iteration 13: rooms
+Iteration 12: rooms
 -------------------
 
 *   crud
@@ -29,17 +21,24 @@ Iteration 13: rooms
 Next iterations
 ===============
 
+Bugs
+----
+
+*   [bug] master views: data is duplicated on relogin
+*   [bug] detail views: numeric fields show default value when input is empty
+*   [bug] master views: show arrow cursor on table header
+
 Gameplay
 --------
 
 ### battle
 
-*   path preview
 *   lock client during enemy turn
-*   widget: team view
-*   widget: current soldier stats
 *   finish battle: on 'give up'
 *   finish battle: when no more enemies
+*   widget: team view
+*   widget: current soldier stats
+*   path preview
 
 ### engine
 
@@ -58,13 +57,11 @@ Gameplay
 UX
 --
 
+*   detail views: realtime updates
+*   detail views: autocomplete with drop down
 *   error messages
-*   autocomplete with drop down
-*   [bug] master views: data is duplicated on relogin
-*   [bug] detail views: numeric fields show default value when input is empty
-*   arrow curson on master table header
-*   chat
 *   notifications
+*   chat
 
 Renders
 -------

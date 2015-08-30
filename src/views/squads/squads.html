@@ -3,11 +3,8 @@
     <h2>squads</h2>
 
     <div class="tabs top">
-      <div id="tab-squads-new" class="tab tab-squads">
-        new
-      </div>
       <div id="tab-squads-detail" class="tab tab-squads">
-        item
+        new squad
       </div>
       <div id="tab-squads-master" class="tab tab-squads active">
         list
@@ -15,69 +12,7 @@
     </div>
   </div>
 
-  <!-- section: new -->
-
-  <div id="squads-new" class="squads section">
-    <form id="squads-new-submit">
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr>
-              <td class="tag">name</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" id="squads-new-name" />
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class="tag">value</td>
-              <td>
-                <div class="widget input readonly">
-                  <input type="text" readonly id="squads-new-value" />
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="widget">
-        <table>
-          <tbody>
-            <tr class="squads-new-soldier">
-              <td class="tag">soldier</td>
-              <td>
-                <div class="widget input">
-                  <input type="text" class="squads-new-soldier-name" />
-                </div>
-              </td>
-              <td class="action">
-                <button class="squads-new-remove-soldier widget btn">
-                  x
-                </button>
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td class="tag"></td>
-              <td>
-                <button id="squads-new-add-soldier" class="widget btn">
-                  add soldier
-                </button>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-      <div class="submit-area">
-        <button type="submit" class="widget btn">save</button>
-        <div style="clear:both;"></div>
-      </div>
-    </form>
-  </div>
-
-  <!-- section: detail -->
+  <!-- detail -->
 
   <div id="squads-detail" class="squads section">
     <form id="squads-detail-submit">
@@ -106,11 +41,11 @@
       <div id="squads" class="widget">
         <table>
           <tbody>
-            <tr id="squads-detail-soldiers">
+            <tr class="squads-detail-soldier">
               <td class="tag">soldier</td>
               <td>
                 <div class="widget input">
-                  <input type="text" class="squads-detail-soldier" />
+                  <input type="text" class="squads-detail-soldier-name" />
                 </div>
               </td>
               <td class="action">
@@ -119,6 +54,8 @@
                 </button>
               </td>
             </tr>
+          </tbody>
+          <tfoot>
             <tr>
               <td class="tag"></td>
               <td></td>
@@ -128,12 +65,12 @@
                 </button>
               </td>
             </tr>
-          </tbody>
+          </tfoot>
         </table>
       </div>
       <div class="submit-area">
         <button type="submit" class="widget btn">save</button>
-        <button id="squads-detail-delete" class="widget btn secondary">
+        <button id="squads-detail-delete" class="widget btn secondary hidden">
           delete
         </button>
         <div style="clear:both;"></div>
@@ -141,7 +78,7 @@
     </form>
   </div>
 
-  <!-- section: master -->
+  <!-- master -->
 
   <div id="squads-master" class="squads section visible">
     <div class="widget">
@@ -149,26 +86,21 @@
         <thead>
           <tr>
             <td>squad</td>
-            <td class="w10">soldiers</td>
             <td class="w10">value</td>
+            <td class="w10">soldiers</td>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>fellowship of the ring</td>
-            <td class="rtl">9</td>
-            <td class="rtl">980</td>
-          </tr>
-          <tr>
-            <td>killers</td>
-            <td class="rtl">6</td>
-            <td class="rtl">920</td>
+          <tr class="squads-master-item">
+            <td class="squads-master-item-name"></td>
+            <td class="squads-master-item-value rtl"></td>
+            <td class="squads-master-item-soldiers rtl"></td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="submit-area">
-      <div id="new-squad" class="widget btn">new</div>
+      <div id="squads-master-create" class="widget btn">new</div>
       <div style="clear:both;"></div>
     </div>
   </div>
