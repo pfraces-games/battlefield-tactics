@@ -5,10 +5,26 @@ Iteration 11: layout refactor
 -----------------------------
 
 *   use proof of concept
-*   panels inside views
-*   bottom bar
-    *   chat (width 100%)
-    *   notifications
+*   panels inside sections
+*   solid title bar
+*   x-platform fonts
+
+*   sections
+    *   rooms
+    *   battle
+    *   admin
+        *   characters
+        *   weapons
+        *   maps
+    *   <username> | x (logout)
+        *   profile
+        *   headquarters
+            *   squads
+            *   soldiers
+
+*   [bug] master views: data is duplicated on relogin
+    *   move onLogin/onLogout out of storage
+*   [bug] master views: show arrow cursor on table header
 
 Iteration 12: rooms
 -------------------
@@ -18,27 +34,19 @@ Iteration 12: rooms
 *   waiting room
 *   render battle from stored data
 
-Next iterations
-===============
-
-Bugs
-----
-
-*   [bug] master views: data is duplicated on relogin
-*   [bug] detail views: numeric fields show default value when input is empty
-*   [bug] master views: show arrow cursor on table header
-
-Gameplay
---------
-
-### battle
+Iteration 13: battle
+--------------------
 
 *   lock client during enemy turn
 *   finish battle: on 'give up'
 *   finish battle: when no more enemies
-*   widget: team view
-*   widget: current soldier stats
-*   path preview
+*   widget: soldiers
+
+Next iterations
+===============
+
+Gameplay
+--------
 
 ### engine
 
@@ -57,6 +65,10 @@ Gameplay
 UX
 --
 
+*   2-way data bindings
+    *   numeric fields show default value when input is empty
+    *   using backspace once clears the input
+*   battle: path preview
 *   detail views: realtime updates
 *   detail views: autocomplete with drop down
 *   error messages

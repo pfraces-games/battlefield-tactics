@@ -2,7 +2,6 @@
   "pfraces/define": "*",
   "mujs/mu.is": "*",
   "mujs/mu.fn": "*",
-  "mujs/mu.object": "*",
   "mujs/mu.list": "*",
   "mujs/mu.tree": "*",
   "pfraces/domo": "*",
